@@ -1,0 +1,514 @@
+/* ============================================================================
+   NALU DESIGN SYSTEM — Foundations (colors, type, spacing, elevation)
+   Brand: Igraal (default Nalu brand). Atolls / Global Savings Group.
+   Source of truth: pico-react (@atolls/nalu-react) + brand style-guide.css
+   Values are the EXACT Igraal brand tokens. Other Nalu brands (Coupons,
+   Cuponation, ElPais, Radins, Shoop, Pepper, DailyMail, CNN, ...) re-skin
+   these same token NAMES with different values — keep the names, swap values.
+   ============================================================================ */
+
+/* ---- Webfonts ------------------------------------------------------------- */
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Inter-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/Inter-medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/Inter-bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'New Spirit';
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/NewSpirit-medium.woff2') format('woff2');
+}
+/* Averta CY — Pepper (mydealz) brand face. Licensed; used by [data-brand="pepper*"]. */
+@font-face {
+  font-family: 'Averta CY';
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/AvertaCY-Regular.woff2') format('woff2'),
+       url('fonts/AvertaCY-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Averta CY';
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/AvertaCY-Semibold.woff2') format('woff2'),
+       url('fonts/AvertaCY-Semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Averta CY';
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/AvertaCY-Bold.woff2') format('woff2'),
+       url('fonts/AvertaCY-Bold.ttf') format('truetype');
+}
+
+:root {
+  /* Exclusive PredefinedTag (brand-themed; Igraal default) — token pipeline 2026-07 */
+  --special-tag-background: hsl(24.706 100% 90%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  /* ====================================================================
+     1. CORE COLOR RAMPS  (raw palette — prefer SEMANTIC tokens below)
+     Each ramp goes 5 (darkest) → 98 (near white). Hues are constant per
+     ramp; only lightness shifts. Brand accent = PRIMARY (warm orange).
+     ==================================================================== */
+
+  /* Neutral (pure grey, hue 0 sat 0) */
+  --colors-neutral-5:  hsl(0 0% 5.098%);
+  --colors-neutral-10: hsl(0 0% 10.196%);
+  --colors-neutral-20: hsl(0 0% 20%);
+  --colors-neutral-30: hsl(0 0% 30.196%);
+  --colors-neutral-40: hsl(0 0% 40%);
+  --colors-neutral-50: hsl(0 0% 50.196%);
+  --colors-neutral-55: hsl(0 0% 54.902%);
+  --colors-neutral-60: hsl(0 0% 60%);
+  --colors-neutral-70: hsl(0 0% 69.804%);
+  --colors-neutral-80: hsl(0 0% 80%);
+  --colors-neutral-90: hsl(0 0% 90.196%);
+  --colors-neutral-95: hsl(0 0% 94.902%);
+  --colors-neutral-98: hsl(0 0% 98.039%);
+
+  /* Primary — Igraal warm orange (THE brand accent) */
+  --colors-primary-5:  hsl(19.2 100% 4.902%);
+  --colors-primary-10: hsl(18.182 97.059% 13.333%);
+  --colors-primary-20: hsl(18.202 97.802% 17.843%);
+  --colors-primary-30: hsl(18.095 98.438% 25.098%);
+  --colors-primary-40: hsl(18.375 98.765% 31.765%);
+  --colors-primary-50: hsl(18.286 98.131% 41.961%);
+  --colors-primary-55: hsl(18.205 98.319% 53.333%);   /* ★ signature orange */
+  --colors-primary-60: hsl(25.152 100% 61.176%);
+  --colors-primary-70: hsl(25.098 100% 70%);
+  --colors-primary-80: hsl(25.294 100% 80%);
+  --colors-primary-90: hsl(24.706 100% 90%);
+  --colors-primary-95: hsl(24 100% 96.078%);
+  --colors-primary-98: hsl(24 100% 98.039%);
+
+  /* Secondary — golden yellow */
+  --colors-secondary-5:  hsl(46.364 84.615% 5.098%);
+  --colors-secondary-10: hsl(46.667 88.235% 10%);
+  --colors-secondary-20: hsl(46.304 90.196% 20%);
+  --colors-secondary-30: hsl(45.985 89.542% 30%);
+  --colors-secondary-40: hsl(45.978 90.196% 40%);
+  --colors-secondary-50: hsl(45.974 94.286% 48.039%);
+  --colors-secondary-55: hsl(45.782 92.14% 55.098%);
+  --colors-secondary-60: hsl(45.978 90.196% 60%);
+  --colors-secondary-70: hsl(45.985 89.542% 70%);
+  --colors-secondary-80: hsl(46.304 90.196% 80%);
+  --colors-secondary-90: hsl(46.667 88.235% 90%);
+  --colors-secondary-95: hsl(44.348 92% 95.098%);
+  --colors-secondary-98: hsl(32 100% 97.059%);
+
+  /* Tertiary — violet */
+  --colors-tertiary-5:  hsl(280 46.154% 5.098%);
+  --colors-tertiary-10: hsl(280.8 49.02% 10%);
+  --colors-tertiary-20: hsl(281.74 47.917% 18.824%);
+  --colors-tertiary-30: hsl(281.92 47.712% 30%);
+  --colors-tertiary-40: hsl(282 49.02% 40%);
+  --colors-tertiary-50: hsl(281.78 52.941% 50%);
+  --colors-tertiary-55: hsl(281.5 58.079% 55.098%);
+  --colors-tertiary-60: hsl(281.9 61.765% 60%);
+  --colors-tertiary-70: hsl(281.74 75.163% 70%);
+  --colors-tertiary-80: hsl(281.86 84.314% 80%);
+  --colors-tertiary-90: hsl(281.33 88.235% 90%);
+  --colors-tertiary-95: hsl(281.74 100% 95.49%);
+  --colors-tertiary-98: hsl(282 100% 98.039%);
+
+  /* Quaternary — blue */
+  --colors-quaternary-5:  hsl(226.67 69.231% 5.098%);
+  --colors-quaternary-10: hsl(227.03 72.549% 10%);
+  --colors-quaternary-20: hsl(226.76 75.556% 17.647%);
+  --colors-quaternary-30: hsl(226.96 75.163% 30%);
+  --colors-quaternary-40: hsl(226.85 71.569% 40%);
+  --colors-quaternary-50: hsl(226.82 67.843% 50%);
+  --colors-quaternary-55: hsl(226.91 72.052% 55.098%);
+  --colors-quaternary-60: hsl(225.75 78.431% 60%);
+  --colors-quaternary-70: hsl(225.83 83.007% 70%);
+  --colors-quaternary-80: hsl(225.65 90.196% 80%);
+  --colors-quaternary-90: hsl(225.31 96.078% 90%);
+  --colors-quaternary-95: hsl(225.79 100% 92.549%);
+  --colors-quaternary-98: hsl(228 100% 98.039%);
+
+  /* Danger / red */
+  --colors-danger-40: hsl(3.2215 71.292% 40.98%);
+  --colors-danger-50: hsl(2.7586 71.311% 52.157%);
+  --colors-danger-70: hsl(2.5532 71.212% 74.118%);
+  --colors-danger-90: hsl(4.1379 70.732% 91.961%);
+  --colors-danger-95: hsl(0 70% 96.078%);
+
+  /* Success / green */
+  --colors-success-50: hsl(93.103 76.316% 29.804%);
+  --colors-success-90: hsl(93.158 74.51% 80%);
+  --colors-success-95: hsl(93.462 92.857% 89.02%);
+
+  /* Warning / amber */
+  --colors-warning-50: hsl(37.971 81.176% 50%);
+  --colors-warning-60: hsl(41.86 84.314% 60%);
+  --colors-warning-90: hsl(44 88.235% 90%);
+
+  /* Basics + transparency */
+  --colors-black: hsl(16.364 33.333% 6.4706%); /* warm near-black (text) */
+  --colors-white: hsl(0 0% 100%);
+  --colors-transparent-black-alpha-70: hsl(0 0% 0% / 0.702);
+  --colors-transparent-black-alpha-50: hsl(0 0% 0% / 0.502);
+  --colors-transparent-black-alpha-30: hsl(0 0% 0% / 0.302);
+  --colors-transparent-black-alpha-16: hsl(0 0% 0% / 0.1608);
+  --colors-transparent-black-alpha-12: hsl(0 0% 0% / 0.1216);
+  --colors-transparent-black-alpha-10: hsl(0 0% 0% / 0.102);
+  --colors-transparent-black-alpha-8:  hsl(0 0% 0% / 0.0784);
+
+  /* ====================================================================
+     2. SEMANTIC COLOR TOKENS  (use THESE in product UI)
+     ==================================================================== */
+
+  /* Content (text + icon) */
+  --content-default: hsl(0 0% 5.098%);     /* primary text */
+  --content-subtle:  hsl(0 0% 40%);        /* secondary / muted text */
+  --content-link-idle:  hsl(18.205 98.319% 53.333%);
+  --content-link-hover: hsl(18.375 98.765% 31.765%);
+
+  /* Background / surface */
+  --background-surface-default:  hsl(0 0% 98.039%); /* page bg (warm white) */
+  --background-surface-elevated: hsl(0 0% 100%);    /* cards / sheets */
+  --background-surface-lowered:  hsl(0 0% 94.902%); /* recessed wells (neutral-95) */
+
+  /* Border */
+  --border-default: hsl(0 0% 80%);
+  --border-subtle:  hsl(0 0% 94.902%);
+
+  /* Brand accent shortcuts */
+  --brand-primary: hsl(18.205 98.319% 53.333%);     /* orange */
+  --brand-logo-bg: hsl(18.205 98.319% 53.333%);
+
+  /* ---- Smart Shopping styleguide additions (named brand identity) --------
+     The umbrella "Atolls Rewards / Smart Shopping" guideline names its colors.
+     We keep the numbered ramps as the engine; these are the few values that
+     the styleguide carries and our ramps did NOT already cover. */
+
+  /* Brand orange GRADIENT — Fire Orange → light orange (hero fills, logo lockups).
+     Figma: linear-gradient(103.8deg, #FD5A13 4.6%, #FF8C39 100%). */
+  --brand-gradient-primary: linear-gradient(103.8deg, var(--colors-primary-55) 4.6%, var(--colors-primary-60) 100%);
+
+  /* Midnight Blue (#20294A) — net-new dark navy from the styleguide (not in any
+     ramp). Used for dark surfaces / brand illustration backgrounds. */
+  --colors-midnight-blue: hsl(227 39.608% 20.784%);
+
+  /* Warm brown (#3D2717) — the styleguide's SECONDARY-TEXT colour on light
+     surfaces (a warm brown, not our neutral grey). Exposed as a token; existing
+     components still use the neutral --content-subtle until explicitly switched. */
+  --colors-brown-30: hsl(25.2 45.205% 16.471%);
+  --content-subtle-warm: var(--colors-brown-30);
+
+  /* Interactive — PRIMARY (orange family: links, accent buttons, focus) */
+  --interactive-primary-high-idle-background:    hsl(18.205 98.319% 53.333%);
+  --interactive-primary-high-idle-foreground:    hsl(0 0% 100%);
+  --interactive-primary-high-hover-background:   hsl(18.286 98.131% 41.961%);
+  --interactive-primary-high-pressed-background: hsl(18.375 98.765% 31.765%);
+  --interactive-primary-high-disabled-background:hsl(0 0% 69.804%);
+
+  /* Button — PRIMARY HIGH renders BLACK (neutral), not orange.
+     Orange is reserved as the focus ring + accent / link colour. */
+  --button-primary-high-idle-background:    hsl(0 0% 5.098%);
+  --button-primary-high-hover-background:   hsl(0 0% 30.196%);
+  --button-primary-high-pressed-background: hsl(0 0% 10.196%);
+  --button-primary-high-disabled-background:hsl(0 0% 69.804%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(18.205 98.319% 53.333%);
+
+  /* Full button matrix — appearance (primary | secondary) × emphasis
+     (high | medium | low) × state. High = filled, Medium = outline,
+     Low = ghost. Igraal renders these in neutrals; brands re-skin the
+     primary-high background via brands.css. */
+  --button-primary-high-idle-border:        hsl(0 0% 5.098%);
+  --button-primary-high-hover-border:       hsl(0 0% 30.196%);
+  --button-primary-high-pressed-border:     hsl(0 0% 10.196%);
+  --button-primary-high-disabled-border:    hsl(0 0% 69.804%);
+  --button-primary-high-icon:               hsl(0 0% 100%);
+
+  --button-primary-medium-idle-background:    hsl(0 0% 100% / 0);
+  --button-primary-medium-idle-border:        hsl(0 0% 5.098%);
+  --button-primary-medium-hover-background:   hsl(0 0% 0% / 0.102);
+  --button-primary-medium-hover-border:       hsl(0 0% 5.098%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.302);
+  --button-primary-medium-pressed-border:     hsl(0 0% 5.098%);
+  --button-primary-medium-disabled-background:hsl(0 0% 90.196%);
+  --button-primary-medium-disabled-border:    hsl(0 0% 69.804%);
+  --button-primary-medium-label:              hsl(0 0% 5.098%);
+  --button-primary-medium-icon:               hsl(0 0% 5.098%);
+
+  --button-primary-low-idle-background:    hsl(0 0% 100% / 0);
+  --button-primary-low-idle-border:        hsl(0 0% 100% / 0);
+  --button-primary-low-hover-background:   hsl(0 0% 0% / 0.102);
+  --button-primary-low-hover-border:       hsl(0 0% 100% / 0);
+  --button-primary-low-pressed-background: hsl(0 0% 0% / 0.302);
+  --button-primary-low-pressed-border:     hsl(0 0% 100% / 0);
+  --button-primary-low-disabled-background:hsl(0 0% 100% / 0);
+  --button-primary-low-disabled-border:    hsl(0 0% 100% / 0);
+  --button-primary-low-label:              hsl(0 0% 5.098%);
+  --button-primary-low-icon:               hsl(0 0% 5.098%);
+
+  --button-secondary-high-idle-background:    hsl(0 0% 100%);
+  --button-secondary-high-idle-border:        hsl(0 0% 5.098%);
+  --button-secondary-high-hover-background:   hsl(0 0% 30.196%);
+  --button-secondary-high-hover-border:       hsl(0 0% 30.196%);
+  --button-secondary-high-pressed-background: hsl(0 0% 10.196%);
+  --button-secondary-high-pressed-border:     hsl(0 0% 10.196%);
+  --button-secondary-high-disabled-background:hsl(0 0% 69.804%);
+  --button-secondary-high-disabled-border:    hsl(0 0% 69.804%);
+  --button-secondary-high-label:              hsl(0 0% 5.098%);
+  --button-secondary-high-icon:               hsl(0 0% 5.098%);
+
+  --button-secondary-medium-idle-background:    hsl(0 0% 100% / 0);
+  --button-secondary-medium-idle-border:        hsl(0 0% 69.804%);
+  --button-secondary-medium-hover-background:   hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-hover-border:       hsl(0 0% 5.098%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.302);
+  --button-secondary-medium-pressed-border:     hsl(0 0% 5.098%);
+  --button-secondary-medium-disabled-background:hsl(0 0% 90.196%);
+  --button-secondary-medium-disabled-border:    hsl(0 0% 69.804%);
+  --button-secondary-medium-label:              hsl(0 0% 5.098%);
+  --button-secondary-medium-icon:               hsl(0 0% 5.098%);
+
+  --button-secondary-low-idle-background:    hsl(0 0% 100% / 0);
+  --button-secondary-low-idle-border:        hsl(0 0% 100% / 0);
+  --button-secondary-low-hover-background:   hsl(0 0% 0% / 0.102);
+  --button-secondary-low-hover-border:       hsl(0 0% 100% / 0);
+  --button-secondary-low-pressed-background: hsl(0 0% 0% / 0.302);
+  --button-secondary-low-pressed-border:     hsl(0 0% 100% / 0);
+  --button-secondary-low-disabled-background:hsl(0 0% 100% / 0);
+  --button-secondary-low-disabled-border:    hsl(0 0% 100% / 0);
+  --button-secondary-low-label:              hsl(0 0% 5.098%);
+  --button-secondary-low-icon:               hsl(0 0% 5.098%);
+
+  /* Status / feedback */
+  --success-foreground: hsl(81 100% 96.078%);
+  --success-background:  hsl(93.103 76.316% 29.804%);
+  --error-foreground:    hsl(20 100% 98.824%);
+  --error-background:     hsl(2.7586 71.311% 52.157%);
+  --warning-foreground:  hsl(31.765 68% 4.902%);
+  --warning-background:   hsl(41.86 84.314% 60%);
+
+  /* Campaigns (sale / promo accents) */
+  --campaigns-primary:   hsl(356.67 96.117% 40.392%); /* sale red */
+  --campaigns-secondary: hsl(143.18 58.667% 29.412%); /* deal green */
+
+  /* ====================================================================
+     3. TYPOGRAPHY TOKENS
+     Display + Headline = "New Spirit" (serif, weight 500).
+     Title + Body + Label + HeadlineAlt = "Inter" (400 / 700).
+     ==================================================================== */
+  --typography-body-font-family:        'Inter', system-ui, sans-serif;
+  --typography-label-font-family:       'Inter', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Inter', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Inter', system-ui, sans-serif;
+  --typography-headline-alt-font-family:'Inter', system-ui, sans-serif;
+  --typography-headline-font-family:    'New Spirit', Georgia, serif;
+  --typography-display-font-family-large:'New Spirit', Georgia, serif;
+
+  /* Display (hero) — New Spirit 500. RESPONSIVE (exact token-build values, 2-tier):
+     the values below are the MOBILE (<648px) base; they grow at a single 648px
+     breakpoint (see the @media block after :root). display-large resolves to
+     45px on mobile and 57px on desktop. */
+  --typography-display-size-small: 28px;  --typography-display-line-height-small: 36px;
+  --typography-display-size-medium:36px;  --typography-display-line-height-medium:44px;
+  --typography-display-size-large: 45px;  --typography-display-line-height-large: 52px;
+  --typography-display-font-weight-large: 500;
+
+  /* Headline — New Spirit 500 */
+  --typography-headline-size-small: 20px; --typography-headline-line-height-small: 28px;
+  --typography-headline-size-medium:22px; --typography-headline-line-height-medium:28px;
+  --typography-headline-size-large: 24px; --typography-headline-line-height-large: 32px;
+  --typography-headline-font-weight-large: 500;
+
+  /* Headline Alt — Inter 700 (sans alternative to serif headline) */
+  --typography-headline-alt-size-small: 24px; --typography-headline-alt-line-height-small: 32px;
+  --typography-headline-alt-size-medium:28px; --typography-headline-alt-line-height-medium:36px;
+  --typography-headline-alt-size-large: 32px; --typography-headline-alt-line-height-large: 40px;
+  --typography-headline-alt-font-weight-large: 700;
+
+  /* Title — Inter 700 */
+  --typography-title-size-small: 14px; --typography-title-line-height-small: 20px;
+  --typography-title-size-medium:16px; --typography-title-line-height-medium:24px;
+  --typography-title-size-large: 18px; --typography-title-line-height-large: 24px;
+  --typography-title-font-weight-large: 700;
+
+  /* Body — Inter 400 */
+  --typography-body-size-small: 12px;  --typography-body-line-height-small: 16px;
+  --typography-body-size-medium:14px;  --typography-body-line-height-medium:20px;
+  --typography-body-size-large: 16px;  --typography-body-line-height-large: 24px;
+  --typography-body-font-weight-medium: 400;
+
+  /* Label — Inter (400 reg / 700 large) — uppercase eyebrows */
+  --typography-label-size-small: 11px; --typography-label-line-height-small: 24px;
+  --typography-label-size-medium:12px; --typography-label-line-height-medium:26px;
+  --typography-label-size-large: 14px; --typography-label-line-height-large: 28px;
+  --typography-label-font-weight-large: 700;
+  --typography-label-font-weight-medium: 400;
+  --typography-label-font-weight-small: 400;
+
+  /* ====================================================================
+     4. SPACING (component dimension scale — 4px base)
+     ==================================================================== */
+  --dimension-component-3-xs: 1px;
+  --dimension-component-2-xs: 4px;
+  --dimension-component-xs:   8px;
+  --dimension-component-s:    10px;
+  --dimension-component-m:    12px;
+  --dimension-component-l:    16px;
+  --dimension-component-xl:   24px;
+  --dimension-component-2-xl: 32px;
+  --dimension-component-3-xl: 40px;
+  --dimension-component-4-xl: 48px;
+  --dimension-component-5-xl: 64px;
+
+  /* ====================================================================
+     5. RADIUS
+     Components (cards, inputs) are SQUARE (radius 0). Buttons + chips are
+     full PILLS (99px). cornerRadius (16px) is used for sheets / overlays.
+     ==================================================================== */
+  --radius: 0px;
+  --button-corner-radius: 99px;
+  --cornerRadius: 16px;
+
+  /* Smart Shopping named radius scale (Shapes variable collection).
+     None=0 · Small=8 (small controls) · Medium=16 (cards, containers) ·
+     Large=32 (modals, dialogs, bottom sheets) · Full=pill (buttons, icon
+     buttons, chips, switches, search bar, badge). Added alongside the legacy
+     --radius / --cornerRadius / --button-corner-radius tokens; components are
+     not rewired. NOTE: the guideline specs modals/sheets at Large (32px),
+     whereas --cornerRadius is still 16px (Medium). */
+  --radius-none:   0px;
+  --radius-small:  8px;
+  --radius-medium: 16px;
+  --radius-large:  32px;
+  --radius-full:   9999px;
+
+  /* ====================================================================
+     6. ELEVATION  (soft, low-contrast double shadows)
+     ==================================================================== */
+  --elevation-xs: 0px 2px 3px 2px hsl(0 0% 0% / 0.0314), 0px 1px 2px 0px hsl(0 0% 0% / 0.0784);
+  --elevation-sm: 0px 3px 5px 3px hsl(0 0% 0% / 0.0314), 0px 3px 3px 0px hsl(0 0% 0% / 0.0784);
+  --elevation-md: 0px 6px 9px 6px hsl(0 0% 0% / 0.0314), 0px 4px 4px 0px hsl(0 0% 0% / 0.0784);
+  --elevation-lg: 0px 7px 11px 5px hsl(0 0% 0% / 0.0314), 0px 5px 5px 0px hsl(0 0% 0% / 0.0784);
+  --elevation-xl: 0px 8px 15px 5px hsl(0 0% 0% / 0.0314), 0px 7px 7px 0px hsl(0 0% 0% / 0.0784);
+}
+
+/* ============================================================================
+   RESPONSIVE TYPOGRAPHY  (mobile-first — EXACT token-build values, 2026-07)
+   Token VALUES change per breakpoint; the token NAMES (display-large, …) stay
+   the same, so any element / .nalu-t-* class / bare <h1> using them resizes
+   automatically. The token build ships a single breakpoint at 648px (there is
+   NO 1200px tier). At ≥648 the DISPLAY, HEADLINE and TITLE-large scales step up;
+   body / label / small+medium title stay constant (already mobile-safe).
+   These are the production Figma per-mode values verbatim — no interpolation.
+   ============================================================================ */
+@media (min-width: 648px) {
+  :root {
+    --typography-title-size-large: 22px;    --typography-title-line-height-large: 28px;
+    --typography-headline-size-small: 24px; --typography-headline-line-height-small: 32px;
+    --typography-headline-size-medium:28px; --typography-headline-line-height-medium:36px;
+    --typography-headline-size-large: 32px; --typography-headline-line-height-large: 40px;
+    --typography-display-size-small: 36px;  --typography-display-line-height-small: 44px;
+    --typography-display-size-medium:45px;  --typography-display-line-height-medium:52px;
+    --typography-display-size-large: 57px;  --typography-display-line-height-large: 64px;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   FIXED MOBILE STAGE — re-pin Display/Headline/Title type to the MOBILE tier
+   inside .igm-app. The responsive tokens above are driven by VIEWPORT @media
+   queries on :root. The mobile shell (MobileShell → .igm-app) is a fixed ~390px
+   phone stage that is almost always rendered inside a much wider desktop
+   viewport — so the ≥648 viewport rule fires and a hero <h1> resolves the
+   DESKTOP size even though the phone is only 390px wide. Custom properties
+   inherit, so re-declaring the mobile base values on .igm-app (a closer
+   ancestor than :root for everything in the stage) makes all descendant
+   type resolve the mobile tier regardless of the outer viewport. This
+   is correct unconditionally: a mobile stage is, by definition, mobile.
+   (Desktop chrome stays viewport-driven — it is meant to track the viewport.)
+   ---------------------------------------------------------------------------- */
+.igm-app {
+  --typography-display-size-small: 28px;  --typography-display-line-height-small: 36px;
+  --typography-display-size-medium:36px;  --typography-display-line-height-medium:44px;
+  --typography-display-size-large: 45px;  --typography-display-line-height-large: 52px;
+  --typography-headline-size-small: 20px; --typography-headline-line-height-small: 28px;
+  --typography-headline-size-medium:22px; --typography-headline-line-height-medium:28px;
+  --typography-headline-size-large: 24px; --typography-headline-line-height-large: 32px;
+  --typography-title-size-large: 18px;    --typography-title-line-height-large: 24px;
+}
+
+/* ============================================================================
+   SEMANTIC TYPE CLASSES  (mirror pico-react's `nalu-t-*` utilities)
+   Apply to any element; they style visuals only, not HTML semantics.
+   ============================================================================ */
+.nalu-t-display-large  { font-family: var(--typography-display-font-family-large); font-weight: var(--typography-display-font-weight-large); font-size: var(--typography-display-size-large);  line-height: var(--typography-display-line-height-large); }
+.nalu-t-display-medium { font-family: var(--typography-display-font-family-large); font-weight: var(--typography-display-font-weight-large); font-size: var(--typography-display-size-medium); line-height: var(--typography-display-line-height-medium); }
+.nalu-t-display-small  { font-family: var(--typography-display-font-family-large); font-weight: var(--typography-display-font-weight-large); font-size: var(--typography-display-size-small);  line-height: var(--typography-display-line-height-small); }
+
+.nalu-t-headline-large  { font-family: var(--typography-headline-font-family); font-weight: var(--typography-headline-font-weight-large); font-size: var(--typography-headline-size-large);  line-height: var(--typography-headline-line-height-large); }
+.nalu-t-headline-medium { font-family: var(--typography-headline-font-family); font-weight: var(--typography-headline-font-weight-large); font-size: var(--typography-headline-size-medium); line-height: var(--typography-headline-line-height-medium); }
+.nalu-t-headline-small  { font-family: var(--typography-headline-font-family); font-weight: var(--typography-headline-font-weight-large); font-size: var(--typography-headline-size-small);  line-height: var(--typography-headline-line-height-small); }
+
+.nalu-t-headlinealt-large  { font-family: var(--typography-headline-alt-font-family); font-weight: var(--typography-headline-alt-font-weight-large); font-size: var(--typography-headline-alt-size-large);  line-height: var(--typography-headline-alt-line-height-large); }
+.nalu-t-headlinealt-medium { font-family: var(--typography-headline-alt-font-family); font-weight: var(--typography-headline-alt-font-weight-large); font-size: var(--typography-headline-alt-size-medium); line-height: var(--typography-headline-alt-line-height-medium); }
+
+.nalu-t-title-large  { font-family: var(--typography-title-font-family-large); font-weight: var(--typography-title-font-weight-large); font-size: var(--typography-title-size-large);  line-height: var(--typography-title-line-height-large); }
+.nalu-t-title-medium { font-family: var(--typography-title-font-family-large); font-weight: var(--typography-title-font-weight-large); font-size: var(--typography-title-size-medium); line-height: var(--typography-title-line-height-medium); }
+.nalu-t-title-small  { font-family: var(--typography-title-font-family-large); font-weight: var(--typography-title-font-weight-large); font-size: var(--typography-title-size-small);  line-height: var(--typography-title-line-height-small); }
+
+.nalu-t-body-large  { font-family: var(--typography-body-font-family); font-weight: var(--typography-body-font-weight-medium); font-size: var(--typography-body-size-large);  line-height: var(--typography-body-line-height-large); }
+.nalu-t-body-medium { font-family: var(--typography-body-font-family); font-weight: var(--typography-body-font-weight-medium); font-size: var(--typography-body-size-medium); line-height: var(--typography-body-line-height-medium); }
+.nalu-t-body-small  { font-family: var(--typography-body-font-family); font-weight: var(--typography-body-font-weight-medium); font-size: var(--typography-body-size-small);  line-height: var(--typography-body-line-height-small); }
+
+.nalu-t-label-large  { font-family: var(--typography-label-font-family); font-weight: var(--typography-label-font-weight-large); font-size: var(--typography-label-size-large);  line-height: var(--typography-label-line-height-large); text-transform: uppercase; letter-spacing: .02em; }
+.nalu-t-label-medium { font-family: var(--typography-label-font-family); font-weight: 400; font-size: var(--typography-label-size-medium); line-height: var(--typography-label-line-height-medium); text-transform: uppercase; letter-spacing: .02em; }
+
+/* ============================================================================
+   SEMANTIC HEADING DEFAULTS  (so a plain <h1>…<h6> is on-brand AND responsive
+   with no hard-coded font-size — h1 follows the responsive Display scale).
+   ----------------------------------------------------------------------------
+   These are LOW-SPECIFICITY element rules guarded with :not([class]) — any
+   `.nalu-t-*` utility class OR an inline style overrides them. NEVER hard-code
+   font-size/line-height on a heading; use a bare semantic tag or a `.nalu-t-*`
+   class so type stays responsive and consistent. Mirrors production
+   (`.nalu h1:not([class])` → Display, h2 → Headline, h3/h4 → Title, h5/h6 → Label).
+   ============================================================================ */
+h1:not([class]) { font-family: var(--typography-display-font-family-large); font-weight: var(--typography-display-font-weight-large); font-size: var(--typography-display-size-large);  line-height: var(--typography-display-line-height-large); }
+h2:not([class]) { font-family: var(--typography-headline-font-family); font-weight: var(--typography-headline-font-weight-large); font-size: var(--typography-headline-size-large); line-height: var(--typography-headline-line-height-large); }
+h3:not([class]) { font-family: var(--typography-title-font-family-large); font-weight: var(--typography-title-font-weight-large); font-size: var(--typography-title-size-large);  line-height: var(--typography-title-line-height-large); }
+h4:not([class]) { font-family: var(--typography-title-font-family-large); font-weight: var(--typography-title-font-weight-large); font-size: var(--typography-title-size-medium); line-height: var(--typography-title-line-height-medium); }
+h5:not([class]) { font-family: var(--typography-label-font-family); font-weight: var(--typography-label-font-weight-large); font-size: var(--typography-label-size-large);  line-height: var(--typography-label-line-height-large); text-transform: uppercase; letter-spacing: .02em; }
+h6:not([class]) { font-family: var(--typography-label-font-family); font-weight: var(--typography-label-font-weight-medium); font-size: var(--typography-label-size-medium); line-height: var(--typography-label-line-height-medium); text-transform: uppercase; letter-spacing: .02em; }
+
+/* Button tokens the 2026-08-20 build emits that were absent from the base set
+   (focus states, medium/low label+icon aliases). iGraal values. */
+:root {
+  --button-primary-high-focus-background: hsl(0 0% 50.196%);
+  --button-primary-high-focus-border: hsl(18.205 98.319% 53.333%);
+  --button-primary-medium-idle-forground2: hsl(18.205 98.319% 53.333%);
+  --button-primary-medium-focus-background: hsl(0 0% 100% / 0);
+  --button-primary-medium-focus-border: hsl(18.205 98.319% 53.333%);
+  --button-primary-medium-label-copy: hsl(0 0% 5.098%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(18.205 98.319% 53.333%);
+  --button-secondary-high-focus-background: hsl(0 0% 50.196%);
+  --button-secondary-high-focus-border: hsl(18.205 98.319% 53.333%);
+  /* NOT adopted: the build emits a white label/icon here while the idle background is
+     also white (upstream token bug) — the base keeps the near-black label. */
+  --button-secondary-medium-idle-forground: hsl(18.205 98.319% 53.333%);
+  --button-secondary-medium-focus-background: hsl(0 0% 100% / 0);
+  --button-secondary-medium-focus-border: hsl(18.205 98.319% 53.333%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(18.205 98.319% 53.333%);
+}

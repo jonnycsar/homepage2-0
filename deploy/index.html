@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="200" fill="#F75024"/><rect x="60" y="60" width="80" height="80" rx="18" fill="#FFF4F2"/><text x="100" y="118" font-family="Inter, sans-serif" font-size="42" font-weight="700" fill="#160E0B" text-anchor="middle">iG</text></svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nalu-design-system-1-18-0-6a9729cb-285a-4454-aa9e-5f741f1913e2/colors_and_type.css">
+<link rel="stylesheet" href="_ds/nalu-design-system-1-18-0-6a9729cb-285a-4454-aa9e-5f741f1913e2/brands.css">
+<link rel="stylesheet" href="_ds/nalu-design-system-1-18-0-6a9729cb-285a-4454-aa9e-5f741f1913e2/styles.css">
+<link rel="stylesheet" href="footer/fig-tokens.css">
+<link rel="stylesheet" href="footer/fig-assets.css">
+<link rel="stylesheet" href="components/fig-tokens.css">
+<link rel="stylesheet" href="components/fig-assets.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+<script src="_ds/nalu-design-system-1-18-0-6a9729cb-285a-4454-aa9e-5f741f1913e2/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: rgb(247,80,36); text-decoration: none; }
+  a:hover { color: rgb(200,58,20); }
+  .phone-scroll::-webkit-scrollbar { width: 0; height: 0; }
+  .row-scroll::-webkit-scrollbar { width: 0; height: 0; }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes heroIn { from { opacity: 0; transform: matrix(-1,0,0,1,380,417); } to { opacity: 1; transform: matrix(-1,0,0,1,380,381); } }
+  @keyframes bannerIn {
+    0% { transform: translateY(170%); }
+    58% { transform: translateY(-22px); }
+    76% { transform: translateY(8px); }
+    89% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+  }
+  @keyframes notifIn { from { opacity: 0; transform: translateY(26px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes coverIn { from { opacity: 0; transform: translateY(120px) scale(0.965); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes livePulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.82); } }
+  @keyframes liveRing { 0%, 100% { opacity: 0.9; transform: scale(1); } 50% { opacity: 0.35; transform: scale(1.18); } }
+  @keyframes marqueeA { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  /* small iPhones: the top nav sits flush against the screen edge */
+  @media (max-width: 430px) {
+    .stage { padding: 0 !important; }
+    .phone { border-radius: 0 !important; box-shadow: none !important; height: 100vh !important; }
+    .phone-pad { padding-top: 0 !important; }
+    .top-nav { border-radius: 0 !important; }
+  }
+  @keyframes secPass {
+    0% { opacity: 0; transform: translateY(54px) scale(0.926); }
+    34% { opacity: 1; transform: translateY(0) scale(1); }
+    70% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0.32; transform: translateY(-30px) scale(0.968); }
+  }
+</style>
+</helmet>
+
+<div class="stage" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 28px; background: rgb(237,231,228); box-sizing: border-box;">
+  <div class="phone" style="position: relative; width: 402px; height: 874px; border-radius: 44px; overflow: hidden; background: rgb(255,255,255); box-shadow: 0 24px 60px rgba(0,0,0,0.22); flex-shrink: 0;">
+
+    <div class="phone-scroll" ref="{{ setScroll }}" style="position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: none;">
+      <div class="phone-pad" style="width: 402px; box-sizing: border-box; padding: 18px 10px 128px 10px; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+
+        <div class="top-nav" ref="{{ setHeader }}" style="position: sticky; top: 0; z-index: 6; width: 362px; height: 71px; box-sizing: border-box; border-radius: 40px; background: rgb(255,255,255); display: flex; flex-direction: row; padding: 20px; justify-content: space-between; align-items: center; transition: transform 340ms cubic-bezier(.16,1,.3,1), opacity 240ms ease; will-change: transform, opacity;">
+          <div style="width: 81px; align-self: stretch; border-radius: 69.435px; background: rgb(235,235,235);"></div>
+          <div style="height: 24px; display: flex; flex-direction: row; gap: 18px; align-items: center;">
+            <div onClick="{{ openSearch }}" style="width: 24px; height: 24px; cursor: pointer;">
+              <x-import component-from-global-scope="SearchSm" from="./components/Components.bundle.js" hint-size="24px,24px"></x-import>
+            </div>
+            <img onClick="{{ openMenu }}" src="./assets/menu.svg" alt="Menu" style="width: 24px; height: 24px; display: block; cursor: pointer;">
+          </div>
+        </div>
+
+        <div data-sec data-cover ref="{{ setCover }}" style="position: relative; z-index: 9; width: 362px; height: 734px; border-radius: 40px; background: rgb(247,80,36); overflow: hidden; flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsCover" from="./components/Components.bundle.js" style="height: 734px;" hint-size="362px,734px"></x-import>
+          <div style="position: absolute; left: 0; top: 0; width: 362px; height: 734px; pointer-events: none;">
+            <sc-for list="{{ notifs }}" as="n" hint-placeholder-count="4">
+              <div style="position: absolute; left: 0; top: 0; width: 322.453px; height: 69.05px; box-sizing: border-box; border-radius: 14.356px; background: rgb(255,255,255); box-shadow: inset 0 0 0 0.479px rgb(244,244,244), 0px 1.915px 6.701px 0px rgba(0,0,0,0.12); display: flex; flex-direction: row; gap: 14.36px; padding: 14.36px; align-items: center; transform-origin: 0 0; will-change: transform, opacity; transform: {{ n.transform }}; opacity: {{ n.opacity }}; z-index: {{ n.z }}; transition: {{ n.transition }};">
+                <div style="position: relative; width: 39.4px; height: 39.4px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+                  <div style="position: absolute; left: 0; top: 0; width: 160px; height: 160px; transform: scale(0.24625); transform-origin: 0 0;">
+                    <x-import component-from-global-scope="{{ n.logo }}" from="./components/Components.bundle.js" hint-size="160px,160px"></x-import>
+                  </div>
+                </div>
+                <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1.72px; justify-content: center;">
+                  <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 14.906px; line-height: 1.24; letter-spacing: -0.022em; color: rgb(82,77,77); white-space: nowrap;">{{ n.name }}</span>
+                  <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 9.921px; line-height: 1.24; letter-spacing: -0.022em; color: rgb(119,106,106); white-space: nowrap;">{{ n.desc }}</span>
+                </div>
+                <div style="height: 23.094px; box-sizing: border-box; border-radius: 37.202px; background: rgb(221,255,230); display: flex; flex-direction: row; padding: 4.547px 9.921px; justify-content: center; align-items: center; flex-shrink: 0;">
+                  <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 11.599px; line-height: 1.24; letter-spacing: -0.022em; white-space: nowrap; color: rgb(5,100,30);">{{ n.amount }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div id="sec-save" data-sec style="position: relative; width: 362px; height: 690px; overflow: hidden; border-radius: 40px; background: rgb(255,244,242); flex-shrink: 0;">
+          <div class="row-scroll" style="position: absolute; left: 0; top: 27px; width: 362px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x;">
+            <div style="display: flex; flex-direction: row; width: max-content; padding: 0 20px;">
+              <sc-for list="{{ cats }}" as="cat" hint-placeholder-count="4">
+                <sc-if value="{{ cat.on }}" hint-placeholder-val="{{ false }}">
+                  <div onClick="{{ cat.pick }}" style="margin-right: 8px; height: 42.691px; box-sizing: border-box; border-radius: 24.508px; background: rgb(13,13,13); display: flex; flex-direction: row; gap: 9.412px; padding: 8.169px 16.339px; justify-content: center; align-items: center; cursor: pointer; flex-shrink: 0;">
+                    <sc-if value="{{ cat.hasIcon }}" hint-placeholder-val="{{ false }}">
+                      <div style="position: relative; width: 26.4px; height: 26.4px; overflow: hidden; flex-shrink: 0;">
+                        <div style="position: absolute; left: 0; top: 0; width: 424px; height: 424px; transform: scale(0.062264); transform-origin: 0 0;">
+                          <x-import component-from-global-scope="{{ cat.icon }}" from="./components/Components.bundle.js" hint-size="424px,424px"></x-import>
+                        </div>
+                      </div>
+                    </sc-if>
+                    <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 14.65px; line-height: 100%; white-space: nowrap; color: rgb(255,255,255);">{{ cat.label }}</span>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ cat.off }}" hint-placeholder-val="{{ true }}">
+                  <div onClick="{{ cat.pick }}" style="margin-right: 8px; height: 42.691px; box-sizing: border-box; border-radius: 24.508px; background: rgb(255,233,229); display: flex; flex-direction: row; gap: 9.412px; padding: 8.169px 16.339px; justify-content: center; align-items: center; cursor: pointer; flex-shrink: 0;">
+                    <sc-if value="{{ cat.hasIcon }}" hint-placeholder-val="{{ false }}">
+                      <div style="position: relative; width: 26.4px; height: 26.4px; overflow: hidden; flex-shrink: 0;">
+                        <div style="position: absolute; left: 0; top: 0; width: 424px; height: 424px; transform: scale(0.062264); transform-origin: 0 0;">
+                          <x-import component-from-global-scope="{{ cat.icon }}" from="./components/Components.bundle.js" hint-size="424px,424px"></x-import>
+                        </div>
+                      </div>
+                    </sc-if>
+                    <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 14.65px; line-height: 100%; white-space: nowrap; color: rgb(22,14,11);">{{ cat.label }}</span>
+                  </div>
+                </sc-if>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="position: absolute; left: 0; right: 0; top: 146px; margin: 0 auto; width: 263px; display: flex; flex-direction: column; gap: 20px; align-items: center;">
+            <div style="align-self: stretch; display: flex; flex-direction: column; gap: 9px;">
+              <span style="align-self: stretch; font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 21.546px; text-align: center; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13);">You’ll save</span>
+              <span ref="{{ setAmt }}" style="align-self: stretch; font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 69.541px; text-align: center; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13);">{{ saveAmount }}</span>
+            </div>
+            <span style="align-self: stretch; font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 27.113px; text-align: center; line-height: 1.22; letter-spacing: -0.022em; color: rgb(13,13,13); text-wrap: pretty;">{{ saveCopy }}</span>
+          </div>
+
+          <div class="row-scroll" style="position: absolute; left: 0; top: 450px; width: 362px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x;">
+            <div style="display: flex; flex-direction: row; width: max-content; padding: 0 20px 8px 20px;">
+              <sc-for list="{{ cards }}" as="card" hint-placeholder-count="3">
+                <div onClick="{{ card.open }}" style="margin-right: 13px; position: relative; width: 128px; height: 141px; border-radius: 20px; overflow: hidden; background: rgb(255,255,255); cursor: pointer; flex-shrink: 0;">
+                  <div style="position: absolute; left: 35px; top: 23px; width: 58.459px; height: 58.459px; overflow: hidden;">
+                    <div style="position: absolute; left: 0; top: 0; width: 160px; height: 160px; transform: scale(0.365369); transform-origin: 0 0;">
+                      <x-import component-from-global-scope="{{ card.logo }}" from="./components/Components.bundle.js" hint-size="160px,160px"></x-import>
+                    </div>
+                  </div>
+                  <div style="position: absolute; left: 12px; top: 86px; width: 104px; display: flex; flex-direction: column; gap: 4px; align-items: center;">
+                    <span style="align-self: stretch; font-family: Inter, sans-serif; font-weight: 700; font-size: 12.36px; text-align: center; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13);">{{ card.name }}</span>
+                    <span style="align-self: stretch; font-family: Inter, sans-serif; font-weight: 500; font-size: 12.36px; text-align: center; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13);">{{ card.rate }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="position: absolute; left: 128px; top: 655px; display: flex; flex-direction: row; gap: 5.371px; align-items: center;">
+            <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="6">
+              <sc-if value="{{ dot.on }}" hint-placeholder-val="{{ false }}">
+                <div style="width: 29.006px; height: 10.743px; border-radius: 32.228px; background: rgb(218,167,158); flex-shrink: 0;"></div>
+              </sc-if>
+              <sc-if value="{{ dot.off }}" hint-placeholder-val="{{ true }}">
+                <div style="width: 9.86px; height: 9.86px; border-radius: 32.228px; background: rgb(218,167,158); flex-shrink: 0;"></div>
+              </sc-if>
+            </sc-for>
+          </div>
+        </div>
+
+        <div aria-hidden="true" style="display: none;">
+          <img data-step="step-1" src="./assets/step-1.png" alt="">
+          <img data-step="step-2" src="./assets/step-2.png" alt="">
+          <img data-step="step-3" src="./assets/step-3.png" alt="">
+          <img data-stars src="./assets/stars.svg" alt="">
+        </div>
+
+        <div id="sec-how" data-sec ref="{{ setHow }}" style="position: relative; width: 362px; overflow: hidden; border-radius: 40px; flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsHowItWorks" from="./components/Components.bundle.js" hint-size="362px,594px"></x-import>
+          <div style="position: absolute; left: 0; right: 0; top: 500px; display: flex; flex-direction: row; gap: 6px; justify-content: center; align-items: center; pointer-events: none;">
+            <sc-for list="{{ howDots }}" as="d" hint-placeholder-count="3">
+              <div style="width: {{ d.w }}; height: 8px; border-radius: 32px; background: {{ d.bg }}; transition: width 320ms ease, background 320ms ease;"></div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div id="sec-brands" data-sec ref="{{ setBrands }}" style="position: relative; width: 362px; overflow: hidden; border-radius: 40px; flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsBrands" from="./components/Components.bundle.js" hint-size="362px,690px"></x-import>
+          <div onClick="{{ openSearch }}" style="position: absolute; left: 0; right: 0; top: 248px; display: flex; justify-content: center;">
+            <div style="height: 56px; box-sizing: border-box; border-radius: 1015px; background: rgb(22,14,11); padding: 0 34px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+              <span style="font-family: Inter, sans-serif; font-weight: 600; font-size: 16px; line-height: 20px; color: rgb(255,255,255); white-space: nowrap;">See all brands</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="sec-bonus" data-sec ref="{{ setBonus }}" style="position: relative; width: 362px; overflow: hidden; border-radius: 40px; background: rgb(0,0,0); flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsWelcomeBonus" from="./components/Components.bundle.js" hint-size="362px,690px"></x-import>
+          <div onClick="{{ goSignup }}" style="position: absolute; left: 120px; top: 276px; width: 121px; height: 41px; border-radius: 1015px; cursor: pointer;"></div>
+          <div style="position: absolute; left: 0; top: 372px; width: 362px; height: 318px; background: rgb(0,0,0); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="./assets/challenges.png" alt="Weekly challenges" style="width: 362px; height: auto; display: block;">
+          </div>
+        </div>
+
+        <div id="sec-payout" data-sec style="width: 362px; overflow: hidden; border-radius: 40px; flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsPayout" from="./components/Components.bundle.js" hint-size="362px,340px"></x-import>
+        </div>
+
+        <div data-sec style="width: 362px; overflow: hidden; border-radius: 40px; flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsPayout" from="./components/Components.bundle.js" text1="+120 million" text2="Smart Shoppers using iGraal to save money everyday" hint-size="362px,340px"></x-import>
+        </div>
+
+        <div data-sec ref="{{ setTrust }}" style="width: 362px; overflow: hidden; border-radius: 40px; flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsTrustPilot" from="./components/Components.bundle.js" hint-size="362px,340px"></x-import>
+        </div>
+
+        <div id="sec-app" data-sec style="width: 362px; overflow: hidden; border-radius: 40px; flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsApp" from="./components/Components.bundle.js" hint-size="362px,690px"></x-import>
+        </div>
+
+        <div id="sec-live" data-sec style="position: relative; width: 362px; overflow: hidden; border-radius: 40px; flex-shrink: 0;">
+          <x-import component-from-global-scope="SectionsLiveActivity" from="./components/Components.bundle.js" hint-size="362px,774px"></x-import>
+          <div style="position: absolute; left: 26.021px; top: 400.765px; width: 309.957px; height: 344px; overflow: hidden;">
+            <sc-for list="{{ feed }}" as="row" hint-placeholder-count="5">
+              <div style="position: absolute; left: 0; top: 0; width: 309.957px; height: 60.004px; box-sizing: border-box; border-radius: 17.199px; background: rgb(255,255,255); box-shadow: inset 0 0 0 0.382px rgb(244,244,244); display: flex; flex-direction: row; gap: 11.466px; padding: 11.466px; align-items: center; will-change: transform, opacity; transform: {{ row.transform }}; opacity: {{ row.opacity }}; z-index: {{ row.z }}; transition: {{ row.transition }};">
+                <div style="position: relative; width: 36.29px; height: 36.29px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+                  <div style="position: absolute; left: 0; top: 0; width: 160px; height: 160px; transform: scale(0.2268); transform-origin: 0 0;">
+                    <x-import component-from-global-scope="{{ row.logo }}" from="./components/Components.bundle.js" hint-size="160px,160px"></x-import>
+                  </div>
+                </div>
+                <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3.44px; justify-content: center;">
+                  <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 13.775px; line-height: 1.24; letter-spacing: -0.022em; color: rgb(107,86,86); white-space: nowrap;">{{ row.name }}</span>
+                  <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 9.168px; line-height: 1.24; letter-spacing: -0.022em; color: rgb(119,106,106); white-space: nowrap;">{{ row.time }}</span>
+                </div>
+                <div style="height: 21.774px; box-sizing: border-box; border-radius: 34.38px; background: rgb(221,255,230); display: flex; flex-direction: row; padding: 4.202px 9.168px; justify-content: center; align-items: center; flex-shrink: 0;">
+                  <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 10.719px; line-height: 1.24; letter-spacing: -0.022em; white-space: nowrap; color: rgb(5,100,30);">{{ row.amount }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div id="sec-faq" data-sec style="width: 362px; box-sizing: border-box; border-radius: 40px; background: rgb(255,243,235); padding: 40px 32px; display: flex; flex-direction: column; gap: 28px; flex-shrink: 0;">
+          <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 34px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13); text-wrap: pretty;">Still have questions?</span>
+          <div style="display: flex; flex-direction: column;">
+            <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="5">
+              <div style="background: transparent; padding: 18px 2px; border-top: 1px solid rgba(13,13,13,0.12); display: flex; flex-direction: column; gap: 12px;">
+                <div onClick="{{ item.toggle }}" style="display: flex; flex-direction: row; gap: 16px; align-items: flex-start; justify-content: space-between; cursor: pointer;">
+                  <span style="flex: 1; font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 19px; line-height: 1.22; letter-spacing: -0.022em; color: rgb(13,13,13); text-wrap: pretty;">{{ item.q }}</span>
+                  <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 22px; line-height: 22px; color: rgb(13,13,13); flex-shrink: 0;">{{ item.sign }}</span>
+                </div>
+                <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 14px; line-height: 22px; color: rgba(13,13,13,0.72); text-wrap: pretty;">{{ item.a }}</span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div data-sec style="width: 362px; box-sizing: border-box; overflow: hidden; border-radius: 32px; background: rgb(255,255,255); padding: 40px 24px; display: flex; flex-direction: column; gap: 32px; flex-shrink: 0;">
+
+          <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+            <div style="width: 136px; height: 44.004px; flex-shrink: 0;">
+              <x-import component-from-global-scope="Logo" from="./footer/Components.bundle.js" hint-size="136px,44px"></x-import>
+            </div>
+            <div style="display: flex; flex-direction: row; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <div style="width: 119.664px; height: 40px; flex-shrink: 0;">
+                <x-import component-from-global-scope="AppStoreEN" from="./footer/Components.bundle.js" hint-size="120px,40px"></x-import>
+              </div>
+              <div style="position: relative; width: 135px; height: 40px; overflow: hidden; flex-shrink: 0;">
+                <div style="position: absolute; left: 0; top: 0; width: 270px; height: 80px; transform: scale(0.5); transform-origin: 0 0;">
+                  <x-import component-from-global-scope="GooglePlayEN" from="./footer/Components.bundle.js" hint-size="270px,80px"></x-import>
+                </div>
+              </div>
+            </div>
+            <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: rgb(13,13,13); text-wrap: pretty;">Cashback that actually pays off. Every purchase, every time.</span>
+            <div style="display: flex; flex-direction: row; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <sc-for list="{{ socials }}" as="s" hint-placeholder-count="7">
+                <div style="width: 36px; height: 36px; border-radius: 999px; background: rgb(13,13,13); color: rgb(255,255,255); display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer;">
+                  <x-import component-from-global-scope="SocialIcon" from="./footer/social-icons.js" name="{{ s.name }}" size="18" hint-size="18px,18px"></x-import>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+            <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 14px; line-height: 20px; color: rgb(13,13,13);">Sicherheit</span>
+            <div style="display: flex; flex-direction: row; gap: 20px; align-items: center;">
+              <img src="./footer/assets/59dbf8c78ff490ff.png" alt="GDD" style="height: 34px; width: auto; display: block;">
+              <img src="./footer/assets/a9cea08822f113bf.png" alt="SSL gesicherte Verbindung" style="height: 24px; width: auto; display: block;">
+            </div>
+          </div>
+
+          <div style="border: 1px solid rgb(232,228,226); border-radius: 8px; display: flex; flex-direction: column;">
+            <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="4">
+              <div style="border-bottom: 1px solid rgb(232,228,226); display: flex; flex-direction: column;">
+                <div onClick="{{ col.toggle }}" style="padding: 20px 16px; display: flex; flex-direction: row; gap: 12px; justify-content: space-between; align-items: center; cursor: pointer;">
+                  <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 16px; line-height: 24px; color: rgb(13,13,13);">{{ col.title }}</span>
+                  <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 20px; line-height: 20px; color: rgb(13,13,13); flex-shrink: 0;">{{ col.sign }}</span>
+                </div>
+                <sc-if value="{{ col.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="padding: 0 16px 20px 16px; display: flex; flex-direction: column; gap: 16px;">
+                    <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+                      <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: rgb(13,13,13);">{{ l.label }}</span>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="align-self: flex-start; height: 48px; box-sizing: border-box; border: 1px solid rgb(224,220,218); border-radius: 1015px; padding: 0 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; cursor: pointer;">
+            <div style="width: 20px; height: 20px; border-radius: 50%; overflow: hidden; display: flex; flex-direction: column; flex-shrink: 0;">
+              <div style="flex: 1; background: rgb(0,0,0);"></div>
+              <div style="flex: 1; background: rgb(221,0,0);"></div>
+              <div style="flex: 1; background: rgb(255,206,0);"></div>
+            </div>
+            <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; color: rgb(13,13,13);">iGraal.de</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="display: block; flex-shrink: 0;">
+              <path d="M 4 6.5 L 8 10.5 L 12 6.5" stroke="rgb(13,13,13)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+
+          <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px 20px;">
+            <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 14px; line-height: 20px; color: rgb(13,13,13);">© 2025 iGraal. All Rights Reserved</span>
+            <sc-for list="{{ footerLegal }}" as="l" hint-placeholder-count="5">
+              <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 14px; line-height: 20px; color: rgb(13,13,13);">{{ l.label }}</span>
+            </sc-for>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div ref="{{ setBanner }}" style="position: absolute; left: 20px; width: 362px; bottom: calc(34px + env(safe-area-inset-bottom, 0px)); z-index: 12; height: 88px; box-sizing: border-box; overflow: hidden; border-radius: 16px; background: rgb(255,255,255); box-shadow: 0px 4px 14px 0px rgba(0,0,0,0.12); padding: 20px; display: flex; flex-direction: row; justify-content: space-between; align-items: center; transform: translateY(160%); transition: transform 860ms cubic-bezier(.16,1.34,.28,1);">
+      <div style="width: 172px; flex-shrink: 0; align-self: stretch; display: flex; flex-direction: column; gap: 7px; justify-content: center; align-items: flex-start;">
+        <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 10px; line-height: 1.2; letter-spacing: -0.022em; color: rgb(0,0,0); white-space: nowrap;">A welcome bonus</span>
+        <span style="width: 167px; font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 16.93px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(22,14,11);">Your first €5 is on us.</span>
+      </div>
+      <div onClick="{{ goSignup }}" style="width: 122px; flex-shrink: 0; align-self: stretch; border-radius: 1015.288px; background: rgb(22,14,11); display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer;">
+        <span style="font-family: Inter, sans-serif; font-weight: 600; font-size: 16px; line-height: 20px; text-align: center; color: rgb(255,255,255); white-space: nowrap;">Sign up</span>
+      </div>
+    </div>
+
+    <sc-if value="{{ reviewsOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeReviews }}" style="position: absolute; inset: 0; z-index: 44; background: rgba(13,13,13,0.5); animation: fadeIn .22s ease;"></div>
+    </sc-if>
+    <sc-if value="{{ reviewsOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; top: 96px; z-index: 45; border-radius: 32px 32px 0 0; background: rgb(255,255,255); display: flex; flex-direction: column; overflow: hidden; animation: slideUp .34s cubic-bezier(.16,1,.3,1);">
+        <div style="padding: 24px 24px 16px 24px; display: flex; flex-direction: row; gap: 16px; justify-content: space-between; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 26px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13);">Trustpilot reviews</span>
+            <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; line-height: 20px; color: rgba(13,13,13,0.6);">4.1 out of 5 · 41.158 reviews</span>
+          </div>
+          <div onClick="{{ closeReviews }}" style="width: 36px; height: 36px; border-radius: 36px; background: rgb(244,241,240); display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; font-family: Inter, sans-serif; font-size: 17px; color: rgb(13,13,13);">✕</div>
+        </div>
+        <div class="phone-scroll" style="flex: 1; overflow-y: auto; padding: 4px 24px 28px 24px; scrollbar-width: none; display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="5">
+            <div style="border-radius: 20px; background: rgb(255,244,242); padding: 18px; display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; flex-direction: row; gap: 10px; justify-content: space-between; align-items: center;">
+                <img src="./assets/stars.svg" alt="5 out of 5" style="width: 84px; height: 15px; display: block; filter: brightness(0) saturate(0);">
+                <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 11px; color: rgba(13,13,13,0.5); white-space: nowrap;">{{ r.date }}</span>
+              </div>
+              <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 15px; line-height: 20px; color: rgb(13,13,13);">{{ r.title }}</span>
+              <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 13px; line-height: 20px; color: rgba(13,13,13,0.75); text-wrap: pretty;">{{ r.body }}</span>
+              <span style="font-family: Inter, sans-serif; font-weight: 600; font-size: 12px; color: rgba(13,13,13,0.55);">{{ r.name }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; inset: 0; z-index: 20; background: rgba(13,13,13,0.4); animation: fadeIn .2s ease;" onClick="{{ closeAll }}"></div>
+    </sc-if>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; left: 10px; right: 10px; top: 50px; z-index: 21; border-radius: 40px; background: rgb(255,255,255); padding: 26px 28px 30px 28px; display: flex; flex-direction: column; gap: 22px; animation: fadeIn .22s ease;">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+          <div style="width: 81px; height: 31px; border-radius: 69px; background: rgb(235,235,235);"></div>
+          <span onClick="{{ closeAll }}" style="font-family: Inter, sans-serif; font-size: 22px; color: rgb(13,13,13); cursor: pointer;">✕</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <sc-for list="{{ menuLinks }}" as="link" hint-placeholder-count="5">
+            <div onClick="{{ link.go }}" style="padding: 14px 0; border-bottom: 1px solid rgb(240,236,235); cursor: pointer; font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 24px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13);">{{ link.label }}</div>
+          </sc-for>
+        </div>
+        <div onClick="{{ goSignup }}" style="height: 58px; border-radius: 1015px; background: rgb(247,80,36); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 16px; color: rgb(255,255,255);">Sign up. It’s free.</div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; inset: 0; z-index: 30; background: rgb(255,244,242); display: flex; flex-direction: column; animation: slideUp .28s ease; overflow: hidden;">
+        <div style="padding: 50px 20px 16px 20px; display: flex; flex-direction: row; gap: 12px; align-items: center;">
+          <div style="flex: 1; height: 48px; border-radius: 40px; background: rgb(255,255,255); display: flex; flex-direction: row; gap: 10px; align-items: center; padding: 0 18px; box-sizing: border-box;">
+            <div style="width: 20px; height: 20px; flex-shrink: 0;">
+              <x-import component-from-global-scope="SearchSm" from="./components/Components.bundle.js" hint-size="20px,20px"></x-import>
+            </div>
+            <input value="{{ query }}" onInput="{{ onQuery }}" placeholder="Search a shop" style="flex: 1; border: none; outline: none; background: transparent; font-family: Inter, sans-serif; font-weight: 500; font-size: 14px; color: rgb(13,13,13); min-width: 0;">
+          </div>
+          <span onClick="{{ closeAll }}" style="font-family: Inter, sans-serif; font-weight: 500; font-size: 14px; color: rgb(13,13,13); cursor: pointer; flex-shrink: 0;">Cancel</span>
+        </div>
+        <div class="phone-scroll" style="flex: 1; overflow-y: auto; padding: 8px 20px 40px 20px; scrollbar-width: none;">
+          <span style="display: block; font-family: Inter, sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(13,13,13,0.5); padding: 8px 0 12px 0;">{{ resultsLabel }}</span>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <sc-for list="{{ results }}" as="hit" hint-placeholder-count="6">
+              <div onClick="{{ hit.open }}" style="border-radius: 20px; background: rgb(255,255,255); padding: 12px 16px; display: flex; flex-direction: row; gap: 14px; align-items: center; cursor: pointer;">
+                <div style="position: relative; width: 44px; height: 44px; overflow: hidden; flex-shrink: 0;">
+                  <div style="position: absolute; left: 0; top: 0; width: 160px; height: 160px; transform: scale(0.275); transform-origin: 0 0;">
+                    <x-import component-from-global-scope="{{ hit.logo }}" from="./components/Components.bundle.js" hint-size="160px,160px"></x-import>
+                  </div>
+                </div>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0;">
+                  <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 14px; color: rgb(13,13,13);">{{ hit.name }}</span>
+                  <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 12px; color: rgba(13,13,13,0.6);">{{ hit.cat }}</span>
+                </div>
+                <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 13px; color: rgb(247,80,36); flex-shrink: 0;">{{ hit.rate }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ merchantOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; inset: 0; z-index: 40; background: rgb(255,255,255); display: flex; flex-direction: column; animation: slideIn .26s ease; overflow: hidden;">
+        <div class="phone-scroll" style="flex: 1; overflow-y: auto; padding: 50px 20px 130px 20px; scrollbar-width: none;">
+          <div onClick="{{ back }}" style="width: 40px; height: 40px; border-radius: 40px; background: rgb(244,241,240); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-size: 18px; color: rgb(13,13,13);">←</div>
+          <div style="display: flex; flex-direction: column; gap: 16px; align-items: center; padding: 26px 0 0 0;">
+            <div style="position: relative; width: 88px; height: 88px; overflow: hidden;">
+              <div style="position: absolute; left: 0; top: 0; width: 160px; height: 160px; transform: scale(0.55); transform-origin: 0 0;">
+                <x-import component-from-global-scope="{{ merchantLogo }}" from="./components/Components.bundle.js" hint-size="160px,160px"></x-import>
+              </div>
+            </div>
+            <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 38px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13); text-align: center;">{{ merchantName }}</span>
+            <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 15px; color: rgb(247,80,36);">{{ merchantRate }}</span>
+          </div>
+
+          <sc-if value="{{ activated }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 26px; border-radius: 24px; background: rgb(255,244,242); padding: 22px; display: flex; flex-direction: column; gap: 8px; animation: fadeIn .3s ease;">
+              <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 22px; line-height: 1.22; letter-spacing: -0.022em; color: rgb(13,13,13);">Cashback is on.</span>
+              <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 14px; line-height: 21px; color: rgba(13,13,13,0.7);">{{ activatedCopy }}</span>
+            </div>
+          </sc-if>
+
+          <div style="margin-top: 26px; border-radius: 24px; background: rgb(13,13,13); padding: 24px; display: flex; flex-direction: column; gap: 18px;">
+            <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 24px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(255,243,235);">How it works here</span>
+            <sc-for list="{{ steps }}" as="step" hint-placeholder-count="3">
+              <div style="display: flex; flex-direction: row; gap: 14px; align-items: flex-start;">
+                <div style="width: 26px; height: 26px; border-radius: 26px; background: rgb(255,243,235); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: Inter, sans-serif; font-weight: 700; font-size: 12px; color: rgb(13,13,13);">{{ step.n }}</div>
+                <span style="flex: 1; font-family: Inter, sans-serif; font-weight: 400; font-size: 14px; line-height: 21px; color: rgba(255,243,235,0.82); text-wrap: pretty;">{{ step.t }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top: 26px; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-family: Inter, sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(13,13,13,0.5);">Terms</span>
+            <sc-for list="{{ terms }}" as="term" hint-placeholder-count="3">
+              <div style="display: flex; flex-direction: row; gap: 10px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgb(240,236,235);">
+                <span style="flex: 1; font-family: Inter, sans-serif; font-weight: 400; font-size: 13px; line-height: 20px; color: rgba(13,13,13,0.72);">{{ term.t }}</span>
+                <span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 13px; color: rgb(13,13,13); flex-shrink: 0;">{{ term.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 20px 30px 20px; background: linear-gradient(to top, rgb(255,255,255) 60%, rgba(255,255,255,0));">
+          <div onClick="{{ activate }}" style="height: 60px; border-radius: 1015px; background: rgb(13,13,13); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 17px; color: rgb(255,255,255);">{{ ctaLabel }}</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ signupOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position: absolute; inset: 0; z-index: 50; background: rgb(247,80,36); display: flex; flex-direction: column; animation: slideUp .28s ease; overflow: hidden;">
+        <div style="flex: 1; padding: 50px 30px 30px 30px; display: flex; flex-direction: column;">
+          <div onClick="{{ back }}" style="width: 40px; height: 40px; border-radius: 40px; background: rgba(255,255,255,0.22); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-size: 18px; color: rgb(255,255,255);">←</div>
+
+          <sc-if value="{{ signupForm }}" hint-placeholder-val="{{ true }}">
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 26px;">
+              <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 42.099px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(255,255,255); text-wrap: pretty;">Sign up. It’s free.</span>
+              <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; line-height: 1.5; letter-spacing: -0.022em; color: rgba(255,255,255,0.9);">Your first €5 lands in your balance the moment you join. No card, no fee.</span>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <input value="{{ email }}" onInput="{{ onEmail }}" placeholder="you@email.com" style="height: 60px; border-radius: 1015px; border: none; outline: none; background: rgb(255,255,255); padding: 0 24px; font-family: Inter, sans-serif; font-weight: 500; font-size: 14px; color: rgb(13,13,13);">
+                <div onClick="{{ submitSignup }}" style="height: 60px; border-radius: 1015px; background: rgb(22,14,11); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 17px; color: rgb(255,255,255);">Create my account</div>
+              </div>
+              <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 11px; line-height: 1.5; color: rgba(255,255,255,0.75);">By joining you accept the terms and the privacy policy.</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ signupDone }}" hint-placeholder-val="{{ false }}">
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; animation: fadeIn .3s ease;">
+              <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 42.099px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(255,255,255);">You’re in.</span>
+              <div style="border-radius: 24px; background: rgb(255,255,255); padding: 24px; display: flex; flex-direction: column; gap: 6px;">
+                <span style="font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; color: rgba(13,13,13,0.6);">Your balance</span>
+                <span style="font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 48px; line-height: 1.11; letter-spacing: -0.022em; color: rgb(13,13,13);">€5</span>
+                <span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 13px; line-height: 20px; color: rgba(13,13,13,0.7);">Welcome bonus, ready to grow with every purchase.</span>
+              </div>
+              <div onClick="{{ closeAll }}" style="height: 60px; border-radius: 1015px; background: rgb(22,14,11); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 17px; color: rgb(255,255,255);">Start shopping</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:930},&quot;startCategory&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Food&quot;,&quot;Living&quot;,&quot;Drinks&quot;,&quot;Electronics&quot;,&quot;Travel&quot;,&quot;Auto&quot;],&quot;default&quot;:&quot;Food&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;openSearchOnLoad&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;expandFirstFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;}}">
+const CATS = [
+  { label: "Food", icon: "CategoryIconFood", amount: "€145", copy: "On the nights you're craving takeout and no one's cooking",
+    cards: [["Liferando", "4.2% Cashback", "Liferando1"], ["Ubereats", "3% Cashback", "MerchantUberEats1"], ["Five Guys", "5% Cashback", "FiveGuys1"], ["Starbucks", "2% Cashback", "MerchantStarbucks1"]] },
+  { label: "Living", icon: "CategoryIconLiving", amount: "€320", copy: "On the pieces that finally make the place feel like yours",
+    cards: [["Ikea", "2.5% Cashback", "Ikea1"], ["Zara", "4% Cashback", "MerchantZara1"], ["Zalando", "6% Cashback", "MerchantZalando1"], ["Penny", "1.5% Cashback", "MerchantPenny1"]] },
+  { label: "Drinks", icon: "CategoryIconDrinks", amount: "€88", copy: "On the coffee runs that get you through the week",
+    cards: [["Five Elephants", "8% Cashback", "FIVEELEPHANTS1"], ["Costa", "3% Cashback", "Costa1"], ["Seeberger", "4% Cashback", "MerchantSeeberger1"], ["Starbucks", "2% Cashback", "MerchantStarbucks1"]] },
+  { label: "Electronics", icon: "CategoryIconElectronics", amount: "€410", copy: "On the upgrade that has been sitting in your cart since March",
+    cards: [["Vodafone", "5% Cashback", "MerchantVodafone1"], ["Telekom", "4% Cashback", "MerchantTelekom1"], ["freenet FUNK", "6% Cashback", "FreenetFUNK1"], ["Revolut", "3% Cashback", "MerchantRevolut1"]] },
+  { label: "Travel", icon: null, amount: "€560", copy: "On the trip you keep postponing until next summer",
+    cards: [["Airbnb", "4.5% Cashback", "MerchantAirbnb2"], ["Ryanair", "3% Cashback", "MerchantRyanAir2"], ["GetYourGuide", "6% Cashback", "MerchantGetYourGuide2"], ["Flixbus", "5% Cashback", "Flixbus1"]] },
+  { label: "Auto", icon: null, amount: "€230", copy: "On the tank, the ride and everything in between",
+    cards: [["eCooltra", "5% Cashback", "ECooltra1"], ["Europcar", "4% Cashback", "Europcar1"], ["FreeNow", "3% Cashback", "FreeNow1"], ["Fraport", "2% Cashback", "Fraport1"]] },
+];
+
+const FAQS = [
+  { q: "What is cashback?", a: "It is a share of what a shop pays us for sending you their way. You buy as usual and we pass part of that commission back to you in real money." },
+  { q: "When do I get my money?", a: "The shop confirms your order first, usually within 30 to 90 days. After that the amount moves from pending to available in your balance." },
+  { q: "Does it cost anything?", a: "No. Signing up is free and there is no fee when you withdraw to your bank account." },
+  { q: "Can I use a coupon at the same time?", a: "Yes, as long as the code comes from us. Codes found elsewhere can break the tracking and cancel the cashback." },
+  { q: "What if my cashback is missing?", a: "Open a claim from your transactions within 90 days and we chase the shop for you." },
+];
+
+const FOOTER_COLS = [
+  { title: "Help", links: ["Contact us", "Help Center", "System Status", "Site Map"] },
+  { title: "Discover & Save", links: ["All shops", "Coupon codes", "Deals of the week", "Gift cards"] },
+  { title: "Smart Shopping Tools", links: ["Browser extension", "Mobile app", "Price alerts", "Cashback calculator"] },
+  { title: "Company", links: ["About iGraal", "Careers", "Press", "Partnerships"] },
+];
+
+const REVIEWS = [
+  { name: "Camille D.", date: "12 Aug 2026", title: "Money back without thinking about it",
+    body: "I installed the extension and forgot about it. Three months later I withdrew 84 euros I would never have seen otherwise." },
+  { name: "Thomas R.", date: "5 Aug 2026", title: "Payout arrived on time",
+    body: "Requested a transfer on a Monday, it was in my account on Wednesday. No forms, no chasing anyone." },
+  { name: "Léa M.", date: "29 Jul 2026", title: "Works on the shops I actually use",
+    body: "Groceries, travel, electronics. The rates are not huge on every shop but it adds up over a year." },
+  { name: "Julien P.", date: "21 Jul 2026", title: "Support fixed a missing order",
+    body: "One purchase was not tracked. I opened a claim with the receipt and the cashback was credited two weeks later." },
+  { name: "Sofia B.", date: "14 Jul 2026", title: "Simple and honest",
+    body: "Clear about when the money becomes available. That is rare enough that it deserves five stars." },
+];
+
+const MENU = [
+  { label: "How it works", id: "sec-how" },
+  { label: "All brands", id: "sec-brands" },
+  { label: "Welcome bonus", id: "sec-bonus" },
+  { label: "Get the app", id: "sec-app" },
+  { label: "Help & FAQ", id: "sec-faq" },
+];
+
+// live cover feed — one long stream of transactions
+const STREAM = [
+  ["Airbnb", "€1.056 on a trip to Rio", "+€45 back", "MerchantAirbnb2"],
+  ["Liferando", "€42 on weekly delivery", "+€13 back", "Liferando1"],
+  ["Uber Eats", "€124 on a special dinner", "+€7 back", "MerchantUberEats1"],
+  ["Zalando", "€89 on autumn boots", "+€5 back", "MerchantZalando1"],
+  ["Ikea", "€310 on a new desk", "+€8 back", "Ikea1"],
+  ["Starbucks", "€18 on morning coffee", "+€2 back", "MerchantStarbucks1"],
+  ["Ryanair", "€214 on a flight to Porto", "+€11 back", "MerchantRyanAir2"],
+  ["Zara", "€76 on a winter coat", "+€4 back", "MerchantZara1"],
+];
+
+// slot 0-3 are on screen, 4 is the entry point below, 5 the exit above
+const SLOTS = [
+  { t: "translate(20px, 562px) scale(1)", o: 1 },
+  { t: "translate(41px, 600.711px) scale(0.8913)", o: 1 },
+  { t: "translate(57.234px, 633.711px) scale(0.7965)", o: 1 },
+  { t: "translate(74px, 654.657px) scale(0.701)", o: 1 },
+  { t: "translate(86px, 680px) scale(0.63)", o: 0 },
+  { t: "translate(6px, 532px) scale(1.06)", o: 0 },
+];
+const GLIDE = "transform 1050ms cubic-bezier(.34,1.2,.36,1), opacity 780ms ease";
+
+// the live feed never stops: a new row enters on top, the oldest drops away
+const LIVE = [
+  ["Thomas M.", "+€3,46", "Liferando1"],
+  ["Julien M.", "+€9,18", "MerchantUberEats1"],
+  ["Léa R.", "+€11,26", "MerchantZalando1"],
+  ["Chloé R.", "+€12,83", "MerchantStarbucks1"],
+  ["Sarah J.", "+€7,89", "MerchantAirbnb2"],
+  ["Marco B.", "+€4,20", "Ikea1"],
+  ["Nina K.", "+€21,05", "MerchantRyanAir2"],
+  ["Piet V.", "+€6,74", "MerchantZara1"],
+  ["Ana L.", "+€15,90", "MerchantGetYourGuide2"],
+  ["Tom H.", "+€2,35", "MerchantPenny1"],
+];
+const LIVE_SLOTS = [
+  { y: 0, o: 1 }, { y: 68.4, o: 1 }, { y: 136.8, o: 1 },
+  { y: 205.2, o: 1 }, { y: 273.6, o: 1 },
+  { y: 342, o: 0 },   // sliding out at the bottom
+  { y: -74, o: 0 },   // parked above, next to enter
+];
+const LIVE_AGE = ["Now", "6s ago", "14s ago", "23s ago", "31s ago", "44s ago", "Now"];
+const LIVE_GLIDE = "transform 820ms cubic-bezier(.22,1,.32,1), opacity 620ms ease";
+const HERO_DELAY = 220;
+const FADE_OUT = "transform 1050ms cubic-bezier(.34,1.2,.36,1), opacity 240ms ease";
+
+// front → second → back, exactly as the .fig stacks the three cards
+const HOW_SLOTS = [
+  { x: 30, y: 88, s: 1 },
+  { x: 41.359, y: 136, s: 0.925 },
+  { x: 63.492, y: 215, s: 0.781 },
+];
+
+class Component extends DCLogic {
+  state = {
+    cat: Math.max(0, CATS.findIndex(c => c.label === (this.props.startCategory ?? "Food"))),
+    faq: this.props.expandFirstFaq ? 0 : null,
+    menu: false,
+    search: !!this.props.openSearchOnLoad,
+    merchant: null, signup: null, query: "", email: "", activated: false, fcol: 0, reviews: false,
+    n: -1, intro: false, fi: 0, how: 0,
+  };
+
+  componentDidMount() {
+    let calm = false;
+    try { calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+    if (calm) return;
+    this.armScrollScenes();
+    this.playCoverEntrance(0);
+    this.waitForCover(0);
+    setTimeout(() => this.patchLive(0), 300);
+    setTimeout(() => this.bumpCtas(0), 900);
+    setTimeout(() => this.armApp(0), 900);
+    setTimeout(() => this.fixOverflow(), 1600);
+    setTimeout(() => this.fixOverflow(), 3400);
+    // the stack fills in once the hero has settled, then keeps streaming
+    this.timers = [
+      setTimeout(() => this.setState({ n: 3, intro: true }), 1080 + HERO_DELAY),
+      setTimeout(() => this.setState({ intro: false }), 2600 + HERO_DELAY),
+      setTimeout(() => {
+        this.loop = setInterval(() => this.setState(st => ({ n: st.n + 1 })), 2400);
+      }, 3050 + HERO_DELAY),
+    ];
+    this.feedLoop = setInterval(() => {
+      this.setState(st => ({ fi: st.fi + 1 }));
+      this.bumpTotal();
+    }, 2600);
+  }
+
+  // the cover rides in from below before the hero sequence starts
+  playCoverEntrance(tries) {
+    const el = this.coverEl;
+    if (!el) { if ((tries || 0) < 60) setTimeout(() => this.playCoverEntrance((tries || 0) + 1), 60); return; }
+    el.style.willChange = "transform, opacity";
+    el.style.animation = "coverIn 1020ms cubic-bezier(.16,1,.3,1) both";
+  }
+
+  // the live-activity header dot breathes, and the running total picks up
+  // every transaction that leaves the feed
+  patchLive(tries) {
+    const sec = this.scroll && this.scroll.querySelector("#sec-live");
+    const root = sec && sec.firstElementChild && sec.firstElementChild.firstElementChild;
+    const head = root && root.children[0];
+    const iconRow = head && head.children[0];
+    const icon = iconRow && iconRow.children[0];
+    const total = head && head.children[1] && head.children[1].children[0];
+    if (!icon || !total || !icon.children[1]) {
+      if ((tries || 0) < 80) setTimeout(() => this.patchLive((tries || 0) + 1), 120);
+      return;
+    }
+    // only the dot pulses — the "Live activity" label stays static
+    const ring = icon.children[0], dot = icon.children[0].children[1];
+    if (ring) { ring.style.animation = "liveRing 1900ms ease-in-out infinite"; ring.style.transformOrigin = "center"; }
+    if (dot) { dot.style.animation = "livePulse 1900ms ease-in-out infinite"; dot.style.transformOrigin = "center"; }
+    if (icon.children[1]) icon.children[1].style.animation = "none";
+    this.totalEl = total;
+  }
+
+  // fig-authored pill CTAs are scaled up so every primary action reads at the
+  // same, more prominent size as the hand-built ones
+  bumpCtas(tries) {
+    if (!this.scroll) return;
+    const pills = Array.prototype.slice.call(this.scroll.querySelectorAll("div")).filter(d => {
+      if (d.dataset.cta) return false;
+      const cs = getComputedStyle(d);
+      if (parseFloat(cs.borderTopLeftRadius) < 400) return false;
+      if (parseFloat(cs.borderTopWidth) > 0.5) return false; // outlined pills aren't CTAs
+      const h = d.offsetHeight;
+      return h >= 32 && h <= 48 && d.offsetWidth >= 90;
+    });
+    if (!pills.length) {
+      if ((tries || 0) < 40) setTimeout(() => this.bumpCtas((tries || 0) + 1), 200);
+      return;
+    }
+    pills.forEach(d => {
+      d.dataset.cta = "1";
+      const h = d.offsetHeight, w = d.offsetWidth;
+      d.style.height = Math.round(h * 1.24) + "px";
+      if ((d.style.width || "").indexOf("px") >= 0) d.style.width = Math.round(w * 1.16) + "px";
+      d.style.cursor = "pointer";
+      // the label rides on the .fig line box, which sits low in the taller pill:
+      // centre it with flex and drop the inherited vertical padding
+      d.style.display = "flex";
+      d.style.flexDirection = "row";
+      d.style.alignItems = "center";
+      d.style.justifyContent = "center";
+      Array.prototype.slice.call(d.children).forEach(inner => {
+        if (inner.tagName !== "DIV") return;
+        inner.style.paddingTop = "0";
+        inner.style.paddingBottom = "0";
+        inner.style.display = "flex";
+        inner.style.alignItems = "center";
+        inner.style.justifyContent = "center";
+      });
+      Array.prototype.slice.call(d.querySelectorAll("span")).forEach(sp => {
+        const fs = parseFloat(getComputedStyle(sp).fontSize);
+        if (fs) sp.style.fontSize = (fs * 1.16).toFixed(1) + "px";
+        sp.style.lineHeight = "1";
+        sp.style.display = "inline-block";
+        sp.style.alignSelf = "center";
+        sp.style.height = "auto";
+      });
+    });
+  }
+
+  // the app section's rating row ships an empty star slot: fill it with the
+  // supplied artwork and stack it under the rating copy
+  armApp(tries) {
+    const sec = this.scroll && this.scroll.querySelector("#sec-app");
+    const slot = sec && Array.prototype.slice.call(sec.querySelectorAll("div"))
+      .filter(d => Math.abs(d.offsetWidth - 111.6) < 3 && Math.abs(d.offsetHeight - 19.7) < 3)[0];
+    if (!slot) {
+      if ((tries || 0) < 60) setTimeout(() => this.armApp((tries || 0) + 1), 200);
+      return;
+    }
+    if (slot.dataset.stars) return;
+    const src = document.querySelector("[data-stars]");
+    const url = src && (src.currentSrc || src.src);
+    if (!url) return;
+    slot.dataset.stars = "1";
+    const row = slot.parentElement;
+    if (row) {
+      row.style.flexDirection = "column";
+      row.style.gap = "12px";
+      row.style.alignItems = "center";
+    }
+    const img = document.createElement("img");
+    img.alt = "4.6 out of 5";
+    img.src = url;
+    img.style.cssText = "width:112px;height:20px;display:block";
+    slot.innerHTML = "";
+    slot.style.width = "112px";
+    slot.style.height = "20px";
+    slot.appendChild(img);
+  }
+
+  // the brand rows drift continuously: each row is cloned into a seamless track
+  armBrands(tries) {
+    const wrap = this.brandsEl;
+    const root = wrap && wrap.firstElementChild && wrap.firstElementChild.firstElementChild;
+    const rows = root ? Array.prototype.slice.call(root.children)
+      .filter(c => c.offsetWidth >= 480 && c.offsetHeight > 40 && c.offsetHeight < 80) : [];
+    if (rows.length < 2) {
+      if ((tries || 0) < 60) setTimeout(() => this.armBrands((tries || 0) + 1), 200);
+      return;
+    }
+    if (root.dataset.marquee) return;
+    root.dataset.marquee = "1";
+    root.style.height = "628px";
+    const tops = [346, 428, 510];
+    const speeds = [26, 34, 30];
+    rows.forEach((row, i) => {
+      const h = row.offsetHeight;
+      const holder = document.createElement("div");
+      holder.style.cssText = "position:absolute;left:0;top:" + (tops[i] != null ? tops[i] : 482) +
+        "px;width:362px;height:" + h + "px;overflow:hidden;pointer-events:none";
+      const track = document.createElement("div");
+      track.style.cssText = "display:flex;flex-direction:row;width:max-content;height:100%;" +
+        "animation:marqueeA " + (speeds[i] || 30) + "s linear infinite" + (i % 2 ? " reverse" : "");
+      root.insertBefore(holder, row);
+      row.style.position = "relative";
+      row.style.left = "0";
+      row.style.top = "0";
+      row.style.flexShrink = "0";
+      // the row's logos can sit outside its declared box: pull them flush left
+      // and size the copy to the real content, so the loop seam never overlaps
+      const kids = Array.prototype.slice.call(row.children);
+      let minLeft = Infinity, maxRight = 0;
+      kids.forEach(k => {
+        minLeft = Math.min(minLeft, k.offsetLeft);
+        maxRight = Math.max(maxRight, k.offsetLeft + k.offsetWidth);
+      });
+      if (isFinite(minLeft) && kids.length) {
+        if (minLeft !== 0) {
+          kids.forEach(k => { k.style.left = (k.offsetLeft - minLeft) + "px"; });
+          maxRight -= minLeft;
+        }
+        row.style.width = Math.ceil(maxRight + 24) + "px";
+      }
+      const twin = row.cloneNode(true);
+      track.appendChild(row);
+      track.appendChild(twin);
+      holder.appendChild(track);
+    });
+  }
+
+  bumpTotal() {
+    const el = this.totalEl;
+    if (!el) return;
+    if (!this.liveSeen) { this.liveSeen = Date.now(); return; }
+    if (Date.now() - this.liveSeen < 2200) return;
+    if (this.liveTotal == null) {
+      const base = (el.dataset.final || el.textContent || "").replace(/[^\d]/g, "");
+      this.liveTotal = parseInt(base, 10) || 0;
+    }
+    const leaving = LIVE[(((this.state.fi - 5) % LIVE.length) + LIVE.length) % LIVE.length];
+    const add = parseFloat(String(leaving[1]).replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+    const from = this.liveTotal;
+    const to = from + add;
+    this.liveTotal = to;
+    if (el.__raf) cancelAnimationFrame(el.__raf);
+    const t0 = performance.now(), dur = 900;
+    const step = now => {
+      const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = "€" + Math.round(from + (to - from) * e).toLocaleString("de-DE");
+      if (p < 1) el.__raf = requestAnimationFrame(step);
+    };
+    el.__raf = requestAnimationFrame(step);
+  }
+
+  // "See all reviews" opens the review sheet instead of leaving the page
+  armTrust(tries) {
+    const root = this.trustEl;
+    const link = root && Array.prototype.slice.call(root.querySelectorAll("span"))
+      .filter(sp => (sp.textContent || "").trim() === "See all reviews")[0];
+    if (!link) {
+      if ((tries || 0) < 60) setTimeout(() => this.armTrust((tries || 0) + 1), 200);
+      return;
+    }
+    if (link.dataset.bound) return;
+    link.dataset.bound = "1";
+    link.style.cursor = "pointer";
+    link.style.textDecoration = "underline";
+    link.addEventListener("click", () => this.setState({ reviews: true }));
+  }
+
+  // nothing should be clipped: any single-line run that outgrows its box wraps
+  fixOverflow() {
+    if (!this.scroll) return;
+    Array.prototype.slice.call(this.scroll.querySelectorAll("span")).forEach(sp => {
+      const p = sp.parentElement;
+      if (!p || !p.clientWidth) return;
+      if (getComputedStyle(sp).whiteSpace !== "nowrap") return;
+      if (sp.scrollWidth > p.clientWidth + 1) {
+        sp.style.whiteSpace = "normal";
+        sp.style.textWrap = "pretty";
+        sp.style.overflowWrap = "anywhere";
+      }
+    });
+  }
+
+  // the bar leaves on the way down and comes back as soon as you head up
+  onScroll = () => {
+    const el = this.headerEl, s = this.scroll;
+    if (!el || !s) return;
+    const y = s.scrollTop, last = this.lastY || 0;
+
+    // the banner waits until the welcome-bonus card has gone by
+    if (this.bannerEl && this.bonusEl) {
+      const past = y > this.bonusEl.offsetTop + this.bonusEl.offsetHeight - 420;
+      if (past !== this.bannerUp) {
+        this.bannerUp = past;
+        const el2 = this.bannerEl;
+        if (past) {
+          el2.style.transition = "none";
+          el2.style.animation = "bannerIn 980ms cubic-bezier(.22,.72,.3,1) both";
+          el2.style.transform = "translateY(0)";
+        } else {
+          el2.style.animation = "none";
+          el2.style.transition = "transform 420ms cubic-bezier(.4,0,1,1)";
+          el2.style.transform = "translateY(170%)";
+        }
+      }
+    }
+
+    if (y > 90 && y > last + 2) this.barHidden = true;
+    else if (y < 40 || y < last - 4) this.barHidden = false;
+
+    // one writer for the bar: parallax drift on the way down, full retreat once
+    // the cover has taken over the foreground
+    const drift = Math.max(-64, -y * 0.42);
+    el.style.transform = "translateY(" + (this.barHidden ? -96 : drift) + "px)";
+    el.style.opacity = this.barHidden ? "0" : String(1 - Math.min(1, y / 300) * 0.75);
+    el.style.pointerEvents = this.barHidden ? "none" : "auto";
+    this.lastY = y;
+  };
+
+  // the welcome-bonus artwork ships as five stacked layers inside the .fig
+  // section; the new challenges visual replaces all of them
+  clearBonusArt(tries) {
+    const wrap = this.bonusEl;
+    if (!wrap) return;
+    let hit = false;
+    Array.prototype.slice.call(wrap.querySelectorAll("div")).forEach(d => {
+      const kids = Array.prototype.slice.call(d.children);
+      const deep = kids.filter(k => k.tagName === "DIV" && k.offsetTop >= 300 && k.offsetHeight > 100);
+      if (kids.length >= 4 && deep.length >= 2) {
+        deep.forEach(k => { k.style.display = "none"; hit = true; });
+      }
+    });
+    // the .fig copy is set to nowrap and runs past the card — let it wrap
+    Array.prototype.slice.call(wrap.querySelectorAll("span")).forEach(sp => {
+      if (getComputedStyle(sp).whiteSpace === "nowrap") {
+        sp.style.whiteSpace = "normal";
+        sp.style.textWrap = "pretty";
+      }
+    });
+    if (!hit && (tries || 0) < 80) setTimeout(() => this.clearBonusArt((tries || 0) + 1), 120);
+  }
+
+  componentWillUnmount() {
+    (this.timers || []).forEach(clearTimeout);
+    this.stopAuto();
+    if (this.loop) clearInterval(this.loop);
+    if (this.feedLoop) clearInterval(this.feedLoop);
+    if (this.io) this.io.disconnect();
+  }
+
+  // counts the first numeric run inside a headline, keeping its currency,
+  // thousands separators, decimals and any surrounding copy intact
+  countUp(el, delay) {
+    if (!el) return;
+    const final = (el.dataset.final || el.textContent || "").trim();
+    const m = final.match(/\d[\d.,\s]*\d|\d/);
+    if (!m) return;
+    const raw = m[0];
+    const before = final.slice(0, m.index), after = final.slice(m.index + raw.length);
+    const decimal = /^\d+[.,]\d{1,2}$/.test(raw);
+    const dec = decimal ? raw.split(/[.,]/)[1].length : 0;
+    const sep = decimal ? raw.replace(/[\d]/g, "").charAt(0) : "";
+    const target = parseFloat(decimal ? raw.replace(",", ".") : raw.replace(/[^\d]/g, ""));
+    if (!isFinite(target) || target <= 0) return;
+    const grouped = !decimal && /\d[.\s]\d{3}/.test(raw);
+    const fmt = v => {
+      if (decimal) return v.toFixed(dec).replace(".", sep);
+      const n = Math.round(v);
+      return grouped ? n.toLocaleString("de-DE") : String(n);
+    };
+    if (el.__raf) cancelAnimationFrame(el.__raf);
+    const dur = 1700, wait = delay || 0;
+    const t0 = performance.now() + wait;
+    el.textContent = before + fmt(decimal ? Math.max(0, target - 1) : 0) + after;
+    const step = now => {
+      const p = Math.min(1, Math.max(0, (now - t0) / dur));
+      const e = 1 - Math.pow(1 - p, 3);
+      const from = decimal ? Math.max(0, target - 1) : 0;
+      el.textContent = before + fmt(from + (target - from) * e) + after;
+      if (p < 1) el.__raf = requestAnimationFrame(step);
+      else el.textContent = final;
+    };
+    el.__raf = requestAnimationFrame(step);
+  }
+
+  // count-up is scoped on purpose: only the category section's saving figure
+  // and the paid-out headline animate
+  armCounters(tries) {
+    if (!this.scroll || this.io) return;
+    const scopes = ["#sec-save", "#sec-payout"]
+      .map(s => this.scroll.querySelector(s)).filter(Boolean);
+    const els = [];
+    scopes.forEach(sc => Array.prototype.slice.call(sc.querySelectorAll("span")).forEach(e => {
+      const t = (e.textContent || "").trim();
+      if (!/\d/.test(t) || t.length > 24) return;
+      if (!/^[^\d]{0,3}\d[\d.,\s]*(\/\d+)?\s*(million|Million|k|K|€|%)?[^\d]{0,10}$/.test(t)) return;
+      if (parseFloat(getComputedStyle(e).fontSize) < 26) return;
+      els.push(e);
+    }));
+    if (els.length < 2) {
+      if ((tries || 0) < 60) { setTimeout(() => this.armCounters((tries || 0) + 1), 200); return; }
+    }
+    if (!els.length) return;
+    // staggered per section so the eye follows one number at a time
+    this.io = new IntersectionObserver(entries => {
+      const live = entries.filter(en => en.isIntersecting).map(en => en.target);
+      live.forEach((t, i) => { if (!t.dataset.counted) { t.dataset.counted = "1"; this.countUp(t, i * 260); } });
+    }, { root: this.scroll, threshold: 0.6 });
+    els.forEach(e => { e.dataset.final = e.textContent.trim(); this.io.observe(e); });
+  }
+
+  // the three .fig cards become a draggable deck: front card slides back,
+  // the next one rises forward
+  armHowStack(tries) {
+    const wrap = this.howEl;
+    if (!wrap) return;
+    const host = wrap.firstElementChild && wrap.firstElementChild.firstElementChild;
+    const cards = host ? Array.prototype.slice.call(host.children)
+      .filter(c => c.offsetWidth > 200 && c.offsetHeight > 300) : [];
+    if (cards.length < 3) {
+      if ((tries || 0) < 80) setTimeout(() => this.armHowStack((tries || 0) + 1), 120);
+      return;
+    }
+    if (this.deck) return;
+    // each card's 251×189 visual slot takes the supplied step artwork,
+    // front card first: step 1 → 2 → 3
+    ["step-3", "step-2", "step-1"].forEach((name, i) => {
+      const card = cards[i];
+      if (!card) return;
+      const slot = Array.prototype.slice.call(card.querySelectorAll("div"))
+        .filter(d => d.offsetWidth === 251 && Math.abs(d.offsetHeight - 189) < 4)[0];
+      if (!slot || slot.dataset.step) return;
+      // the source comes off a preloaded <img> in the template, so the artwork
+      // survives asset inlining on a static export
+      const src = document.querySelector('[data-step="' + name + '"]');
+      const url = src && (src.currentSrc || src.src);
+      if (!url) return;
+      slot.dataset.step = name;
+      const shot = document.createElement("img");
+      shot.alt = "";
+      shot.src = url;
+      shot.style.cssText = "width:100%;height:100%;display:block;object-fit:cover";
+      slot.innerHTML = "";
+      slot.appendChild(shot);
+      slot.style.background = "rgb(249,249,249)";
+    });
+    cards.forEach(c => {
+      c.style.left = "0";
+      c.style.top = "0";
+      c.style.width = "302px";
+      c.style.height = "446px";
+      c.style.position = "absolute";
+      c.style.transformOrigin = "0 0";
+      c.style.willChange = "transform";
+      const inner = c.firstElementChild;
+      if (inner && inner.style.transform && inner.style.transform.indexOf("scale") >= 0) {
+        inner.style.transform = "none";
+      }
+    });
+    // DOM order is back → front
+    this.deck = { cards, order: [2, 1, 0], drag: null, busy: false };
+    this.layoutDeck(true);
+
+    const area = wrap;
+    area.style.touchAction = "pan-y";
+    const front = () => this.deck.cards[this.deck.order[0]];
+    const onDown = e => {
+      const y = e.clientY - area.getBoundingClientRect().top;
+      if (y < 70 || y > 500 || this.deck.busy) return;
+      this.deck.drag = { x: e.clientX, dx: 0, t: performance.now() };
+      front().style.transition = "none";
+      this.stopAuto();
+      area.setPointerCapture && area.setPointerCapture(e.pointerId);
+    };
+    const onMove = e => {
+      const d = this.deck.drag;
+      if (!d) return;
+      d.dx = e.clientX - d.x;
+      const s = HOW_SLOTS[0];
+      front().style.transform = "translate(" + (s.x + d.dx) + "px," + s.y + "px) scale(1) rotate(" +
+        (d.dx * 0.02) + "deg)";
+    };
+    // a flick counts: past the distance threshold OR fast enough to read as a swipe
+    const onUp = () => {
+      const d = this.deck.drag;
+      if (!d) return;
+      this.deck.drag = null;
+      const v = Math.abs(d.dx) / Math.max(1, performance.now() - d.t);
+      if (Math.abs(d.dx) > 46 || (v > 0.32 && Math.abs(d.dx) > 10)) this.advanceDeck(d.dx < 0 ? 1 : -1);
+      else this.layoutDeck(false);
+      this.startAuto();
+    };
+    area.addEventListener("pointerdown", onDown);
+    area.addEventListener("pointermove", onMove);
+    area.addEventListener("pointerup", onUp);
+    area.addEventListener("pointercancel", onUp);
+    this.startAuto();
+  }
+
+  stopAuto() { if (this.autoT) { clearTimeout(this.autoT); this.autoT = null; } }
+
+  startAuto() {
+    this.stopAuto();
+    this.autoT = setTimeout(() => { this.advanceDeck(1); this.startAuto(); }, 3000);
+  }
+
+  // the front card leaves in the direction of the gesture, then re-enters at
+  // the back of the stack while the next card comes forward
+  advanceDeck(dir) {
+    const d = this.deck;
+    if (!d || d.busy) return;
+    d.busy = true;
+    const out = d.cards[d.order[0]], s = HOW_SLOTS[0];
+    out.style.transition = "transform 280ms cubic-bezier(.4,0,1,1), opacity 240ms ease";
+    out.style.transform = "translate(" + (s.x + dir * 460) + "px," + (s.y + 18) + "px) scale(0.94) rotate(" +
+      (dir * 9) + "deg)";
+    out.style.opacity = "0";
+    setTimeout(() => {
+      d.order = d.order.slice(1).concat(d.order[0]);
+      const back = HOW_SLOTS[HOW_SLOTS.length - 1];
+      out.style.transition = "none";
+      out.style.transform = "translate(" + back.x + "px," + back.y + "px) scale(" + back.s + ")";
+      requestAnimationFrame(() => {
+        this.layoutDeck(false);
+        d.busy = false;
+      });
+      this.setState({ how: (this.state.how + 1) % 3 });
+    }, 270);
+  }
+
+  layoutDeck(instant) {
+    const d = this.deck;
+    if (!d) return;
+    d.order.forEach((idx, pos) => {
+      const c = d.cards[idx], s = HOW_SLOTS[pos];
+      c.style.transition = instant ? "none"
+        : "transform 620ms cubic-bezier(.32,1.3,.4,1), opacity 340ms ease";
+      c.style.transform = "translate(" + s.x + "px," + s.y + "px) scale(" + s.s + ")";
+      c.style.opacity = "1";
+      c.style.zIndex = String(10 - pos);
+    });
+  }
+
+  armScrollScenes() {
+    if (!this.scroll) return;
+    let ok = false;
+    try { ok = CSS.supports("animation-timeline", "view()"); } catch (e) { ok = false; }
+    if (!ok) return;
+    this.scroll.querySelectorAll("[data-sec]").forEach(el => {
+      if (el.hasAttribute("data-cover")) return;
+      el.style.animation = "secPass linear both";
+      el.style.animationTimeline = "view()";
+      el.style.animationRange = "cover 0% cover 100%";
+      el.style.willChange = "transform, opacity";
+    });
+  }
+
+  waitForCover(tries) {
+    const hero = this.scroll && this.scroll.querySelector(".fig-asset-2d4f29f8c32f033c");
+    if (!hero) {
+      if (tries < 240) requestAnimationFrame(() => this.waitForCover(tries + 1));
+      return;
+    }
+    const root = hero.parentElement;
+    if (!root || root.dataset.animated) return;
+    root.dataset.animated = "1";
+
+    const OUT = "cubic-bezier(.16,1,.3,1)";
+    const SPRING = "cubic-bezier(.34,1.28,.4,1)";
+    const play = (el, name, delay, dur, ease) => {
+      if (!el) return;
+      el.style.animation = name + " " + dur + "ms " + ease + " " + delay + "ms both";
+      el.style.willChange = "transform, opacity";
+    };
+
+    const kids = root.children;
+    const text = kids[2];
+
+    // the static stack from the file is replaced by the live streaming one
+    if (kids[1]) kids[1].style.display = "none";
+    if (kids[3]) kids[3].style.display = "none";
+
+    if (text) {
+      // the sign-up CTA lives inside the .fig cover: bind the real button so it
+      // stays clickable however the copy above it reflows
+      const cta = text.children[2];
+      if (cta && !cta.dataset.bound) {
+        cta.dataset.bound = "1";
+        cta.style.cursor = "pointer";
+        cta.addEventListener("click", () => this.setState({ signup: "form", menu: false, search: false }));
+      }
+      // title, description and CTA rise together as one group
+      play(text.children[0], "riseIn", 80 + HERO_DELAY, 820, OUT);
+      play(text.children[1], "riseIn", 80 + HERO_DELAY, 820, OUT);
+      play(text.children[2], "riseIn", 80 + HERO_DELAY, 820, OUT);
+    }
+    play(hero, "heroIn", 420 + HERO_DELAY, 1050, "cubic-bezier(.2,1,.28,1)");
+    // the artwork runs to the container's bottom edge — no orange strip below it.
+    // the .fig root clips at its own 690px, so it grows with the section first
+    root.style.height = "734px";
+    hero.style.height = "353px";
+    hero.style.backgroundPosition = "center bottom";
+
+    // oversized rows baked into the live-activity section give way to the compact feed
+    const live = this.scroll.querySelector("#sec-live");
+    const liveRoot = live && live.firstElementChild && live.firstElementChild.firstElementChild;
+    const oldRows = liveRoot && liveRoot.children[1];
+    if (oldRows) {
+      oldRows.style.visibility = "hidden";
+      oldRows.style.height = "333.653px";
+      oldRows.style.flexShrink = "0";
+      oldRows.style.overflow = "hidden";
+    }
+
+    setTimeout(() => this.armCounters(), 400);
+  }
+
+  all() {
+    const out = [];
+    CATS.forEach(c => c.cards.forEach(m => out.push({ name: m[0], rate: m[1], logo: m[2], cat: c.label })));
+    const seen = {};
+    return out.filter(m => (seen[m.name] ? false : (seen[m.name] = true)));
+  }
+
+  openMerchant(m) {
+    return () => this.setState({ merchant: m, activated: false, menu: false, search: false });
+  }
+
+  scrollTo(id) {
+    return () => {
+      this.setState({ menu: false });
+      requestAnimationFrame(() => {
+        const el = this.scroll && this.scroll.querySelector("#" + id);
+        if (el) this.scroll.scrollTo({ top: el.offsetTop - 24, behavior: "smooth" });
+      });
+    };
+  }
+
+  renderVals() {
+    const cat = CATS[this.state.cat];
+    const m = this.state.merchant;
+    const q = this.state.query.trim().toLowerCase();
+    const hits = this.all().filter(x => !q || x.name.toLowerCase().includes(q) || x.cat.toLowerCase().includes(q));
+
+    const n = this.state.n;
+    const notifs = [0, 1, 2, 3, 4, 5].map(lane => {
+      const slot = n < 0 ? 4 : (((lane - n) % 6) + 6) % 6;
+      const g = SLOTS[slot];
+      const item = STREAM[(((n + slot - 3) % STREAM.length) + STREAM.length) % STREAM.length];
+      let transition = "none";
+      if (n >= 0 && slot !== 4) {
+        transition = this.state.intro
+          ? "transform 1050ms cubic-bezier(.34,1.2,.36,1) " + (slot * 190) + "ms, opacity 780ms ease " + (slot * 190) + "ms"
+          : (slot === 5 ? FADE_OUT : GLIDE);
+      }
+      return {
+        transform: g.t, opacity: n < 0 ? 0 : g.o, z: 10 - slot, transition,
+        name: item[0], desc: item[1], amount: item[2], logo: item[3],
+      };
+    });
+
+    return {
+      setScroll: el => {
+        if (el && el !== this.scroll) {
+          this.scroll = el;
+          el.addEventListener("scroll", this.onScroll, { passive: true });
+        }
+      },
+      setHeader: el => { this.headerEl = el; },
+      setAmt: el => { this.amtEl = el; },
+      socials: ["Snapchat", "Facebook", "Twitch", "TikTok", "X", "Instagram", "Youtube"]
+        .map(name => ({ name })),
+      footerCols: FOOTER_COLS.map((c, i) => ({
+        title: c.title,
+        links: c.links.map(label => ({ label })),
+        open: this.state.fcol === i,
+        sign: this.state.fcol === i ? "−" : "+",
+        toggle: () => this.setState({ fcol: this.state.fcol === i ? null : i }),
+      })),
+      footerLegal: ["Terms of Use", "Privacy Policy", "Legal Information", "Cookies Policy", "Manage Cookies"]
+        .map(label => ({ label })),
+      setBonus: el => { if (el && el !== this.bonusEl) { this.bonusEl = el; setTimeout(() => this.clearBonusArt(0), 200); } },
+      notifs,
+      feed: [0, 1, 2, 3, 4, 5, 6].map(lane => {
+        const fi = this.state.fi;
+        const slot = (((lane - fi) % 7) + 7) % 7;
+        const g = LIVE_SLOTS[slot];
+        const item = LIVE[((((slot === 6 ? fi + 1 : fi - slot) % LIVE.length) + LIVE.length)) % LIVE.length];
+        return {
+          transform: "translateY(" + g.y + "px)",
+          opacity: g.o, z: 10 - slot,
+          transition: slot === 6 ? "none" : LIVE_GLIDE,
+          name: item[0], time: LIVE_AGE[slot], amount: item[1], logo: item[2],
+        };
+      }),
+      howDots: [0, 1, 2].map(i => ({
+        w: i === this.state.how ? "26px" : "8px",
+        bg: i === this.state.how ? "rgb(22,14,11)" : "rgb(214,208,205)",
+      })),
+      setCover: el => { this.coverEl = el; },
+      setBrands: el => { if (el && el !== this.brandsEl) { this.brandsEl = el; setTimeout(() => this.armBrands(0), 200); } },
+      setTrust: el => {
+        if (el && el !== this.trustEl) {
+          this.trustEl = el;
+          setTimeout(() => this.armTrust(0), 300);
+        }
+      },
+      reviewsOpen: this.state.reviews,
+      closeReviews: () => this.setState({ reviews: false }),
+      reviews: REVIEWS,
+      setBanner: el => { this.bannerEl = el; },
+      setHow: el => { if (el && el !== this.howEl) { this.howEl = el; setTimeout(() => this.armHowStack(0), 200); } },
+      cats: CATS.map((c, i) => {
+        return {
+          label: c.label, icon: c.icon, hasIcon: !!c.icon,
+          on: i === this.state.cat, off: i !== this.state.cat,
+          pick: () => this.setState({ cat: i }, () => {
+            const el = this.amtEl;
+            if (!el) return;
+            el.dataset.final = (CATS[i].amount || "").trim();
+            this.countUp(el);
+          }),
+        };
+      }),
+      dots: CATS.map((c, i) => ({ on: i === this.state.cat, off: i !== this.state.cat })),
+      saveAmount: cat.amount,
+      saveCopy: cat.copy,
+      cards: cat.cards.map(c => ({
+        name: c[0], rate: c[1], logo: c[2],
+        open: this.openMerchant({ name: c[0], rate: c[1], logo: c[2] }),
+      })),
+      faqs: FAQS.map((f, i) => ({
+        q: f.q, a: f.a, open: this.state.faq === i, sign: this.state.faq === i ? "−" : "+",
+        toggle: () => this.setState({ faq: this.state.faq === i ? null : i }),
+      })),
+      menuLinks: MENU.map(l => ({ label: l.label, go: this.scrollTo(l.id) })),
+      menuOpen: this.state.menu,
+      searchOpen: this.state.search,
+      merchantOpen: !!m,
+      signupOpen: !!this.state.signup,
+      signupForm: this.state.signup === "form",
+      signupDone: this.state.signup === "done",
+      query: this.state.query,
+      email: this.state.email,
+      onQuery: e => this.setState({ query: e.target.value }),
+      onEmail: e => this.setState({ email: e.target.value }),
+      resultsLabel: q ? hits.length + " shops" : "Popular right now",
+      results: hits.map(h => ({ ...h, open: this.openMerchant(h) })),
+      merchantName: m ? m.name : "",
+      merchantRate: m ? m.rate : "",
+      merchantLogo: m ? m.logo : "Liferando1",
+      activated: this.state.activated,
+      activatedCopy: m ? "Your visit to " + m.name + " is being tracked. Finish your order within 24 hours and the cashback lands in your pending balance." : "",
+      ctaLabel: this.state.activated ? "Go to " + (m ? m.name : "shop") : "Activate cashback",
+      activate: () => this.setState({ activated: true }),
+      steps: [
+        { n: "1", t: "Activate the cashback here, then shop as usual on the shop's own site." },
+        { n: "2", t: "The shop confirms your order and we turn the commission into real money." },
+        { n: "3", t: "Withdraw to your bank account whenever your balance reaches €20." },
+      ],
+      terms: m ? [
+        { t: "Cashback rate", v: m.rate.replace(" Cashback", "") },
+        { t: "Tracking window", v: "24 hours" },
+        { t: "Confirmation", v: "30–90 days" },
+      ] : [],
+      openSearch: () => this.setState({ search: true, menu: false, query: "" }),
+      openMenu: () => this.setState({ menu: true, search: false }),
+      closeAll: () => this.setState({ menu: false, search: false, merchant: null, signup: null }),
+      back: () => this.setState({ merchant: null, signup: null }),
+      goSignup: () => this.setState({ signup: "form", menu: false, search: false }),
+      submitSignup: () => this.setState({ signup: "done" }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* ============================================================================
+   NALU DESIGN SYSTEM — root entry point
+   ----------------------------------------------------------------------------
+   Single stylesheet for consumers. Import THIS and you get the full system:
+   foundations (colors, type, spacing, radius, elevation, fonts) plus every
+   per-brand theme.
+
+       <link rel="stylesheet" href="styles.css">
+       <body data-brand="shoop"> … </body>   <!-- omit for iGraal default -->
+
+   • colors_and_type.css — tokens + nalu-t-* type utilities + @font-face
+                           (carries the Igraal default values)
+   • brands.css          — [data-brand="…"] overrides for the 16 brand themes
+
+   OPTIONAL — load this AFTER styles.css only when you use the real pico-react
+   component classes (.button.e-h.a-p, .dialog.s-lg, …) and want their per-brand
+   component-level tokens:
+   • component-tokens.css — per-component scoped tokens for every brand
+   ============================================================================ */
+@import url('colors_and_type.css');
+@import url('brands.css');

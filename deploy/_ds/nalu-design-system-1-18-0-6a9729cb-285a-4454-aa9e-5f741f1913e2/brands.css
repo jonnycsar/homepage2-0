@@ -1,0 +1,1694 @@
+/* ============================================================================
+   NALU DESIGN SYSTEM — Multi-brand themes
+   ----------------------------------------------------------------------------
+   Nalu is a white-label system: every brand re-skins the SAME token NAMES
+   (defined in colors_and_type.css, which carries the Igraal defaults) with
+   its own values. Load colors_and_type.css FIRST, then this file, then set
+   data-brand="…" on a wrapping element (or <html>/<body>) to switch theme:
+
+       <body data-brand="shoop"> … </body>
+
+   No data-brand attribute  ⇒  Igraal (the defaults in colors_and_type.css).
+
+   All values below are the REAL per-brand tokens fetched from each brand's
+   live style-guide.css (…/assets/pico/nalu/brands/{Brand}/web/style-guide.css).
+
+   Fonts:
+     • Igraal / Shoop / Coupons → New Spirit (serif headline) + Inter  (bundled)
+     • Focus                    → Open Sans (headline/title) + Roboto (body)
+     • DailyMail                → Arial (system)
+     • Kortingscode             → Poppins (headline/title) + Roboto (body)
+     • JyllandsPosten           → Source Serif 4 + Inter (subs for Guardian Egyptian/Sans)
+     • BusinessInsider          → Space Grotesk (sub for Lab Grotesque)
+     • Pepper (×3)              → Averta CY (licensed webfont, bundled)
+   Load the Google fonts below when rendering those brands.
+   ============================================================================ */
+
+/* Google fonts needed by other-brand themes. Harmless if unused.
+   Focus → Open Sans + Roboto · Radins → Lato · Gazzetta → Roboto Condensed
+   ElPais → Source Serif 4 (substitute for proprietary "Marcin Ant B")
+   CNN    → Inter (bundled; substitute for proprietary "CNN Sans Display")
+   Kortingscode → Poppins · BusinessInsider → Space Grotesk (sub "Lab Grotesque")
+   Pepper → Averta CY (licensed) · JyllandsPosten → Source Serif 4 (sub "Guardian") */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+/* Explicit Igraal override — lets a scoped [data-brand="igraal"] reset the
+   orange accent even when nested inside another brand's subtree (e.g. the
+   brand-picker swatches). Values mirror the colors_and_type.css defaults. */
+[data-brand="igraal"] {
+  --special-tag-background: hsl(24.706 100% 90%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-30: hsl(18.095 98.438% 25.098%);
+  --colors-primary-55: hsl(18.205 98.319% 53.333%);
+  --colors-primary-90: hsl(24.706 100% 90%);
+  --brand-primary: hsl(18.205 98.319% 53.333%);
+  --content-link-idle:  hsl(18.205 98.319% 53.333%);
+  --content-link-hover: hsl(18.375 98.765% 31.765%);
+}
+
+/* ─────────────────────────  SHOOP — electric blue  ─────────────────────────
+   Same shape language as Igraal (serif+sans, black pill buttons), blue accent. */
+[data-brand="shoop"] {
+  --special-tag-background: hsl(213.96 100% 89.608%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5:  hsl(228 38.462% 5.098%);
+  --colors-primary-10: hsl(225.71 41.176% 10%);
+  --colors-primary-20: hsl(227.14 39.623% 20.784%);
+  --colors-primary-30: hsl(227.01 63.399% 30%);
+  --colors-primary-40: hsl(215.42 81.373% 40%);
+  --colors-primary-50: hsl(215.49 92.157% 50%);
+  --colors-primary-55: hsl(215.62 100% 57.059%);
+  --colors-primary-60: hsl(214.12 100% 60%);
+  --colors-primary-70: hsl(213.42 100% 70.784%);
+  --colors-primary-80: hsl(214.09 100% 82.745%);
+  --colors-primary-90: hsl(213.96 100% 89.608%);
+  --colors-primary-95: hsl(212.31 100% 94.902%);
+  --colors-primary-98: hsl(216 100% 98.039%);
+
+  --brand-primary: hsl(215.62 100% 57.059%);
+  --content-link-idle:  hsl(215.62 100% 57.059%);
+  --content-link-hover: hsl(215.42 81.373% 40%);
+
+  --button-primary-high-idle-background:    hsl(0 0% 5.098%);
+  --button-primary-high-hover-background:   hsl(0 0% 30.196%);
+  --button-primary-high-pressed-background: hsl(0 0% 10.196%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(215.62 100% 57.059%);
+  --button-corner-radius: 99px;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-focus-background: hsl(0 0% 50.196%);
+  --button-primary-high-focus-border: hsl(215.62 100% 57.059%);
+  --button-primary-medium-idle-forground2: hsl(215.62 100% 57.059%);
+  --button-primary-medium-focus-background: hsl(0 0% 100% / 0);
+  --button-primary-medium-focus-border: hsl(215.62 100% 57.059%);
+  --button-primary-medium-label-copy: hsl(0 0% 5.098%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(215.62 100% 57.059%);
+  --button-secondary-high-idle-background: hsl(0 0% 5.098%);
+  --button-secondary-high-focus-background: hsl(0 0% 50.196%);
+  --button-secondary-high-focus-border: hsl(215.62 100% 57.059%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(215.62 100% 57.059%);
+  --button-secondary-medium-focus-background: hsl(0 0% 100% / 0);
+  --button-secondary-medium-focus-border: hsl(215.62 100% 57.059%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(215.62 100% 57.059%);
+}
+
+/* ─────────────────────────  COUPONS — indigo + hot-pink link  ───────────────
+   Muted indigo brand colour; buttons are deep indigo (not black); links pink. */
+[data-brand="coupons"] {
+  --special-tag-background: hsl(228.29 100% 91.961%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5:  hsl(228 38.462% 5.098%);
+  --colors-primary-10: hsl(225.71 41.176% 10%);
+  --colors-primary-20: hsl(228.29 38.318% 20.98%);
+  --colors-primary-30: hsl(227.21 39.869% 30%);
+  --colors-primary-40: hsl(226.83 40.196% 40%);
+  --colors-primary-50: hsl(226.93 39.608% 50%);
+  --colors-primary-55: hsl(226.3 40% 54.902%);
+  --colors-primary-60: hsl(226.83 40.196% 60%);
+  --colors-primary-70: hsl(227.63 63.399% 70%);
+  --colors-primary-80: hsl(227.53 100% 84.902%);
+  --colors-primary-90: hsl(228.29 100% 91.961%);
+  --colors-primary-95: hsl(222 38.462% 94.902%);
+  --colors-primary-98: hsl(204 45.455% 97.843%);
+
+  --brand-primary: hsl(226.3 40% 54.902%);
+  --content-link-idle:  hsl(333.6 100% 49.02%);   /* hot pink */
+  --content-link-hover: hsl(333.82 100% 40%);
+
+  --button-primary-high-idle-background:    hsl(228.29 38.318% 20.98%); /* deep indigo */
+  --button-primary-high-hover-background:   hsl(225.71 41.176% 10%);
+  --button-primary-high-pressed-background: hsl(228 38.462% 5.098%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(333.6 100% 49.02%);
+  --button-corner-radius: 99px;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-idle-border: hsl(228.29 38.318% 20.98%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-high-focus-background: hsl(225.71 41.176% 10%);
+  --button-primary-high-focus-border: hsl(225.71 41.176% 10%);
+  --button-primary-medium-idle-border: hsl(228.29 38.318% 20.98%);
+  --button-primary-medium-idle-forground2: hsl(334.06 100% 55.098%);
+  --button-primary-medium-hover-border: hsl(225.71 41.176% 10%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-primary-medium-pressed-border: hsl(228 38.462% 5.098%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(225.71 41.176% 10%);
+  --button-primary-medium-label: hsl(228.29 38.318% 20.98%);
+  --button-primary-medium-icon: hsl(228.29 38.318% 20.98%);
+  --button-primary-medium-label-copy: hsl(228.29 38.318% 20.98%);
+  --button-primary-low-hover-background: hsl(228.29 100% 91.961%);
+  --button-primary-low-hover-border: hsl(228.29 100% 91.961%);
+  --button-primary-low-pressed-background: hsl(228.29 100% 91.961%);
+  --button-primary-low-pressed-border: hsl(228.29 100% 91.961%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(333.6 100% 49.02%);
+  --button-primary-low-label: hsl(228.29 38.318% 20.98%);
+  --button-primary-low-icon: hsl(228.29 38.318% 20.98%);
+  --button-secondary-high-idle-background: hsl(228.29 38.318% 20.98%);
+  --button-secondary-high-idle-border: hsl(228.29 38.318% 20.98%);
+  --button-secondary-high-hover-background: hsl(225.71 41.176% 10%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(228 38.462% 5.098%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-high-focus-background: hsl(225.71 41.176% 10%);
+  --button-secondary-high-focus-border: hsl(225.71 41.176% 10%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(334.06 100% 55.098%);
+  --button-secondary-medium-hover-border: hsl(225.71 41.176% 10%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-secondary-medium-pressed-border: hsl(228 38.462% 5.098%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(225.71 41.176% 10%);
+  --button-secondary-medium-label: hsl(228.29 38.318% 20.98%);
+  --button-secondary-medium-icon: hsl(228.29 38.318% 20.98%);
+  --button-secondary-low-hover-background: hsl(228.29 100% 91.961%);
+  --button-secondary-low-hover-border: hsl(228.29 100% 91.961%);
+  --button-secondary-low-pressed-background: hsl(228.29 100% 91.961%);
+  --button-secondary-low-pressed-border: hsl(228.29 100% 91.961%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(333.6 100% 49.02%);
+  --button-secondary-low-label: hsl(228.29 38.318% 20.98%);
+  --button-secondary-low-icon: hsl(228.29 38.318% 20.98%);
+}
+
+/* ─────────────────────────  FOCUS — red, sans-only, squared buttons  ────────
+   Editorial brand: Open Sans + Roboto, RED accent, near-square 2px buttons,
+   blue links. Pure-black text. The visual outlier of the family. */
+[data-brand="focus"] {
+  --special-tag-background: hsl(353.33 100% 92.941%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5:  hsl(352.5 92.308% 5.098%);
+  --colors-primary-10: hsl(353.62 92.157% 10%);
+  --colors-primary-20: hsl(352.98 92.157% 20%);
+  --colors-primary-30: hsl(352.87 93.464% 30%);
+  --colors-primary-40: hsl(353.05 93.137% 40%);
+  --colors-primary-50: hsl(352.91 93.22% 46.275%);
+  --colors-primary-55: hsl(353.24 93.013% 55.098%);
+  --colors-primary-60: hsl(353.05 93.137% 60%);
+  --colors-primary-70: hsl(352.87 93.464% 70%);
+  --colors-primary-80: hsl(352.98 92.157% 80%);
+  --colors-primary-90: hsl(353.33 100% 92.941%);
+  --colors-primary-95: hsl(352.5 92.308% 94.902%);
+  --colors-primary-98: hsl(354 100% 98.039%);
+
+  --colors-black: hsl(0 0% 0%);
+  --content-default: hsl(0 0% 0%);
+  --brand-primary: hsl(352.91 93.22% 46.275%);
+  --content-link-idle:  hsl(208.24 80.315% 50.196%);  /* blue */
+  --content-link-hover: hsl(208.17 80.392% 40%);
+
+  --button-primary-high-idle-background:    hsl(352.91 93.22% 46.275%); /* red CTA */
+  --button-primary-high-hover-background:   hsl(353.05 93.137% 40%);
+  --button-primary-high-pressed-background: hsl(352.87 93.464% 30%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(353.24 93.013% 55.098%);
+  --button-corner-radius: 2px;   /* ← near-square, unlike the pill brands */
+
+  --typography-body-font-family:        'Roboto', system-ui, sans-serif;
+  --typography-label-font-family:       'Open Sans', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Open Sans', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Open Sans', system-ui, sans-serif;
+  --typography-headline-font-family:    'Open Sans', system-ui, sans-serif;
+  --typography-headline-alt-font-family:'Open Sans', system-ui, sans-serif;
+  --typography-display-font-family-large:'Open Sans', system-ui, sans-serif;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-high-focus-background: hsl(353.05 93.137% 40%);
+  --button-primary-high-focus-border: hsl(353.05 93.137% 40%);
+  --button-primary-medium-idle-border: hsl(352.91 93.22% 46.275%);
+  --button-primary-medium-idle-forground2: hsl(208.24 80.315% 50.196%);
+  --button-primary-medium-hover-border: hsl(353.05 93.137% 40%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-primary-medium-pressed-border: hsl(352.87 93.464% 30%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(353.05 93.137% 40%);
+  --button-primary-medium-label: hsl(352.91 93.22% 46.275%);
+  --button-primary-medium-icon: hsl(352.91 93.22% 46.275%);
+  --button-primary-medium-label-copy: hsl(352.91 93.22% 46.275%);
+  --button-primary-low-hover-background: hsl(353.33 100% 92.941%);
+  --button-primary-low-hover-border: hsl(353.33 100% 92.941%);
+  --button-primary-low-pressed-background: hsl(353.33 100% 92.941%);
+  --button-primary-low-pressed-border: hsl(353.33 100% 92.941%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(208.24 80.315% 50.196%);
+  --button-primary-low-label: hsl(352.91 93.22% 46.275%);
+  --button-primary-low-icon: hsl(352.91 93.22% 46.275%);
+  --button-secondary-high-idle-background: hsl(352.91 93.22% 46.275%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(353.05 93.137% 40%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(352.87 93.464% 30%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-high-focus-background: hsl(353.05 93.137% 40%);
+  --button-secondary-high-focus-border: hsl(353.05 93.137% 40%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(208.24 80.315% 50.196%);
+  --button-secondary-medium-hover-border: hsl(353.05 93.137% 40%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-secondary-medium-pressed-border: hsl(352.87 93.464% 30%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(353.05 93.137% 40%);
+  --button-secondary-medium-label: hsl(352.91 93.22% 46.275%);
+  --button-secondary-medium-icon: hsl(352.91 93.22% 46.275%);
+  --button-secondary-low-hover-background: hsl(353.33 100% 92.941%);
+  --button-secondary-low-hover-border: hsl(353.33 100% 92.941%);
+  --button-secondary-low-pressed-background: hsl(353.33 100% 92.941%);
+  --button-secondary-low-pressed-border: hsl(353.33 100% 92.941%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(208.24 80.315% 50.196%);
+  --button-secondary-low-label: hsl(352.91 93.22% 46.275%);
+  --button-secondary-low-icon: hsl(352.91 93.22% 46.275%);
+}
+
+/* ─────────────────────────  DAILY MAIL — blue, Arial  ───────────────────────
+   News brand: Arial throughout, vivid blue accent, dark-blue links. Its
+   button-primary-high token is a light-grey secondary; the brand CTA is the
+   blue accent, so the kit maps the primary action to --brand-primary. */
+[data-brand="dailymail"] {
+  --special-tag-background: hsl(213.95 100% 85.098%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5:  hsl(214.62 100% 5.098%);
+  --colors-primary-10: hsl(214.12 100% 10%);
+  --colors-primary-20: hsl(214.22 100% 25.098%);
+  --colors-primary-30: hsl(214.19 100% 35.098%);
+  --colors-primary-40: hsl(214.12 100% 40%);
+  --colors-primary-50: hsl(213.88 100% 50%);
+  --colors-primary-55: hsl(213.91 100% 54.902%);
+  --colors-primary-60: hsl(214.12 100% 60%);
+  --colors-primary-70: hsl(214.12 100% 70%);
+  --colors-primary-80: hsl(214.12 100% 80%);
+  --colors-primary-90: hsl(213.95 100% 85.098%);
+  --colors-primary-95: hsl(213.6 100% 95.098%);
+  --colors-primary-98: hsl(216 100% 98.039%);
+
+  --colors-black: hsl(0 0% 0%);
+  --content-default: hsl(0 0% 5.098%);
+  --brand-primary: hsl(213.88 100% 50%);
+  --content-link-idle:  hsl(214.19 100% 35.098%);
+  --content-link-hover: hsl(214.22 100% 25.098%);
+
+  /* Faithful token (light-grey secondary). The kit's accent CTA uses
+     --brand-primary instead; this keeps the documented value available. */
+  --button-primary-high-idle-background:    hsl(213.88 100% 50%);
+  --button-primary-high-hover-background:   hsl(214.12 100% 40%);
+  --button-primary-high-pressed-background: hsl(214.19 100% 35.098%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(213.91 100% 54.902%);
+  --button-corner-radius: 99px;
+
+  --typography-body-font-family:        Arial, Helvetica, sans-serif;
+  --typography-label-font-family:       Arial, Helvetica, sans-serif;
+  --typography-title-font-family-large: Arial, Helvetica, sans-serif;
+  --typography-title-font-family-small: Arial, Helvetica, sans-serif;
+  --typography-headline-font-family:    Arial, Helvetica, sans-serif;
+  --typography-headline-alt-font-family:Arial, Helvetica, sans-serif;
+  --typography-display-font-family-large:Arial, Helvetica, sans-serif;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-medium-idle-border: hsl(0 0% 90.196%);
+  --button-primary-medium-idle-forground2: hsl(214.19 100% 35.098%);
+  --button-primary-medium-hover-border: hsl(0 0% 80%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-primary-medium-pressed-border: hsl(0 0% 69.804%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(0 0% 80%);
+  --button-primary-medium-label: hsl(0 0% 90.196%);
+  --button-primary-medium-icon: hsl(0 0% 90.196%);
+  --button-primary-medium-label-copy: hsl(0 0% 90.196%);
+  --button-primary-low-hover-background: hsl(213.95 100% 85.098%);
+  --button-primary-low-hover-border: hsl(213.95 100% 85.098%);
+  --button-primary-low-pressed-background: hsl(213.95 100% 85.098%);
+  --button-primary-low-pressed-border: hsl(213.95 100% 85.098%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(214.12 100% 60%);
+  --button-primary-low-label: hsl(0 0% 90.196%);
+  --button-primary-low-icon: hsl(0 0% 90.196%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(214.19 100% 35.098%);
+  --button-secondary-medium-hover-border: hsl(0 0% 80%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-secondary-medium-pressed-border: hsl(0 0% 69.804%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(0 0% 80%);
+  --button-secondary-medium-label: hsl(0 0% 90.196%);
+  --button-secondary-medium-icon: hsl(0 0% 90.196%);
+  --button-secondary-low-hover-background: hsl(213.95 100% 85.098%);
+  --button-secondary-low-hover-border: hsl(213.95 100% 85.098%);
+  --button-secondary-low-pressed-background: hsl(213.95 100% 85.098%);
+  --button-secondary-low-pressed-border: hsl(213.95 100% 85.098%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(214.12 100% 60%);
+  --button-secondary-low-label: hsl(0 0% 90.196%);
+  --button-secondary-low-icon: hsl(0 0% 90.196%);
+  /* High-emphasis borders follow this brand's BLUE CTA (see note above): upstream emits a
+     light-grey ramp with black borders and a white label, which is unreadable. */
+  --button-primary-high-idle-border: hsl(213.88 100% 50%);
+  --button-primary-high-hover-border: hsl(214.12 100% 40%);
+  --button-primary-high-pressed-border: hsl(214.19 100% 35.098%);
+  --button-primary-high-focus-background: hsl(214.12 100% 40%);
+  --button-primary-high-focus-border: hsl(214.12 100% 40%);
+  --button-secondary-high-idle-background: hsl(213.88 100% 50%);
+  --button-secondary-high-idle-border: hsl(213.88 100% 50%);
+  --button-secondary-high-hover-background: hsl(214.12 100% 40%);
+  --button-secondary-high-hover-border: hsl(214.12 100% 40%);
+  --button-secondary-high-pressed-background: hsl(214.19 100% 35.098%);
+  --button-secondary-high-pressed-border: hsl(214.19 100% 35.098%);
+  --button-secondary-high-focus-background: hsl(214.12 100% 40%);
+  --button-secondary-high-focus-border: hsl(214.12 100% 40%);
+}
+
+/* ─────────────────────────  CUPONATION — pink/red brand, pink CTA  ─────────
+   Inter throughout, fully pill (99px) buttons. Primary ramp is red-pink and
+   now also drives the CTA; the link accent stays a warm orange. */
+[data-brand="cuponation"] {
+  --special-tag-background: hsl(354.46 100% 87.255%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5:  hsl(355.38 52% 4.902%);
+  --colors-primary-10: hsl(355.2 49.02% 10%);
+  --colors-primary-20: hsl(354.23 50.98% 20%);
+  --colors-primary-30: hsl(354.55 50.327% 30%);
+  --colors-primary-40: hsl(354.71 50% 40%);
+  --colors-primary-50: hsl(354.59 50.413% 47.451%);
+  --colors-primary-55: hsl(354.62 67.826% 54.902%);
+  --colors-primary-60: hsl(354.58 79.048% 58.824%);
+  --colors-primary-70: hsl(353.96 90.85% 70%);
+  --colors-primary-80: hsl(354.71 100% 80%);
+  --colors-primary-90: hsl(354.46 100% 87.255%);
+  --colors-primary-95: hsl(353.08 100% 94.902%);
+  --colors-primary-98: hsl(354 100% 98.039%);
+
+  --colors-black: hsl(0 0% 0%);
+  --content-default: hsl(0 0% 5.098%);
+  --content-subtle: hsl(0 0% 40%);
+  --brand-primary: hsl(354.58 79.048% 58.824%);   /* pink primary */
+  --brands-logo-background-color: hsl(354.58 79.048% 58.824%);
+  --content-link-idle:  hsl(13.743 79.556% 55.882%);
+  --content-link-hover: hsl(13.824 100% 40%);
+  --border-outline: hsl(13.649 82.745% 50%);
+  --campaigns-primary:   hsl(356.67 96.117% 40.392%);
+  --campaigns-secondary: hsl(143.18 58.667% 29.412%);
+
+  /* Full button matrix from the brand's own token build (2026-08-20) — borders included:
+     the pink CTA has a WHITE idle/hover border, not the iGraal near-black one. */
+  --button-primary-high-idle-background: hsl(354.58 79.048% 58.824%);
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-background: hsl(354.59 50.413% 47.451%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-background: hsl(354.71 50% 40%);
+  --button-primary-high-pressed-border: hsl(354.71 50% 40%);
+  --button-primary-high-focus-background: hsl(354.59 50.413% 47.451%);
+  --button-primary-high-focus-border: hsl(354.59 50.413% 47.451%);
+  --button-primary-medium-idle-border: hsl(354.58 79.048% 58.824%);
+  --button-primary-medium-idle-forground2: hsl(354.58 79.048% 58.824%);
+  --button-primary-medium-hover-border: hsl(354.59 50.413% 47.451%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-primary-medium-pressed-border: hsl(354.71 50% 40%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(354.59 50.413% 47.451%);
+  --button-primary-medium-label: hsl(354.58 79.048% 58.824%);
+  --button-primary-medium-icon: hsl(354.58 79.048% 58.824%);
+  --button-primary-medium-label-copy: hsl(354.58 79.048% 58.824%);
+  --button-primary-low-hover-background: hsl(354.46 100% 87.255%);
+  --button-primary-low-hover-border: hsl(354.46 100% 87.255%);
+  --button-primary-low-pressed-background: hsl(354.46 100% 87.255%);
+  --button-primary-low-pressed-border: hsl(354.46 100% 87.255%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(13.649 82.745% 50%);
+  --button-primary-low-label: hsl(354.58 79.048% 58.824%);
+  --button-primary-low-icon: hsl(354.58 79.048% 58.824%);
+  --button-secondary-high-idle-background: hsl(354.58 79.048% 58.824%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(354.59 50.413% 47.451%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(354.71 50% 40%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-high-focus-background: hsl(354.59 50.413% 47.451%);
+  --button-secondary-high-focus-border: hsl(354.59 50.413% 47.451%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(354.58 79.048% 58.824%);
+  --button-secondary-medium-hover-border: hsl(354.59 50.413% 47.451%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-secondary-medium-pressed-border: hsl(354.71 50% 40%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(354.59 50.413% 47.451%);
+  --button-secondary-medium-label: hsl(354.58 79.048% 58.824%);
+  --button-secondary-medium-icon: hsl(354.58 79.048% 58.824%);
+  --button-secondary-low-hover-background: hsl(354.46 100% 87.255%);
+  --button-secondary-low-hover-border: hsl(354.46 100% 87.255%);
+  --button-secondary-low-pressed-background: hsl(354.46 100% 87.255%);
+  --button-secondary-low-pressed-border: hsl(354.46 100% 87.255%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(13.649 82.745% 50%);
+  --button-secondary-low-label: hsl(354.58 79.048% 58.824%);
+  --button-secondary-low-icon: hsl(354.58 79.048% 58.824%);
+  --button-focus-ring:                      hsl(354.58 79.048% 58.824%);
+  --button-corner-radius: 99px;
+
+  --typography-body-font-family:        'Inter', system-ui, sans-serif;
+  --typography-label-font-family:       'Inter', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Inter', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Inter', system-ui, sans-serif;
+  --typography-headline-font-family:    'Inter', system-ui, sans-serif;
+  --typography-headline-alt-font-family:'Inter', system-ui, sans-serif;
+  --typography-display-font-family-large:'Inter', system-ui, sans-serif;
+}
+
+/* ─────────────────────────  RADINS — warm orange brand, blue CTA  ───────────
+   Lato (headlines/titles) + Roboto (body), 4px buttons. Orange primary ramp,
+   orange links, but a distinctive BLUE primary button. */
+[data-brand="radins"] {
+  --special-tag-background: hsl(47.442 84.314% 90%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5:  hsl(18.462 100% 5.098%);
+  --colors-primary-10: hsl(20 100% 10%);
+  --colors-primary-20: hsl(20 100% 20%);
+  --colors-primary-30: hsl(19.88 100% 32.549%);
+  --colors-primary-40: hsl(23.333 70.588% 40%);
+  --colors-primary-50: hsl(23.128 70.196% 50%);
+  --colors-primary-55: hsl(23.294 70.248% 52.549%);
+  --colors-primary-60: hsl(26.842 74.51% 60%);
+  --colors-primary-70: hsl(31.765 77.778% 70%);
+  --colors-primary-80: hsl(38.78 80.392% 80%);
+  --colors-primary-90: hsl(47.442 84.314% 90%);
+  --colors-primary-95: hsl(52.174 92% 95.098%);
+  --colors-primary-98: hsl(48 100% 98.039%);
+
+  --colors-black: hsl(0 0% 0%);
+  --content-default: hsl(0 0% 5.098%);
+  --brand-primary: hsl(23.294 70.248% 52.549%);   /* orange */
+  --content-link-idle:  hsl(23.128 70.196% 50%);
+  --content-link-hover: hsl(23.333 70.588% 40%);
+
+  --button-primary-high-idle-background:    hsl(204.24 68.95% 42.941%); /* blue CTA */
+  --button-primary-high-hover-background:   hsl(204.57 68.627% 30%);
+  --button-primary-high-pressed-background: hsl(204.86 68.627% 20%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(204.24 68.95% 42.941%);
+  --button-corner-radius: 4px;
+
+  --typography-body-font-family:        'Roboto', system-ui, sans-serif;
+  --typography-label-font-family:       'Lato', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Lato', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Lato', system-ui, sans-serif;
+  --typography-headline-font-family:    'Lato', system-ui, sans-serif;
+  --typography-headline-alt-font-family:'Lato', system-ui, sans-serif;
+  --typography-display-font-family-large:'Lato', system-ui, sans-serif;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-high-focus-background: hsl(204.57 68.627% 30%);
+  --button-primary-high-focus-border: hsl(204.57 68.627% 30%);
+  --button-primary-medium-idle-border: hsl(204.24 68.95% 42.941%);
+  --button-primary-medium-idle-forground2: hsl(23.294 70.248% 52.549%);
+  --button-primary-medium-hover-border: hsl(204.57 68.627% 30%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-primary-medium-pressed-border: hsl(204.86 68.627% 20%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(204.57 68.627% 30%);
+  --button-primary-medium-label: hsl(204.24 68.95% 42.941%);
+  --button-primary-medium-icon: hsl(204.24 68.95% 42.941%);
+  --button-primary-medium-label-copy: hsl(204.24 68.95% 42.941%);
+  --button-primary-low-hover-background: hsl(52.174 92% 95.098%);
+  --button-primary-low-hover-border: hsl(52.174 92% 95.098%);
+  --button-primary-low-pressed-background: hsl(52.174 92% 95.098%);
+  --button-primary-low-pressed-border: hsl(52.174 92% 95.098%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(204.34 68.627% 50%);
+  --button-primary-low-label: hsl(204.24 68.95% 42.941%);
+  --button-primary-low-icon: hsl(204.24 68.95% 42.941%);
+  --button-secondary-high-idle-background: hsl(204.24 68.95% 42.941%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(204.57 68.627% 30%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(204.86 68.627% 20%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-high-focus-background: hsl(204.57 68.627% 30%);
+  --button-secondary-high-focus-border: hsl(204.57 68.627% 30%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(23.294 70.248% 52.549%);
+  --button-secondary-medium-hover-border: hsl(204.57 68.627% 30%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-secondary-medium-pressed-border: hsl(204.86 68.627% 20%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(204.57 68.627% 30%);
+  --button-secondary-medium-label: hsl(204.24 68.95% 42.941%);
+  --button-secondary-medium-icon: hsl(204.24 68.95% 42.941%);
+  --button-secondary-low-hover-background: hsl(52.174 92% 95.098%);
+  --button-secondary-low-hover-border: hsl(52.174 92% 95.098%);
+  --button-secondary-low-pressed-background: hsl(52.174 92% 95.098%);
+  --button-secondary-low-pressed-border: hsl(52.174 92% 95.098%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(204.34 68.627% 50%);
+  --button-secondary-low-label: hsl(204.24 68.95% 42.941%);
+  --button-secondary-low-icon: hsl(204.24 68.95% 42.941%);
+}
+
+/* ─────────────────────────  EL PAÍS — newspaper: greyscale + blue, square  ──
+   Greyscale primary ramp, vivid blue CTA/link, SQUARE 0px buttons. Font is
+   proprietary "Marcin Ant B" → substituted with Source Serif 4 (FLAGGED). */
+[data-brand="elpais"] {
+  --special-tag-background: hsl(0 0% 90.196%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5:  hsl(0 0% 6.6667%);
+  --colors-primary-10: hsl(0 0% 10.196%);
+  --colors-primary-20: hsl(0 0% 20%);
+  --colors-primary-30: hsl(0 0% 30.196%);
+  --colors-primary-40: hsl(0 0% 40%);
+  --colors-primary-50: hsl(0 0% 50.196%);
+  --colors-primary-55: hsl(0 0% 54.902%);
+  --colors-primary-60: hsl(0 0% 60%);
+  --colors-primary-70: hsl(0 0% 69.804%);
+  --colors-primary-80: hsl(0 0% 80%);
+  --colors-primary-90: hsl(0 0% 90.196%);
+  --colors-primary-95: hsl(0 0% 94.902%);
+  --colors-primary-98: hsl(0 0% 98.039%);
+
+  --colors-black: hsl(0 0% 0%);
+  --content-default: hsl(0 0% 5.098%);
+  --brand-primary: hsl(200.12 98.773% 31.961%);   /* El País blue */
+  --content-link-idle:  hsl(200.12 98.773% 31.961%);
+  --content-link-hover: hsl(199.8 98.039% 20%);
+
+  --button-primary-high-idle-background:    hsl(200.12 98.773% 31.961%);
+  --button-primary-high-hover-background:   hsl(199.9 99.02% 40%);
+  --button-primary-high-pressed-background: hsl(199.92 99.216% 50%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(200.12 98.773% 31.961%);
+  --button-corner-radius: 0px;   /* fully square, like iGraal surfaces */
+
+  --typography-body-font-family:        'Source Serif 4', Georgia, serif;
+  --typography-label-font-family:       'Source Serif 4', Georgia, serif;
+  --typography-title-font-family-large: 'Source Serif 4', Georgia, serif;
+  --typography-title-font-family-small: 'Source Serif 4', Georgia, serif;
+  --typography-headline-font-family:    'Source Serif 4', Georgia, serif;
+  --typography-headline-alt-font-family:'Source Serif 4', Georgia, serif;
+  --typography-display-font-family-large:'Source Serif 4', Georgia, serif;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-high-focus-background: hsl(199.9 99.02% 40%);
+  --button-primary-high-focus-border: hsl(199.9 99.02% 40%);
+  --button-primary-medium-idle-border: hsl(200.12 98.773% 31.961%);
+  --button-primary-medium-idle-forground2: hsl(0 0% 6.6667%);
+  --button-primary-medium-hover-border: hsl(199.9 99.02% 40%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-primary-medium-pressed-border: hsl(199.92 99.216% 50%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(199.9 99.02% 40%);
+  --button-primary-medium-label: hsl(200.12 98.773% 31.961%);
+  --button-primary-medium-icon: hsl(200.12 98.773% 31.961%);
+  --button-primary-medium-label-copy: hsl(200.12 98.773% 31.961%);
+  --button-primary-low-hover-background: hsl(0 0% 80%);
+  --button-primary-low-hover-border: hsl(0 0% 80%);
+  --button-primary-low-pressed-background: hsl(0 0% 80%);
+  --button-primary-low-pressed-border: hsl(0 0% 80%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(199.92 99.216% 50%);
+  --button-primary-low-label: hsl(200.12 98.773% 31.961%);
+  --button-primary-low-icon: hsl(200.12 98.773% 31.961%);
+  --button-secondary-high-idle-background: hsl(200.12 98.773% 31.961%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(199.9 99.02% 40%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(199.92 99.216% 50%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-high-focus-background: hsl(199.9 99.02% 40%);
+  --button-secondary-high-focus-border: hsl(199.9 99.02% 40%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(0 0% 6.6667%);
+  --button-secondary-medium-hover-border: hsl(199.9 99.02% 40%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-secondary-medium-pressed-border: hsl(199.92 99.216% 50%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(199.9 99.02% 40%);
+  --button-secondary-medium-label: hsl(200.12 98.773% 31.961%);
+  --button-secondary-medium-icon: hsl(200.12 98.773% 31.961%);
+  --button-secondary-low-hover-background: hsl(0 0% 80%);
+  --button-secondary-low-hover-border: hsl(0 0% 80%);
+  --button-secondary-low-pressed-background: hsl(0 0% 80%);
+  --button-secondary-low-pressed-border: hsl(0 0% 80%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(199.92 99.216% 50%);
+  --button-secondary-low-label: hsl(200.12 98.773% 31.961%);
+  --button-secondary-low-icon: hsl(200.12 98.773% 31.961%);
+}
+
+/* ─────────────────────────  GAZZETTA — sport pink + orange CTA  ─────────────
+   La Gazzetta's signature magenta-pink primary, orange CTA, Roboto +
+   Roboto Condensed (condensed headlines), 4px buttons. */
+[data-brand="gazzetta"] {
+  --colors-primary-5:  hsl(333.91 92% 4.902%);
+  --colors-primary-10: hsl(334.67 88.235% 10%);
+  --colors-primary-20: hsl(335.33 88.235% 20%);
+  --colors-primary-30: hsl(335.04 89.542% 30%);
+  --colors-primary-40: hsl(334.64 89.362% 36.863%);
+  --colors-primary-50: hsl(334.89 89.02% 50%);
+  --colors-primary-55: hsl(335 88.696% 54.902%);
+  --colors-primary-60: hsl(334.95 89.216% 60%);
+  --colors-primary-70: hsl(335.04 89.542% 70%);
+  --colors-primary-80: hsl(335.33 88.235% 80%);
+  --colors-primary-90: hsl(334.67 88.235% 90%);
+  --colors-primary-95: hsl(336.52 92% 95.098%);
+  --colors-primary-98: hsl(354 83.333% 95.294%);
+
+  --colors-black: hsl(0 0% 0%);
+  --content-default: hsl(0 0% 5.098%);
+  --brand-primary: hsl(335 88.696% 54.902%);   /* Gazzetta pink */
+  --content-link-idle:  hsl(334.89 89.02% 50%);
+  --content-link-hover: hsl(334.64 89.362% 36.863%);
+
+  --button-primary-high-idle-background:    hsl(24.837 87.045% 51.569%); /* orange CTA */
+  --button-primary-high-hover-background:   hsl(24.944 87.255% 40%);
+  --button-primary-high-pressed-background: hsl(24.812 86.928% 30%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(335 88.696% 54.902%);
+  --button-corner-radius: 4px;
+
+  --typography-body-font-family:        'Roboto', system-ui, sans-serif;
+  --typography-label-font-family:       'Roboto Condensed', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Roboto Condensed', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Roboto Condensed', system-ui, sans-serif;
+  --typography-headline-font-family:    'Roboto Condensed', system-ui, sans-serif;
+  --typography-headline-alt-font-family:'Roboto Condensed', system-ui, sans-serif;
+  --typography-display-font-family-large:'Roboto Condensed', system-ui, sans-serif;
+}
+
+/* ─────────────────────────  CNN — red brand, BLACK CTA, pill  ───────────────
+   Pure CNN red primary ramp, black primary button, pill (99px) buttons, red
+   link hover. Font is proprietary "CNN Sans Display" → substituted with Inter
+   (bundled) (FLAGGED). */
+[data-brand="cnn"] {
+  --special-tag-background: hsl(0 100% 90%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5:  hsl(0 100% 5.098%);
+  --colors-primary-10: hsl(0 100% 10%);
+  --colors-primary-20: hsl(0 100% 20%);
+  --colors-primary-30: hsl(0 100% 30%);
+  --colors-primary-40: hsl(0 100% 40%);
+  --colors-primary-50: hsl(0 100% 50%);
+  --colors-primary-55: hsl(0 100% 54.902%);
+  --colors-primary-60: hsl(0 100% 60%);
+  --colors-primary-70: hsl(0 100% 70%);
+  --colors-primary-80: hsl(0 100% 80%);
+  --colors-primary-90: hsl(0 100% 90%);
+  --colors-primary-95: hsl(0 100% 95.098%);
+  --colors-primary-98: hsl(0 100% 98.039%);
+
+  --colors-black: hsl(0 0% 0%);
+  --content-default: hsl(0 0% 4.7059%);
+  --brand-primary: hsl(0 100% 54.902%);   /* CNN red */
+  --content-link-idle:  hsl(0 0% 4.7059%);
+  --content-link-hover: hsl(0 100% 40%);
+
+  --button-primary-high-idle-background:    hsl(0 0% 4.7059%);  /* black CTA */
+  --button-primary-high-hover-background:   hsl(0 0% 10.196%);
+  --button-primary-high-pressed-background: hsl(0 0% 25.098%);
+  --button-primary-high-label:              hsl(0 0% 100%);
+  --button-focus-ring:                      hsl(0 100% 54.902%);
+  --button-corner-radius: 99px;
+
+  --typography-body-font-family:        'Inter', system-ui, sans-serif;
+  --typography-label-font-family:       'Inter', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Inter', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Inter', system-ui, sans-serif;
+  --typography-headline-font-family:    'Inter', system-ui, sans-serif;
+  --typography-headline-alt-font-family:'Inter', system-ui, sans-serif;
+  --typography-display-font-family-large:'Inter', system-ui, sans-serif;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-high-focus-background: hsl(0 0% 10.196%);
+  --button-primary-high-focus-border: hsl(0 0% 10.196%);
+  --button-primary-medium-idle-border: hsl(0 0% 4.7059%);
+  --button-primary-medium-idle-forground2: hsl(0 100% 40%);
+  --button-primary-medium-hover-border: hsl(0 0% 10.196%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-primary-medium-pressed-border: hsl(0 0% 25.098%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(0 0% 10.196%);
+  --button-primary-medium-label: hsl(0 0% 4.7059%);
+  --button-primary-medium-icon: hsl(0 0% 4.7059%);
+  --button-primary-medium-label-copy: hsl(0 0% 4.7059%);
+  --button-primary-low-hover-background: hsl(0 100% 90%);
+  --button-primary-low-hover-border: hsl(0 100% 90%);
+  --button-primary-low-pressed-background: hsl(0 100% 90%);
+  --button-primary-low-pressed-border: hsl(0 100% 90%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(212.06 100% 40%);
+  --button-primary-low-label: hsl(0 0% 4.7059%);
+  --button-primary-low-icon: hsl(0 0% 4.7059%);
+  --button-secondary-high-idle-background: hsl(0 0% 4.7059%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(0 0% 10.196%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(0 0% 25.098%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-high-focus-background: hsl(0 0% 10.196%);
+  --button-secondary-high-focus-border: hsl(0 0% 10.196%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(0 100% 40%);
+  --button-secondary-medium-hover-border: hsl(0 0% 10.196%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.1608);
+  --button-secondary-medium-pressed-border: hsl(0 0% 25.098%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(0 0% 10.196%);
+  --button-secondary-medium-label: hsl(0 0% 4.7059%);
+  --button-secondary-medium-icon: hsl(0 0% 4.7059%);
+  --button-secondary-low-hover-background: hsl(0 100% 90%);
+  --button-secondary-low-hover-border: hsl(0 100% 90%);
+  --button-secondary-low-pressed-background: hsl(0 100% 90%);
+  --button-secondary-low-pressed-border: hsl(0 100% 90%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(212.06 100% 40%);
+  --button-secondary-low-label: hsl(0 0% 4.7059%);
+  --button-secondary-low-icon: hsl(0 0% 4.7059%);
+}
+
+/* ─────────────────────────  JYLLANDS-POSTEN — Danish teal, newspaper  ─────────────────────────
+   Danish news brand. Teal-green primary, warm-orange CTA, near-square 4px buttons. Guardian Egyptian/Sans → Source Serif 4 + Inter (FLAGGED).
+   Full token diff vs iGraal (105 overrides) resolved from the Nalu token repo. */
+[data-brand="jyllandsposten"] {
+  --special-tag-background: hsl(177.14 31.343% 86.863%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5: hsl(177.143 60% 6.863%);
+  --colors-primary-10: hsl(178.235 58.621% 11.373%);
+  --colors-primary-20: hsl(178.824 58.621% 17.059%);
+  --colors-primary-30: hsl(179.118 58.621% 22.745%);
+  --colors-primary-40: hsl(178.588 58.621% 28.431%);
+  --colors-primary-50: hsl(178.824 58.621% 34.118%);
+  --colors-primary-55: hsl(178.588 36.797% 45.294%);
+  --colors-primary-60: hsl(179.118 30.357% 56.078%);
+  --colors-primary-70: hsl(178.824 30.539% 67.255%);
+  --colors-primary-80: hsl(178.235 30.357% 78.039%);
+  --colors-primary-90: hsl(177.143 31.343% 86.863%);
+  --colors-primary-95: hsl(180 29.032% 93.922%);
+  --colors-primary-98: hsl(180 27.273% 97.843%);
+  --colors-secondary-5: hsl(26.154 82.979% 9.216%);
+  --colors-secondary-10: hsl(26.769 84.416% 15.098%);
+  --colors-secondary-20: hsl(25.979 82.906% 22.941%);
+  --colors-secondary-30: hsl(25.846 83.333% 30.588%);
+  --colors-secondary-40: hsl(26.296 83.505% 38.039%);
+  --colors-secondary-50: hsl(26.154 83.691% 45.686%);
+  --colors-secondary-55: hsl(26.135 70.563% 54.706%);
+  --colors-secondary-60: hsl(25.846 70.652% 63.922%);
+  --colors-secondary-70: hsl(26.327 71.014% 72.941%);
+  --colors-secondary-80: hsl(26.769 69.892% 81.765%);
+  --colors-secondary-90: hsl(26.154 70.909% 89.216%);
+  --colors-secondary-95: hsl(24.545 73.333% 94.118%);
+  --colors-secondary-98: hsl(22.5 80% 98.039%);
+  --colors-tertiary-5: hsl(40 7.692% 15.294%);
+  --colors-tertiary-10: hsl(40 6.977% 25.294%);
+  --colors-tertiary-20: hsl(38.571 7.216% 38.039%);
+  --colors-tertiary-30: hsl(39 7.937% 50.588%);
+  --colors-tertiary-40: hsl(40 12.766% 63.137%);
+  --colors-tertiary-50: hsl(39.31 23.577% 75.882%);
+  --colors-tertiary-55: hsl(40 23.529% 80%);
+  --colors-tertiary-60: hsl(39 24.39% 83.922%);
+  --colors-tertiary-70: hsl(40 24.59% 88.039%);
+  --colors-tertiary-80: hsl(40 21.951% 91.961%);
+  --colors-tertiary-90: hsl(55.2 58.14% 91.569%);
+  --colors-tertiary-95: hsl(55 60% 96.078%);
+  --colors-tertiary-98: hsl(60 60% 99.02%);
+  --colors-quaternary-5: hsl(139.065 100% 58.039%);
+  --colors-quaternary-10: hsl(139.065 100% 58.039%);
+  --colors-quaternary-20: hsl(139.065 100% 58.039%);
+  --colors-quaternary-30: hsl(139.065 100% 58.039%);
+  --colors-quaternary-40: hsl(139.065 100% 58.039%);
+  --colors-quaternary-50: hsl(139.065 100% 58.039%);
+  --colors-quaternary-55: hsl(139.065 100% 58.039%);
+  --colors-quaternary-60: hsl(139.065 100% 58.039%);
+  --colors-quaternary-70: hsl(139.065 100% 58.039%);
+  --colors-quaternary-80: hsl(139.065 100% 58.039%);
+  --colors-quaternary-90: hsl(139.065 100% 58.039%);
+  --colors-quaternary-95: hsl(139.065 100% 58.039%);
+  --colors-quaternary-98: hsl(139.065 100% 58.039%);
+  --colors-black: hsl(0 0% 0%);
+
+  --content-link-idle: hsl(178.824 58.621% 34.118%);
+  --content-link-hover: hsl(178.588 58.621% 28.431%);
+
+  --border-subtle: hsl(0 0% 90.196%);
+
+  --brand-primary: hsl(178.588 58.621% 28.431%);
+  --brand-logo-bg: hsl(178.588 58.621% 28.431%);
+
+  --interactive-primary-high-idle-background: hsl(178.588 58.621% 28.431%);
+  --interactive-primary-high-hover-background: hsl(179.118 58.621% 22.745%);
+  --interactive-primary-high-pressed-background: hsl(178.824 58.621% 17.059%);
+
+  --button-primary-high-idle-background: hsl(26.296 83.505% 38.039%);
+  --button-primary-high-hover-background: hsl(25.846 83.333% 30.588%);
+  --button-primary-high-pressed-background: hsl(25.979 82.906% 22.941%);
+  --button-focus-ring: hsl(25.846 83.333% 30.588%);
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-medium-idle-border: hsl(26.296 83.505% 38.039%);
+  --button-primary-medium-hover-border: hsl(25.846 83.333% 30.588%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-primary-medium-pressed-border: hsl(25.979 82.906% 22.941%);
+  --button-primary-medium-label: hsl(26.296 83.505% 38.039%);
+  --button-primary-medium-icon: hsl(26.296 83.505% 38.039%);
+  --button-primary-low-hover-background: hsl(177.143 31.343% 86.863%);
+  --button-primary-low-hover-border: hsl(177.143 31.343% 86.863%);
+  --button-primary-low-pressed-background: hsl(177.143 31.343% 86.863%);
+  --button-primary-low-pressed-border: hsl(177.143 31.343% 86.863%);
+  --button-primary-low-label: hsl(26.296 83.505% 38.039%);
+  --button-primary-low-icon: hsl(26.296 83.505% 38.039%);
+  --button-secondary-high-idle-background: hsl(26.296 83.505% 38.039%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(25.846 83.333% 30.588%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(25.979 82.906% 22.941%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-medium-hover-border: hsl(25.846 83.333% 30.588%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-secondary-medium-pressed-border: hsl(25.979 82.906% 22.941%);
+  --button-secondary-medium-label: hsl(26.296 83.505% 38.039%);
+  --button-secondary-medium-icon: hsl(26.296 83.505% 38.039%);
+  --button-secondary-low-hover-background: hsl(177.143 31.343% 86.863%);
+  --button-secondary-low-hover-border: hsl(177.143 31.343% 86.863%);
+  --button-secondary-low-pressed-background: hsl(177.143 31.343% 86.863%);
+  --button-secondary-low-pressed-border: hsl(177.143 31.343% 86.863%);
+  --button-secondary-low-label: hsl(26.296 83.505% 38.039%);
+  --button-secondary-low-icon: hsl(26.296 83.505% 38.039%);
+
+  --typography-body-font-family: 'Source Serif 4', Georgia, serif;
+  --typography-label-font-family: 'Source Serif 4', Georgia, serif;
+  --typography-title-font-family-large: 'Inter', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Source Serif 4', Georgia, serif;
+  --typography-headline-alt-font-family: 'Inter', system-ui, sans-serif;
+  --typography-headline-font-family: 'Inter', system-ui, sans-serif;
+  --typography-display-font-family-large: 'Inter', system-ui, sans-serif;
+
+  --button-corner-radius: 4px;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-focus-background: hsl(25.846 83.333% 30.588%);
+  --button-primary-high-focus-border: hsl(25.846 83.333% 30.588%);
+  --button-primary-medium-idle-forground2: hsl(178.59 58.621% 28.431%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(25.846 83.333% 30.588%);
+  --button-primary-medium-label-copy: hsl(26.296 83.505% 38.039%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(26.154 83.691% 45.686%);
+  --button-secondary-high-focus-background: hsl(25.846 83.333% 30.588%);
+  --button-secondary-high-focus-border: hsl(25.846 83.333% 30.588%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(178.59 58.621% 28.431%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(25.846 83.333% 30.588%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(26.154 83.691% 45.686%);
+}
+
+/* ─────────────────────────  KORTINGSCODE — sky blue, green CTA  ─────────────────────────
+   Dutch coupons brand. Sky-blue primary + links, GREEN primary button, 4px buttons. Poppins + Roboto.
+   Full token diff vs iGraal (132 overrides) resolved from the Nalu token repo. */
+[data-brand="kortingscode"] {
+  --special-tag-background: hsl(204.71 100% 90%);
+  --special-tag-foreground: hsl(225 15.385% 5.098%);
+  --colors-neutral-5: hsl(225 15.385% 5.098%);
+  --colors-neutral-10: hsl(214.286 13.725% 10%);
+  --colors-neutral-20: hsl(213.75 15.686% 20%);
+  --colors-neutral-30: hsl(213.913 15.033% 30%);
+  --colors-neutral-40: hsl(214 14.706% 40%);
+  --colors-neutral-50: hsl(213.846 15.294% 50%);
+  --colors-neutral-55: hsl(213.529 14.783% 54.902%);
+  --colors-neutral-60: hsl(214 14.706% 60%);
+  --colors-neutral-70: hsl(213.913 15.033% 70%);
+  --colors-neutral-80: hsl(213.75 15.686% 80%);
+  --colors-neutral-90: hsl(214.286 13.725% 90%);
+  --colors-neutral-95: hsl(210 15.385% 94.902%);
+  --colors-neutral-98: hsl(210 20% 98.039%);
+  --colors-primary-5: hsl(205.385 100% 5.098%);
+  --colors-primary-10: hsl(204.706 100% 10%);
+  --colors-primary-20: hsl(205.313 100% 25.098%);
+  --colors-primary-30: hsl(205.098 100% 30%);
+  --colors-primary-40: hsl(205 100% 40%);
+  --colors-primary-50: hsl(204.941 100% 50%);
+  --colors-primary-55: hsl(205.153 100% 55.098%);
+  --colors-primary-60: hsl(205 100% 60%);
+  --colors-primary-70: hsl(205.098 100% 70%);
+  --colors-primary-80: hsl(204.706 100% 80%);
+  --colors-primary-90: hsl(204.706 100% 90%);
+  --colors-primary-95: hsl(205.385 100% 94.902%);
+  --colors-primary-98: hsl(204 100% 98.039%);
+  --colors-secondary-5: hsl(167.5 92.308% 5.098%);
+  --colors-secondary-10: hsl(166.531 96.078% 10%);
+  --colors-secondary-20: hsl(166.849 94.805% 15.098%);
+  --colors-secondary-30: hsl(166.718 95.62% 26.863%);
+  --colors-secondary-40: hsl(166.667 88.235% 40%);
+  --colors-secondary-50: hsl(166.734 78.039% 50%);
+  --colors-secondary-55: hsl(166.786 73.043% 54.902%);
+  --colors-secondary-60: hsl(166.901 69.608% 60%);
+  --colors-secondary-70: hsl(167.027 65.68% 66.863%);
+  --colors-secondary-80: hsl(166.765 66.667% 80%);
+  --colors-secondary-90: hsl(167.273 64.706% 90%);
+  --colors-secondary-95: hsl(165.882 68% 95.098%);
+  --colors-secondary-98: hsl(170 60% 98.039%);
+  --colors-tertiary-5: hsl(26.4 100% 4.902%);
+  --colors-tertiary-10: hsl(27.059 100% 10%);
+  --colors-tertiary-20: hsl(26.739 100% 18.039%);
+  --colors-tertiary-30: hsl(26.667 100% 30%);
+  --colors-tertiary-40: hsl(27.047 100% 37.843%);
+  --colors-tertiary-50: hsl(26.798 99.216% 50%);
+  --colors-tertiary-55: hsl(26.725 100% 55.098%);
+  --colors-tertiary-60: hsl(26.765 100% 60%);
+  --colors-tertiary-70: hsl(26.871 100% 68.039%);
+  --colors-tertiary-80: hsl(27.059 100% 80%);
+  --colors-tertiary-90: hsl(27.059 100% 90%);
+  --colors-tertiary-95: hsl(26.4 100% 95.098%);
+  --colors-tertiary-98: hsl(24 100% 98.039%);
+  --colors-quaternary-5: hsl(139.065 100% 58.039%);
+  --colors-quaternary-10: hsl(139.065 100% 58.039%);
+  --colors-quaternary-20: hsl(139.065 100% 58.039%);
+  --colors-quaternary-30: hsl(139.065 100% 58.039%);
+  --colors-quaternary-40: hsl(139.065 100% 58.039%);
+  --colors-quaternary-50: hsl(139.065 100% 58.039%);
+  --colors-quaternary-55: hsl(139.065 100% 58.039%);
+  --colors-quaternary-60: hsl(139.065 100% 58.039%);
+  --colors-quaternary-70: hsl(139.065 100% 58.039%);
+  --colors-quaternary-80: hsl(139.065 100% 58.039%);
+  --colors-quaternary-90: hsl(139.065 100% 58.039%);
+  --colors-quaternary-95: hsl(139.065 100% 58.039%);
+  --colors-quaternary-98: hsl(139.065 100% 58.039%);
+  --colors-black: hsl(0 0% 0%);
+
+  --content-default: hsl(225 15.385% 5.098%);
+  --content-subtle: hsl(214 14.706% 40%);
+  --content-link-idle: hsl(205 100% 40%);
+  --content-link-hover: hsl(205.098 100% 30%);
+
+  --background-surface-default: hsl(210 20% 98.039%);
+  --background-surface-lowered: hsl(210 15.385% 94.902%);
+
+  --border-default: hsl(213.75 15.686% 80%);
+  --border-subtle: hsl(214.286 13.725% 90%);
+
+  --brand-primary: hsl(205 100% 40%);
+  --brand-logo-bg: hsl(205 100% 40%);
+
+  --interactive-primary-high-idle-background: hsl(205 100% 40%);
+  --interactive-primary-high-hover-background: hsl(205.098 100% 30%);
+  --interactive-primary-high-pressed-background: hsl(205.313 100% 25.098%);
+  --interactive-primary-high-disabled-background: hsl(213.913 15.033% 70%);
+
+  --button-primary-high-idle-background: hsl(166.718 95.62% 26.863%);
+  --button-primary-high-hover-background: hsl(166.849 94.805% 15.098%);
+  --button-primary-high-pressed-background: hsl(166.531 96.078% 10%);
+  --button-primary-high-disabled-background: hsl(213.913 15.033% 70%);
+  --button-focus-ring: hsl(166.849 94.805% 15.098%);
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-high-disabled-border: hsl(213.913 15.033% 70%);
+  --button-primary-medium-idle-border: hsl(166.718 95.62% 26.863%);
+  --button-primary-medium-hover-border: hsl(166.849 94.805% 15.098%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-primary-medium-pressed-border: hsl(166.531 96.078% 10%);
+  --button-primary-medium-disabled-background: hsl(214.286 13.725% 90%);
+  --button-primary-medium-disabled-border: hsl(213.913 15.033% 70%);
+  --button-primary-medium-label: hsl(166.718 95.62% 26.863%);
+  --button-primary-medium-icon: hsl(166.718 95.62% 26.863%);
+  --button-primary-low-hover-background: hsl(205.098 100% 70%);
+  --button-primary-low-hover-border: hsl(205.098 100% 70%);
+  --button-primary-low-pressed-background: hsl(205.098 100% 70%);
+  --button-primary-low-pressed-border: hsl(205.098 100% 70%);
+  --button-primary-low-label: hsl(166.718 95.62% 26.863%);
+  --button-primary-low-icon: hsl(166.718 95.62% 26.863%);
+  --button-secondary-high-idle-background: hsl(166.718 95.62% 26.863%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(166.849 94.805% 15.098%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(166.531 96.078% 10%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-high-disabled-background: hsl(213.913 15.033% 70%);
+  --button-secondary-high-disabled-border: hsl(213.913 15.033% 70%);
+  --button-secondary-medium-hover-border: hsl(166.849 94.805% 15.098%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-secondary-medium-pressed-border: hsl(166.531 96.078% 10%);
+  --button-secondary-medium-disabled-background: hsl(214.286 13.725% 90%);
+  --button-secondary-medium-disabled-border: hsl(213.913 15.033% 70%);
+  --button-secondary-medium-label: hsl(166.718 95.62% 26.863%);
+  --button-secondary-medium-icon: hsl(166.718 95.62% 26.863%);
+  --button-secondary-low-hover-background: hsl(205.098 100% 70%);
+  --button-secondary-low-hover-border: hsl(205.098 100% 70%);
+  --button-secondary-low-pressed-background: hsl(205.098 100% 70%);
+  --button-secondary-low-pressed-border: hsl(205.098 100% 70%);
+  --button-secondary-low-label: hsl(166.718 95.62% 26.863%);
+  --button-secondary-low-icon: hsl(166.718 95.62% 26.863%);
+
+  --typography-body-font-family: 'Roboto', system-ui, sans-serif;
+  --typography-label-font-family: 'Poppins', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Poppins', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Poppins', system-ui, sans-serif;
+  --typography-headline-alt-font-family: 'Poppins', system-ui, sans-serif;
+  --typography-headline-font-family: 'Poppins', system-ui, sans-serif;
+  --typography-display-font-family-large: 'Poppins', system-ui, sans-serif;
+
+  --button-corner-radius: 4px;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-focus-background: hsl(166.85 94.805% 15.098%);
+  --button-primary-high-focus-border: hsl(166.85 94.805% 15.098%);
+  --button-primary-medium-idle-forground2: hsl(205 100% 40%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(166.85 94.805% 15.098%);
+  --button-primary-medium-label-copy: hsl(166.72 95.62% 26.863%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(166.73 78.039% 50%);
+  --button-secondary-high-focus-background: hsl(166.85 94.805% 15.098%);
+  --button-secondary-high-focus-border: hsl(166.85 94.805% 15.098%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(205 100% 40%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(166.85 94.805% 15.098%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(166.73 78.039% 50%);
+}
+
+/* ─────────────────────────  BUSINESS INSIDER — greyscale + blue link, black CTA  ─────────────────────────
+   Near-greyscale primary ramp, vivid blue links, BLACK CTA, 4px buttons. Lab Grotesque → Space Grotesk (FLAGGED).
+   Full token diff vs iGraal (116 overrides) resolved from the Nalu token repo. */
+[data-brand="businessinsider"] {
+  --special-tag-background: hsl(240 5.8824% 90%);
+  --special-tag-foreground: hsl(0 0% 5.098%);
+  --colors-primary-5: hsl(240 4% 4.902%);
+  --colors-primary-10: hsl(240 5.882% 10%);
+  --colors-primary-20: hsl(240 3.922% 20%);
+  --colors-primary-30: hsl(240 4.575% 30%);
+  --colors-primary-40: hsl(240 3.922% 40%);
+  --colors-primary-50: hsl(240 3.83% 46.078%);
+  --colors-primary-55: hsl(240 3.93% 55.098%);
+  --colors-primary-60: hsl(240 3.922% 60%);
+  --colors-primary-70: hsl(240 4.575% 70%);
+  --colors-primary-80: hsl(240 3.922% 80%);
+  --colors-primary-90: hsl(240 5.882% 90%);
+  --colors-primary-95: hsl(240 4% 95.098%);
+  --colors-primary-98: hsl(0 0% 98.039%);
+  --colors-secondary-5: hsl(230.769 100% 5.098%);
+  --colors-secondary-10: hsl(229.412 100% 10%);
+  --colors-secondary-20: hsl(230 100% 20%);
+  --colors-secondary-30: hsl(229.804 100% 30%);
+  --colors-secondary-40: hsl(230 100% 40%);
+  --colors-secondary-50: hsl(230.118 100% 50%);
+  --colors-secondary-55: hsl(229.826 100% 54.902%);
+  --colors-secondary-60: hsl(230 100% 60%);
+  --colors-secondary-70: hsl(229.804 100% 70%);
+  --colors-secondary-80: hsl(230 100% 80%);
+  --colors-secondary-90: hsl(229.412 100% 90%);
+  --colors-secondary-95: hsl(230.769 100% 94.902%);
+  --colors-secondary-98: hsl(228 100% 98.039%);
+  --colors-tertiary-5: hsl(22.5 30.769% 5.098%);
+  --colors-tertiary-10: hsl(24.706 33.333% 10%);
+  --colors-tertiary-20: hsl(24.706 33.333% 20%);
+  --colors-tertiary-30: hsl(23.529 33.333% 30%);
+  --colors-tertiary-40: hsl(23.824 33.333% 40%);
+  --colors-tertiary-50: hsl(24 33.333% 50%);
+  --colors-tertiary-55: hsl(24.474 33.043% 54.902%);
+  --colors-tertiary-60: hsl(23.824 33.333% 60%);
+  --colors-tertiary-70: hsl(23.529 33.333% 70%);
+  --colors-tertiary-80: hsl(24.706 33.333% 80%);
+  --colors-tertiary-90: hsl(24.706 33.333% 90%);
+  --colors-tertiary-95: hsl(24 33.333% 97.059%);
+  --colors-tertiary-98: hsl(0 20% 99.02%);
+  --colors-quaternary-5: hsl(139.065 100% 58.039%);
+  --colors-quaternary-10: hsl(139.065 100% 58.039%);
+  --colors-quaternary-20: hsl(139.065 100% 58.039%);
+  --colors-quaternary-30: hsl(139.065 100% 58.039%);
+  --colors-quaternary-40: hsl(139.065 100% 58.039%);
+  --colors-quaternary-50: hsl(139.065 100% 58.039%);
+  --colors-quaternary-55: hsl(139.065 100% 58.039%);
+  --colors-quaternary-60: hsl(139.065 100% 58.039%);
+  --colors-quaternary-70: hsl(139.065 100% 58.039%);
+  --colors-quaternary-80: hsl(139.065 100% 58.039%);
+  --colors-quaternary-90: hsl(139.065 100% 58.039%);
+  --colors-quaternary-95: hsl(139.065 100% 58.039%);
+  --colors-quaternary-98: hsl(139.065 100% 58.039%);
+  --colors-danger-40: hsl(0 82.353% 40%);
+  --colors-danger-50: hsl(0.29 82.47% 49.216%);
+  --colors-danger-70: hsl(0 81.699% 70%);
+  --colors-danger-90: hsl(0 80.392% 90%);
+  --colors-danger-95: hsl(0 84% 95.098%);
+  --colors-black: hsl(0 0% 0%);
+
+  --content-subtle: hsl(240 3.83% 46.078%);
+  --content-link-idle: hsl(230.118 100% 50%);
+  --content-link-hover: hsl(230 100% 40%);
+
+  --background-surface-default: hsl(0 0% 100%);
+  --background-surface-elevated: hsl(24 33.333% 97.059%);
+  --background-surface-lowered: hsl(0 0% 98.039%);
+
+  --border-subtle: hsl(0 0% 90.196%);
+
+  --brand-primary: hsl(240 3.922% 40%);
+  --brand-logo-bg: hsl(240 3.922% 40%);
+
+  --interactive-primary-high-idle-background: hsl(230.118 100% 50%);
+  --interactive-primary-high-hover-background: hsl(230 100% 40%);
+  --interactive-primary-high-pressed-background: hsl(229.804 100% 30%);
+
+  --button-primary-high-idle-background: hsl(0 0% 0%);
+  --button-primary-high-hover-background: hsl(240 4% 4.902%);
+  --button-primary-high-pressed-background: hsl(240 5.882% 10%);
+  --button-focus-ring: hsl(240 4% 4.902%);
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-medium-idle-border: hsl(0 0% 0%);
+  --button-primary-medium-hover-border: hsl(240 4% 4.902%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-primary-medium-pressed-border: hsl(240 5.882% 10%);
+  --button-primary-medium-label: hsl(0 0% 0%);
+  --button-primary-medium-icon: hsl(0 0% 0%);
+  --button-primary-low-hover-background: hsl(240 3.83% 46.078%);
+  --button-primary-low-hover-border: hsl(240 3.83% 46.078%);
+  --button-primary-low-pressed-background: hsl(240 3.83% 46.078%);
+  --button-primary-low-pressed-border: hsl(240 3.83% 46.078%);
+  --button-primary-low-label: hsl(0 0% 0%);
+  --button-primary-low-icon: hsl(0 0% 0%);
+  --button-secondary-high-idle-background: hsl(0 0% 0%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(240 4% 4.902%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(240 5.882% 10%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-medium-hover-border: hsl(240 4% 4.902%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-secondary-medium-pressed-border: hsl(240 5.882% 10%);
+  --button-secondary-medium-label: hsl(0 0% 0%);
+  --button-secondary-medium-icon: hsl(0 0% 0%);
+  --button-secondary-low-hover-background: hsl(240 3.83% 46.078%);
+  --button-secondary-low-hover-border: hsl(240 3.83% 46.078%);
+  --button-secondary-low-pressed-background: hsl(240 3.83% 46.078%);
+  --button-secondary-low-pressed-border: hsl(240 3.83% 46.078%);
+  --button-secondary-low-label: hsl(0 0% 0%);
+  --button-secondary-low-icon: hsl(0 0% 0%);
+
+  --error-foreground: hsl(0 80% 98.039%);
+  --error-background: hsl(0.29 82.47% 49.216%);
+
+  --typography-body-font-family: 'Space Grotesk', system-ui, sans-serif;
+  --typography-label-font-family: 'Space Grotesk', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Space Grotesk', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Space Grotesk', system-ui, sans-serif;
+  --typography-headline-alt-font-family: 'Space Grotesk', system-ui, sans-serif;
+  --typography-headline-font-family: 'Space Grotesk', system-ui, sans-serif;
+  --typography-display-font-family-large: 'Space Grotesk', system-ui, sans-serif;
+
+  --button-corner-radius: 4px;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-focus-background: hsl(240 4% 4.902%);
+  --button-primary-high-focus-border: hsl(240 4% 4.902%);
+  --button-primary-medium-idle-forground2: hsl(230.12 100% 50%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(240 4% 4.902%);
+  --button-primary-medium-label-copy: hsl(0 0% 0%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(230 100% 20%);
+  --button-secondary-high-focus-background: hsl(240 4% 4.902%);
+  --button-secondary-high-focus-border: hsl(240 4% 4.902%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(230.12 100% 50%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(240 4% 4.902%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(230 100% 20%);
+}
+
+/* ─────────────────────────  PEPPER (mydealz) — community orange, pill buttons  ─────────────────────────
+   Community-deals brand. Orange primary + CTA, neutral-grey links, pill (99px) buttons. Averta CY (licensed webfont).
+   Full token diff vs iGraal (112 overrides) resolved from the Nalu token repo. */
+[data-brand="pepper"] {
+  --special-tag-background: hsl(261.85 91.089% 60.392%);
+  --special-tag-foreground: hsl(0 0% 100%);
+  --colors-primary-5: hsl(27.692 100% 5.098%);
+  --colors-primary-10: hsl(28.235 100% 10%);
+  --colors-primary-20: hsl(28.235 100% 20%);
+  --colors-primary-30: hsl(28.627 100% 30%);
+  --colors-primary-40: hsl(28.529 100% 40%);
+  --colors-primary-50: hsl(28.471 100% 50%);
+  --colors-primary-55: hsl(34.724 100% 49.804%);
+  --colors-primary-60: hsl(34.706 100% 60%);
+  --colors-primary-70: hsl(34.902 100% 70%);
+  --colors-primary-80: hsl(34.706 100% 80%);
+  --colors-primary-90: hsl(35.294 100% 90%);
+  --colors-primary-95: hsl(34.615 100% 94.902%);
+  --colors-primary-98: hsl(36 100% 98.039%);
+  --colors-secondary-5: hsl(180 4% 4.902%);
+  --colors-secondary-10: hsl(210 5.263% 14.902%);
+  --colors-secondary-20: hsl(220 5.357% 21.961%);
+  --colors-secondary-30: hsl(220 5.882% 30%);
+  --colors-secondary-40: hsl(222 4.902% 40%);
+  --colors-secondary-50: hsl(221.538 5.098% 50%);
+  --colors-secondary-55: hsl(223.636 4.803% 55.098%);
+  --colors-secondary-60: hsl(220 5.882% 60%);
+  --colors-secondary-70: hsl(220 5.882% 70%);
+  --colors-secondary-80: hsl(220 5.882% 80%);
+  --colors-secondary-90: hsl(220 5.882% 90%);
+  --colors-secondary-95: hsl(210 7.692% 94.902%);
+  --colors-secondary-98: hsl(0 0% 98.039%);
+  --colors-tertiary-5: hsl(346.154 100% 5.098%);
+  --colors-tertiary-10: hsl(345.882 100% 10%);
+  --colors-tertiary-20: hsl(345.882 100% 20%);
+  --colors-tertiary-30: hsl(345.882 100% 30%);
+  --colors-tertiary-40: hsl(346.071 100% 43.922%);
+  --colors-tertiary-50: hsl(346.118 100% 50%);
+  --colors-tertiary-55: hsl(346.114 100% 55.098%);
+  --colors-tertiary-60: hsl(346.176 100% 60%);
+  --colors-tertiary-70: hsl(345.882 100% 70%);
+  --colors-tertiary-80: hsl(345.882 100% 80%);
+  --colors-tertiary-90: hsl(345.882 100% 90%);
+  --colors-tertiary-95: hsl(343.846 100% 94.902%);
+  --colors-tertiary-98: hsl(348 100% 98.039%);
+  --colors-quaternary-5: hsl(258.261 92% 4.902%);
+  --colors-quaternary-10: hsl(256.596 92.157% 10%);
+  --colors-quaternary-20: hsl(256.596 92.157% 20%);
+  --colors-quaternary-30: hsl(256.596 92.157% 30%);
+  --colors-quaternary-40: hsl(256.596 92.157% 40%);
+  --colors-quaternary-50: hsl(256.738 91.373% 50%);
+  --colors-quaternary-55: hsl(256.777 92.14% 55.098%);
+  --colors-quaternary-60: hsl(256.596 92.157% 60%);
+  --colors-quaternary-70: hsl(256.692 91.724% 71.569%);
+  --colors-quaternary-80: hsl(256.596 92.157% 80%);
+  --colors-quaternary-90: hsl(256.596 92.157% 90%);
+  --colors-quaternary-95: hsl(255.652 92% 95.098%);
+  --colors-quaternary-98: hsl(258 100% 98.039%);
+  --colors-black: hsl(0 0% 0%);
+
+  --content-link-idle: hsl(221.538 5.098% 50%);
+  --content-link-hover: hsl(222 4.902% 40%);
+
+  --border-subtle: hsl(0 0% 90.196%);
+
+  --brand-primary: hsl(28.471 100% 50%);
+  --brand-logo-bg: hsl(28.471 100% 50%);
+
+  --interactive-primary-high-idle-background: hsl(200 4.918% 11.961%);
+  --interactive-primary-high-hover-background: hsl(210 2.439% 16.078%);
+  --interactive-primary-high-pressed-background: hsl(220 2.703% 21.765%);
+  --interactive-primary-high-disabled-background: hsl(210 20% 96.078%);
+
+  --button-primary-high-idle-background: hsl(19.909 93.22% 53.725%);
+  --button-primary-high-hover-background: hsl(19.412 83.607% 52.157%);
+  --button-primary-high-pressed-background: hsl(19.579 77.236% 48.235%);
+  --button-focus-ring: hsl(19.412 83.607% 52.157%);
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-medium-idle-border: hsl(19.909 93.22% 53.725%);
+  --button-primary-medium-hover-border: hsl(19.412 83.607% 52.157%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-primary-medium-pressed-border: hsl(19.579 77.236% 48.235%);
+  --button-primary-medium-label: hsl(19.909 93.22% 53.725%);
+  --button-primary-medium-icon: hsl(19.909 93.22% 53.725%);
+  --button-primary-low-hover-background: hsl(34.724 100% 49.804%);
+  --button-primary-low-hover-border: hsl(34.724 100% 49.804%);
+  --button-primary-low-pressed-background: hsl(34.724 100% 49.804%);
+  --button-primary-low-pressed-border: hsl(34.724 100% 49.804%);
+  --button-primary-low-label: hsl(19.909 93.22% 53.725%);
+  --button-primary-low-icon: hsl(19.909 93.22% 53.725%);
+  --button-secondary-high-idle-background: hsl(19.909 93.22% 53.725%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(19.412 83.607% 52.157%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(19.579 77.236% 48.235%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-medium-hover-border: hsl(19.412 83.607% 52.157%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-secondary-medium-pressed-border: hsl(19.579 77.236% 48.235%);
+  --button-secondary-medium-label: hsl(19.909 93.22% 53.725%);
+  --button-secondary-medium-icon: hsl(19.909 93.22% 53.725%);
+  --button-secondary-low-hover-background: hsl(34.724 100% 49.804%);
+  --button-secondary-low-hover-border: hsl(34.724 100% 49.804%);
+  --button-secondary-low-pressed-background: hsl(34.724 100% 49.804%);
+  --button-secondary-low-pressed-border: hsl(34.724 100% 49.804%);
+  --button-secondary-low-label: hsl(19.909 93.22% 53.725%);
+  --button-secondary-low-icon: hsl(19.909 93.22% 53.725%);
+
+  --typography-body-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-label-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Averta CY', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Averta CY', system-ui, sans-serif;
+  --typography-headline-alt-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-headline-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-display-font-family-large: 'Averta CY', system-ui, sans-serif;
+  --typography-display-font-weight-large: 600;
+  --typography-headline-font-weight-large: 600;
+  --typography-title-font-weight-large: 600;
+  --typography-body-font-weight-medium: 400;
+  --typography-label-font-weight-large: 600;
+  --typography-label-font-weight-medium: 400;
+  --typography-label-font-weight-small: 400;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-focus-background: hsl(19.412 83.607% 52.157%);
+  --button-primary-high-focus-border: hsl(19.412 83.607% 52.157%);
+  --button-primary-medium-idle-forground2: hsl(28.471 100% 50%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(19.412 83.607% 52.157%);
+  --button-primary-medium-label-copy: hsl(19.909 93.22% 53.725%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(200 4.918% 11.961%);
+  --button-secondary-high-focus-background: hsl(19.412 83.607% 52.157%);
+  --button-secondary-high-focus-border: hsl(19.412 83.607% 52.157%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(28.471 100% 50%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(19.412 83.607% 52.157%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(200 4.918% 11.961%);
+}
+
+/* ─────────────────────────  PEPPER · SECONDARY — community green  ─────────────────────────
+   Pepper alt theme: green primary, pill buttons. Averta CY (licensed webfont).
+   Full token diff vs iGraal (113 overrides) resolved from the Nalu token repo. */
+[data-brand="pepper-secondary"] {
+  --special-tag-background: hsl(261.85 91.089% 60.392%);
+  --special-tag-foreground: hsl(0 0% 100%);
+  --colors-primary-5: hsl(91.765 68% 4.902%);
+  --colors-primary-10: hsl(94.545 64.706% 10%);
+  --colors-primary-20: hsl(93.636 64.706% 20%);
+  --colors-primary-30: hsl(93.939 64.706% 30%);
+  --colors-primary-40: hsl(94.03 65.686% 40%);
+  --colors-primary-50: hsl(94 65.217% 45.098%);
+  --colors-primary-55: hsl(94 65.217% 54.902%);
+  --colors-primary-60: hsl(94.03 65.686% 60%);
+  --colors-primary-70: hsl(93.939 64.706% 70%);
+  --colors-primary-80: hsl(93.636 64.706% 80%);
+  --colors-primary-90: hsl(94.545 64.706% 90%);
+  --colors-primary-95: hsl(95.294 68% 95.098%);
+  --colors-primary-98: hsl(100 60% 98.039%);
+  --colors-secondary-5: hsl(207.692 100% 5.098%);
+  --colors-secondary-10: hsl(207.059 100% 10%);
+  --colors-secondary-20: hsl(206.471 100% 20%);
+  --colors-secondary-30: hsl(206.531 100% 28.824%);
+  --colors-secondary-40: hsl(206.471 100% 40%);
+  --colors-secondary-50: hsl(206.588 100% 50%);
+  --colors-secondary-55: hsl(206.463 100% 55.098%);
+  --colors-secondary-60: hsl(206.471 100% 60%);
+  --colors-secondary-70: hsl(206.667 100% 70%);
+  --colors-secondary-80: hsl(206.471 100% 80%);
+  --colors-secondary-90: hsl(207.059 100% 90%);
+  --colors-secondary-95: hsl(205.385 100% 94.902%);
+  --colors-secondary-98: hsl(210 100% 98.039%);
+  --colors-tertiary-5: hsl(180 4% 4.902%);
+  --colors-tertiary-10: hsl(220 5.882% 10%);
+  --colors-tertiary-20: hsl(220 5.357% 21.961%);
+  --colors-tertiary-30: hsl(222.857 4.575% 30%);
+  --colors-tertiary-40: hsl(222 4.902% 40%);
+  --colors-tertiary-50: hsl(221.538 5.098% 50%);
+  --colors-tertiary-55: hsl(223.636 4.803% 55.098%);
+  --colors-tertiary-60: hsl(222 4.902% 60%);
+  --colors-tertiary-70: hsl(220 5.882% 70%);
+  --colors-tertiary-80: hsl(220 5.882% 80%);
+  --colors-tertiary-90: hsl(220 5.882% 90%);
+  --colors-tertiary-95: hsl(240 4% 95.098%);
+  --colors-tertiary-98: hsl(0 0% 98.039%);
+  --colors-quaternary-5: hsl(19.2 100% 4.902%);
+  --colors-quaternary-10: hsl(18.182 97.059% 13.333%);
+  --colors-quaternary-20: hsl(18.202 97.802% 17.843%);
+  --colors-quaternary-30: hsl(18.095 98.438% 25.098%);
+  --colors-quaternary-40: hsl(18.375 98.765% 31.765%);
+  --colors-quaternary-50: hsl(18.286 98.131% 41.961%);
+  --colors-quaternary-55: hsl(18.205 98.319% 53.333%);
+  --colors-quaternary-60: hsl(25.152 100% 61.176%);
+  --colors-quaternary-70: hsl(25.098 100% 70%);
+  --colors-quaternary-80: hsl(25.294 100% 80%);
+  --colors-quaternary-90: hsl(24.706 100% 90%);
+  --colors-quaternary-95: hsl(24 100% 96.078%);
+  --colors-quaternary-98: hsl(24 100% 98.039%);
+  --colors-black: hsl(0 0% 0%);
+
+  --content-link-idle: hsl(94 65.217% 54.902%);
+  --content-link-hover: hsl(94 65.217% 45.098%);
+
+  --brand-primary: hsl(94 65.217% 45.098%);
+  --brand-logo-bg: hsl(94 65.217% 45.098%);
+
+  --interactive-primary-high-idle-background: hsl(200 4.918% 11.961%);
+  --interactive-primary-high-hover-background: hsl(210 2.439% 16.078%);
+  --interactive-primary-high-pressed-background: hsl(220 2.703% 21.765%);
+  --interactive-primary-high-disabled-background: hsl(210 20% 96.078%);
+
+  --button-primary-high-idle-background: hsl(94 65.217% 45.098%);
+  --button-primary-high-hover-background: hsl(94.03 65.686% 40%);
+  --button-primary-high-pressed-background: hsl(93.939 64.706% 30%);
+  --button-focus-ring: hsl(206.471 100% 40%);
+  --button-primary-high-idle-border: hsl(94 65.217% 45.098%);
+  --button-primary-high-hover-border: hsl(94.03 65.686% 40%);
+  --button-primary-high-pressed-border: hsl(93.939 64.706% 30%);
+  --button-primary-medium-idle-border: hsl(94 65.217% 45.098%);
+  --button-primary-medium-hover-background: hsl(94.545 64.706% 90%);
+  --button-primary-medium-hover-border: hsl(94.03 65.686% 40%);
+  --button-primary-medium-pressed-background: hsl(93.636 64.706% 80%);
+  --button-primary-medium-pressed-border: hsl(93.939 64.706% 30%);
+  --button-primary-medium-label: hsl(94 65.217% 45.098%);
+  --button-primary-medium-icon: hsl(94 65.217% 45.098%);
+  --button-primary-low-hover-background: hsl(94.545 64.706% 90%);
+  --button-primary-low-hover-border: hsl(95.294 68% 95.098%);
+  --button-primary-low-pressed-background: hsl(93.636 64.706% 80%);
+  --button-primary-low-pressed-border: hsl(93.636 64.706% 80%);
+  --button-primary-low-label: hsl(94 65.217% 45.098%);
+  --button-primary-low-icon: hsl(94 65.217% 45.098%);
+  --button-secondary-high-idle-background: hsl(94 65.217% 45.098%);
+  --button-secondary-high-idle-border: hsl(94 65.217% 45.098%);
+  --button-secondary-high-hover-background: hsl(94.03 65.686% 40%);
+  --button-secondary-high-hover-border: hsl(94.03 65.686% 40%);
+  --button-secondary-high-pressed-background: hsl(93.939 64.706% 30%);
+  --button-secondary-high-pressed-border: hsl(93.939 64.706% 30%);
+  --button-secondary-medium-hover-background: hsl(94.545 64.706% 90%);
+  --button-secondary-medium-hover-border: hsl(94.03 65.686% 40%);
+  --button-secondary-medium-pressed-background: hsl(93.636 64.706% 80%);
+  --button-secondary-medium-pressed-border: hsl(93.939 64.706% 30%);
+  --button-secondary-medium-label: hsl(94 65.217% 45.098%);
+  --button-secondary-medium-icon: hsl(94 65.217% 45.098%);
+  --button-secondary-low-hover-background: hsl(94.545 64.706% 90%);
+  --button-secondary-low-hover-border: hsl(95.294 68% 95.098%);
+  --button-secondary-low-pressed-background: hsl(93.636 64.706% 80%);
+  --button-secondary-low-pressed-border: hsl(93.636 64.706% 80%);
+  --button-secondary-low-label: hsl(94 65.217% 45.098%);
+  --button-secondary-low-icon: hsl(94 65.217% 45.098%);
+
+  --typography-body-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-label-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Averta CY', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Averta CY', system-ui, sans-serif;
+  --typography-headline-alt-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-headline-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-display-font-family-large: 'Averta CY', system-ui, sans-serif;
+  --typography-display-font-weight-large: 600;
+  --typography-headline-font-weight-large: 600;
+  --typography-title-font-weight-large: 600;
+  --typography-body-font-weight-medium: 400;
+  --typography-label-font-weight-large: 600;
+  --typography-label-font-weight-medium: 400;
+  --typography-label-font-weight-small: 400;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-focus-background: hsl(94.03 65.686% 40%);
+  --button-primary-high-focus-border: hsl(206.47 100% 40%);
+  --button-primary-medium-idle-forground2: hsl(94 65.217% 45.098%);
+  --button-primary-medium-focus-background: hsl(0 0% 100% / 0);
+  --button-primary-medium-focus-border: hsl(206.47 100% 40%);
+  --button-primary-medium-label-copy: hsl(94 65.217% 45.098%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(200 4.918% 11.961%);
+  --button-secondary-high-focus-background: hsl(94.03 65.686% 40%);
+  --button-secondary-high-focus-border: hsl(206.47 100% 40%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(94 65.217% 45.098%);
+  --button-secondary-medium-focus-background: hsl(0 0% 100% / 0);
+  --button-secondary-medium-focus-border: hsl(206.47 100% 40%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(200 4.918% 11.961%);
+}
+
+/* ─────────────────────────  PEPPER · TERTIARY — community cyan  ─────────────────────────
+   Pepper alt theme: cyan primary, pill buttons. Averta CY (licensed webfont).
+   Full token diff vs iGraal (112 overrides) resolved from the Nalu token repo. */
+[data-brand="pepper-tertiary"] {
+  --special-tag-background: hsl(261.85 91.089% 60.392%);
+  --special-tag-foreground: hsl(0 0% 100%);
+  --colors-primary-5: hsl(189.6 100% 4.902%);
+  --colors-primary-10: hsl(188.571 96.078% 10%);
+  --colors-primary-20: hsl(189.194 96.875% 25.098%);
+  --colors-primary-30: hsl(188.859 97.386% 30%);
+  --colors-primary-40: hsl(188.842 96.939% 38.431%);
+  --colors-primary-50: hsl(188.742 60.159% 50.784%);
+  --colors-primary-55: hsl(188.696 60% 54.902%);
+  --colors-primary-60: hsl(188.852 59.804% 60%);
+  --colors-primary-70: hsl(189.032 60.784% 70%);
+  --colors-primary-80: hsl(188.71 60.784% 80%);
+  --colors-primary-90: hsl(189.677 60.784% 90%);
+  --colors-primary-95: hsl(188 60% 95.098%);
+  --colors-primary-98: hsl(190 60% 98.039%);
+  --colors-secondary-5: hsl(180 4% 4.902%);
+  --colors-secondary-10: hsl(210 5.263% 14.902%);
+  --colors-secondary-20: hsl(220 5.357% 21.961%);
+  --colors-secondary-30: hsl(220 5.882% 30%);
+  --colors-secondary-40: hsl(222 4.902% 40%);
+  --colors-secondary-50: hsl(221.538 5.098% 50%);
+  --colors-secondary-55: hsl(223.636 4.803% 55.098%);
+  --colors-secondary-60: hsl(220 5.882% 60%);
+  --colors-secondary-70: hsl(220 5.882% 70%);
+  --colors-secondary-80: hsl(220 5.882% 80%);
+  --colors-secondary-90: hsl(220 5.882% 90%);
+  --colors-secondary-95: hsl(210 7.692% 94.902%);
+  --colors-secondary-98: hsl(0 0% 98.039%);
+  --colors-tertiary-5: hsl(346.154 100% 5.098%);
+  --colors-tertiary-10: hsl(345.882 100% 10%);
+  --colors-tertiary-20: hsl(345.882 100% 20%);
+  --colors-tertiary-30: hsl(345.882 100% 30%);
+  --colors-tertiary-40: hsl(346.071 100% 43.922%);
+  --colors-tertiary-50: hsl(346.118 100% 50%);
+  --colors-tertiary-55: hsl(346.114 100% 55.098%);
+  --colors-tertiary-60: hsl(346.176 100% 60%);
+  --colors-tertiary-70: hsl(345.882 100% 70%);
+  --colors-tertiary-80: hsl(345.882 100% 80%);
+  --colors-tertiary-90: hsl(345.882 100% 90%);
+  --colors-tertiary-95: hsl(343.846 100% 94.902%);
+  --colors-tertiary-98: hsl(348 100% 98.039%);
+  --colors-quaternary-5: hsl(258.261 92% 4.902%);
+  --colors-quaternary-10: hsl(256.596 92.157% 10%);
+  --colors-quaternary-20: hsl(256.596 92.157% 20%);
+  --colors-quaternary-30: hsl(256.596 92.157% 30%);
+  --colors-quaternary-40: hsl(256.596 92.157% 40%);
+  --colors-quaternary-50: hsl(256.738 91.373% 50%);
+  --colors-quaternary-55: hsl(256.777 92.14% 55.098%);
+  --colors-quaternary-60: hsl(256.596 92.157% 60%);
+  --colors-quaternary-70: hsl(256.692 91.724% 71.569%);
+  --colors-quaternary-80: hsl(256.596 92.157% 80%);
+  --colors-quaternary-90: hsl(256.596 92.157% 90%);
+  --colors-quaternary-95: hsl(255.652 92% 95.098%);
+  --colors-quaternary-98: hsl(258 100% 98.039%);
+  --colors-black: hsl(0 0% 0%);
+
+  --content-link-idle: hsl(221.538 5.098% 50%);
+  --content-link-hover: hsl(222 4.902% 40%);
+
+  --border-subtle: hsl(0 0% 90.196%);
+
+  --brand-primary: hsl(188.842 96.939% 38.431%);
+  --brand-logo-bg: hsl(188.842 96.939% 38.431%);
+
+  --interactive-primary-high-idle-background: hsl(200 4.918% 11.961%);
+  --interactive-primary-high-hover-background: hsl(210 2.439% 16.078%);
+  --interactive-primary-high-pressed-background: hsl(220 2.703% 21.765%);
+  --interactive-primary-high-disabled-background: hsl(210 20% 96.078%);
+
+  --button-primary-high-idle-background: hsl(189.424 100% 37.451%);
+  --button-primary-high-hover-background: hsl(189.438 96.739% 36.078%);
+  --button-primary-high-pressed-background: hsl(190.949 68.844% 39.02%);
+  --button-focus-ring: hsl(189.438 96.739% 36.078%);
+  --button-primary-high-idle-border: hsl(0 0% 100%);
+  --button-primary-high-hover-border: hsl(0 0% 100%);
+  --button-primary-high-pressed-border: hsl(0 0% 100%);
+  --button-primary-medium-idle-border: hsl(189.424 100% 37.451%);
+  --button-primary-medium-hover-border: hsl(189.438 96.739% 36.078%);
+  --button-primary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-primary-medium-pressed-border: hsl(190.949 68.844% 39.02%);
+  --button-primary-medium-label: hsl(189.424 100% 37.451%);
+  --button-primary-medium-icon: hsl(189.424 100% 37.451%);
+  --button-primary-low-hover-background: hsl(188.742 60.159% 50.784%);
+  --button-primary-low-hover-border: hsl(188.742 60.159% 50.784%);
+  --button-primary-low-pressed-background: hsl(188.742 60.159% 50.784%);
+  --button-primary-low-pressed-border: hsl(188.742 60.159% 50.784%);
+  --button-primary-low-label: hsl(189.424 100% 37.451%);
+  --button-primary-low-icon: hsl(189.424 100% 37.451%);
+  --button-secondary-high-idle-background: hsl(189.424 100% 37.451%);
+  --button-secondary-high-idle-border: hsl(0 0% 100%);
+  --button-secondary-high-hover-background: hsl(189.438 96.739% 36.078%);
+  --button-secondary-high-hover-border: hsl(0 0% 100%);
+  --button-secondary-high-pressed-background: hsl(190.949 68.844% 39.02%);
+  --button-secondary-high-pressed-border: hsl(0 0% 100%);
+  --button-secondary-medium-hover-border: hsl(189.438 96.739% 36.078%);
+  --button-secondary-medium-pressed-background: hsl(0 0% 0% / 0.161);
+  --button-secondary-medium-pressed-border: hsl(190.949 68.844% 39.02%);
+  --button-secondary-medium-label: hsl(189.424 100% 37.451%);
+  --button-secondary-medium-icon: hsl(189.424 100% 37.451%);
+  --button-secondary-low-hover-background: hsl(188.742 60.159% 50.784%);
+  --button-secondary-low-hover-border: hsl(188.742 60.159% 50.784%);
+  --button-secondary-low-pressed-background: hsl(188.742 60.159% 50.784%);
+  --button-secondary-low-pressed-border: hsl(188.742 60.159% 50.784%);
+  --button-secondary-low-label: hsl(189.424 100% 37.451%);
+  --button-secondary-low-icon: hsl(189.424 100% 37.451%);
+
+  --typography-body-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-label-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-title-font-family-large: 'Averta CY', system-ui, sans-serif;
+  --typography-title-font-family-small: 'Averta CY', system-ui, sans-serif;
+  --typography-headline-alt-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-headline-font-family: 'Averta CY', system-ui, sans-serif;
+  --typography-display-font-family-large: 'Averta CY', system-ui, sans-serif;
+  --typography-display-font-weight-large: 600;
+  --typography-headline-font-weight-large: 600;
+  --typography-title-font-weight-large: 600;
+  --typography-body-font-weight-medium: 400;
+  --typography-label-font-weight-large: 600;
+  --typography-label-font-weight-medium: 400;
+  --typography-label-font-weight-small: 400;
+
+  /* Completed button matrix from this brand's own token build (2026-08-20) —
+     borders/labels/icons that previously fell through to the iGraal defaults. */
+  --button-primary-high-focus-background: hsl(189.44 96.739% 36.078%);
+  --button-primary-high-focus-border: hsl(189.44 96.739% 36.078%);
+  --button-primary-medium-idle-forground2: hsl(188.84 96.939% 38.431%);
+  --button-primary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-primary-medium-focus-border: hsl(189.44 96.739% 36.078%);
+  --button-primary-medium-label-copy: hsl(189.42 100% 37.451%);
+  --button-primary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-primary-low-focus-border-color: hsl(200 4.918% 11.961%);
+  --button-secondary-high-focus-background: hsl(189.44 96.739% 36.078%);
+  --button-secondary-high-focus-border: hsl(189.44 96.739% 36.078%);
+  --button-secondary-high-label: hsl(0 0% 100%);
+  --button-secondary-high-icon: hsl(0 0% 100%);
+  --button-secondary-medium-idle-forground: hsl(188.84 96.939% 38.431%);
+  --button-secondary-medium-focus-background: hsl(0 0% 0% / 0.102);
+  --button-secondary-medium-focus-border: hsl(189.44 96.739% 36.078%);
+  --button-secondary-low-focus-background-color: hsl(0 0% 100% / 0);
+  --button-secondary-low-focus-border-color: hsl(200 4.918% 11.961%);
+}

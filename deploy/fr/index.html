@@ -191,7 +191,7 @@
       var hit = map ? map[out.trim()] : undefined;
       if (hit !== undefined) out = hit === '' ? '' : out.replace(out.trim(), hit);
       // iGraal FR New shows the € after the amount, with no space.
-      if (frNum && out.indexOf('\u20ac') > -1) out = out.replace(/\u20ac\s*(\d[\d.,]*)/g, '$1\u20ac');
+      if (frNum && out.indexOf('\u20ac') > -1) out = out.replace(/\u20ac\s*(\d[\d.,]*)/g, '$1\u00a0\u20ac');
       // German number formatting (Shoop Homepage 2.0 only): space before the €/%
       // symbol and a decimal comma. The 3-digit guard keeps 41.158 intact.
       if (num) {
@@ -17399,9 +17399,9 @@ const I18N = {
     "Sign up now.": "Inscris-toi maintenant",
     "Old": "Ancien",
     "New": "Nouveau",
-    "Don’t believe yet?": "Tu n’y crois pas encore ?",
-    "See our users saving money in real time": "Regarde nos membres économiser en temps réel",
-    "Get €5 as a Welcome Bonus": "Reçois 5€ de bonus de bienvenue",
+    "Don’t believe yet?": "Toujours pas convaincu ?",
+    "See our users saving money in real time": "Voyez nos membres économiser en temps réel",
+    "Get €5 as a Welcome Bonus": "Recevez 5 € de bienvenue",
     "Sign up": "S’inscrire",
     "Sign up. It’s free.": "S’inscrire gratuitement",
     "Trustpilot reviews": "Avis Trustpilot",
@@ -17454,22 +17454,22 @@ const I18N = {
     "On the upgrade that has been sitting in your cart since March": "Pour l’upgrade qui traîne dans ton panier depuis mars",
     "On the trip you keep postponing until next summer": "Pour le voyage que tu repousses jusqu’à l’été prochain",
     "On the tank, the ride and everything in between": "Pour le plein, le trajet et tout ce qui va avec",
-    "€1.056 on a trip to Rio": "1€.056 pour un voyage à Rio",
-    "€42 on weekly delivery": "42€ pour la livraison hebdo",
-    "€124 on a special dinner": "124€ pour un dîner spécial",
-    "€89 on autumn boots": "89€ pour des bottes d’automne",
-    "€310 on a new desk": "310€ pour un nouveau bureau",
-    "€18 on morning coffee": "18€ pour le café du matin",
-    "€214 on a flight to Porto": "214€ pour un vol vers Porto",
-    "€76 on a winter coat": "76€ pour un manteau d’hiver",
-    "+€45 back": "+45€ rendus",
-    "+€13 back": "+13€ rendus",
-    "+€7 back": "+7€ rendus",
-    "+€5 back": "+5€ rendus",
-    "+€8 back": "+8€ rendus",
-    "+€2 back": "+2€ rendus",
-    "+€11 back": "+11€ rendus",
-    "+€4 back": "+4€ rendus",
+    "€1.056 on a trip to Rio": "1 056 € pour un voyage à Rio",
+    "€42 on weekly delivery": "42 € pour la livraison hebdo",
+    "€124 on a special dinner": "124 € pour un dîner spécial",
+    "€89 on autumn boots": "89 € pour des bottes d’automne",
+    "€310 on a new desk": "310 € pour un nouveau bureau",
+    "€18 on morning coffee": "18 € pour le café du matin",
+    "€214 on a flight to Porto": "214 € pour un vol vers Porto",
+    "€76 on a winter coat": "76 € pour un manteau d’hiver",
+    "+€45 back": "+45 € rendus",
+    "+€13 back": "+13 € rendus",
+    "+€7 back": "+7 € rendus",
+    "+€5 back": "+5 € rendus",
+    "+€8 back": "+8 € rendus",
+    "+€2 back": "+2 € rendus",
+    "+€11 back": "+11 € rendus",
+    "+€4 back": "+4 € rendus",
     "Now": "À l’instant",
     "6s ago": "il y a 6s",
     "14s ago": "il y a 14s",
@@ -17484,15 +17484,15 @@ const I18N = {
     "120 million iGraal members": "120 millions de membres iGraal",
     "earning cashback every day.": "qui gagnent du cashback chaque jour.",
     "Whatever brand you’re looking for, we have it.": "Quelle que soit la marque que tu cherche, nous l’avons.",
-    "Millions of euros paid to our members": "Des millions d’euros versés à nos membres",
+    "Millions of euros paid to our members": "de cashback déjà reversés à nos membres",
     "+120 million worldwide": "+120 millions dans le monde",
     "Smart Shoppers using iGraal to save money everyday": "de membres utilisent iGraal pour faire des économies au quotidien",
     "Based on 41.158 reviews": "Basé sur 41.158 avis",
     "See all reviews": "Voir tous les avis",
-    "You’ll never miss the best way to save again.": "Tu ne rateras plus jamais la meilleure façon d’économiser.",
-    "Get the app": "Obtenir l’app",
-    "Live activity": "Activité en direct",
-    "Still don’t believe it? See our users saving money in real time.": "Tu n’y crois pas ? Regarde nos membres économiser en temps réel.",
+    "You’ll never miss the best way to save again.": "Ne passez plus à côté des meilleures façons d’économiser.",
+    "Get the app": "Télécharger l’app",
+    "Live activity": "En direct",
+    "Still don’t believe it? See our users saving money in real time.": "Toujours pas convaincu ? Voyez nos membres économiser en temps réel.",
     "How it works": "Comment ça marche",
     "Your first \n€5 is on us": "Tes premiers \n5€ sont offerts",
     "Join today, and a welcome bonus will be waiting for you.": "Inscris-toi aujourd’hui, un bonus de bienvenue t’attend.",
@@ -18776,7 +18776,15 @@ class Component extends DCLogic {
     if (head.parentElement.querySelector("[data-eyebrow]")) return;
     const eb = document.createElement("span");
     eb.setAttribute("data-eyebrow", "1");
-    eb.textContent = "Get the app";
+    const EB = { fr: "L’application mobile", de: "Hol’ dir unsere App" };
+    eb.textContent = EB[this.state.lang] || "Get the app";
+    // the French headline is longer: widen this section's text column
+    // (component default 281px) so it wraps in four lines and the rating row
+    // stays clear of the phone illustration.
+    if (this.state.lang === "fr") {
+      head.parentElement.style.width = "306px";
+      head.parentElement.style.left = "28px";
+    }
     eb.style.cssText = "position:relative;align-self:stretch;flex-shrink:0;margin-bottom:-14px;font-family:'New Spirit',Newsreader,serif;font-weight:500;font-size:21.546px;text-align:center;line-height:1.11;letter-spacing:-0.022em;color:rgb(255,255,255)";
     head.parentElement.insertBefore(eb, head);
   }

@@ -18817,10 +18817,15 @@ class Component extends DCLogic {
     const wrap = document.createElement("div");
     wrap.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:30px";
     const q = document.createElement("span");
-    q.textContent = "\u201CPrima M\u00f6glichkeit Geld zu sparen!\u201D";
+    const RV = { fr: [
+      "\u00AB\u00A0Un excellent moyen d\u2019\u00e9conomiser de l\u2019argent\u00A0!\u00A0\u00BB",
+      "\u00AB\u00A0iGraal fonctionne vraiment bien et les remboursements sont toujours fiables :-)\u00A0\u00BB"
+    ] };
+    const rv = RV[this.state.lang];
+    q.textContent = rv ? rv[0] : "\u201CPrima M\u00f6glichkeit Geld zu sparen!\u201D";
     q.style.cssText = "font-family:'New Spirit',Newsreader,serif;font-weight:500;font-size:25px;line-height:1.2;letter-spacing:-0.02em;color:rgb(255,255,255);text-align:center;text-wrap:pretty";
     const body = document.createElement("span");
-    body.textContent = "\u201CiGraal funktioniert wirklich gut, das Geld wird auch zuverl\u00e4ssig \u00fcberwiesen :-)\u201D";
+    body.textContent = rv ? rv[1] : "\u201CiGraal funktioniert wirklich gut, das Geld wird auch zuverl\u00e4ssig \u00fcberwiesen :-)\u201D";
     body.style.cssText = "font-family:Inter,sans-serif;font-weight:400;font-size:15px;line-height:1.45;color:rgba(255,255,255,0.86);text-align:center;text-wrap:pretty";
     const who = document.createElement("span");
     who.textContent = "Marina W.";

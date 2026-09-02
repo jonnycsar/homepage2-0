@@ -159,9 +159,10 @@
     if (lang() !== 'fr') return;
     var pad = document.querySelector('.sq-pad');
     if (!pad) return;
+    if (pad.getAttribute('data-fr-summer')) return;
     var img = pad.querySelector('img[src^="data:image/webp"]');
-    if (!img || img.getAttribute('data-fr-summer')) return;
-    img.setAttribute('data-fr-summer', '1');
+    if (!img) return;
+    pad.setAttribute('data-fr-summer', '1');
     img.src = SRC;
   }, 500);
 })();

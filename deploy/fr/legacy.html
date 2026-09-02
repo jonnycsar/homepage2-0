@@ -239,16 +239,13 @@
 (function () {
   var SERIF = "'New Spirit', Newsreader, serif";
   var SANS = "Inter, sans-serif";
-  var APPLY = /^(apply|anwenden|appliquer)$/i;
-  var ON = false;
-  var START = (window.__usertestStart || './usertest-start.html');
   var ROUTES = window.TEST_ROUTES || [];
-  // Deploys live in a subfolder (…/fr/), so route links and reloads resolve
-  // against this page's directory rather than the domain root.
+  // Deploys live in a subfolder (…/fr/), so route links resolve against this
+  // page's directory rather than the domain root.
   var DIR = location.pathname.replace(/[^/]*$/, '');
 
-  // "See" jumps straight into the selected config: skip the spinner for that one
-  // load only (normal navigation, URLs and Apply keep the loader).
+  // A route stub jumps straight into its config: skip the spinner for that one
+  // load only (normal navigation and URLs keep the loader).
   try {
     if (sessionStorage.getItem('usertest-nospin') === '1') {
       sessionStorage.removeItem('usertest-nospin');
@@ -276,6 +273,7 @@
     document.body.appendChild(wrap);
   }
 
+  // The 15-second window starts only once the hero is actually on screen.
   var running = false;
   try { running = sessionStorage.getItem('usertest') === 'running'; } catch (e) {}
   if (running) {
@@ -291,23 +289,13 @@
     })();
   }
 
-  function findApply() {
-    var els = document.querySelectorAll('div');
-    for (var i = els.length - 1; i >= 0; i--) {
-      var e = els[i];
-      if (e.children.length === 0 && APPLY.test((e.textContent || '').trim())) return e;
-    }
-    return null;
-  }
-
   function links() {
     var out = [];
     ROUTES.forEach(function (r) {
       (r.links || []).forEach(function (l, i) {
         out.push({
           name: l.name, bold: l.bold, divider: i === 0 && r.group > 1,
-          theme: r.theme, lang: r.lang, query: r.query, test: l.mode === 'test',
-          url: location.origin + DIR + r.path + (l.mode === 'test' ? '?test=true' : (r.links.length > 1 ? '?test=false' : ''))
+          url: location.origin + DIR + r.path + (l.mode === 'test' ? '?test=true' : '')
         });
       });
     });
@@ -338,13 +326,10 @@
     if (st.textContent !== css) st.textContent = css;
   }
 
-  // "See" navigates to the selected config so it lands in exactly the state its
-  // Test URL produces; the spinner is suppressed for that load (see top), so it
-  // is the fast path without re-running the app's own switcher.
   function makeSection() {
     var box = document.createElement('div');
     box.setAttribute('data-usertest-urls', '');
-    box.style.cssText = 'border-top:1px solid rgb(240,236,235);margin-top:8px;padding-top:12px;display:flex;flex-direction:column;gap:6px;';
+    box.style.cssText = 'display:flex;flex-direction:column;gap:6px;';
     var t = document.createElement('div');
     t.textContent = 'Test URLs';
     t.style.cssText = 'font-family:' + SANS + ';font-weight:600;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:rgba(13,13,13,.45);';
@@ -370,120 +355,26 @@
         if (navigator.clipboard) navigator.clipboard.writeText(l.url).then(done, done);
         else { var ta = document.createElement('textarea'); ta.value = l.url; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (err) {} ta.remove(); done(); }
       });
-      var se = document.createElement('div');
-      se.textContent = 'See';
-      se.style.cssText = cp.style.cssText;
-      se.addEventListener('click', function (e) {
-        e.stopPropagation(); e.preventDefault();
-        try {
-          localStorage.setItem('igraal-theme', l.theme);
-          localStorage.setItem('igraal-lang', l.lang);
-        } catch (err) {}
-        // The app lives at the root (or at a local .html file); the test routes
-        // are redirect stubs, so reloading one would drop l.query and land on New.
-        var base = /\.html?$/.test(location.pathname) ? location.pathname : DIR;
-        var here = base + l.query;
-        // A test link has to start from the black modal, so it navigates.
-        if (l.test) {
-          try { sessionStorage.setItem('usertest-nospin', '1'); } catch (err) {}
-          location.replace(START + '?back=' + encodeURIComponent(here));
-          return;
-        }
-        try { sessionStorage.removeItem('usertest'); } catch (err) {}
-        try { sessionStorage.setItem('usertest-nospin', '1'); } catch (err) {}
-        location.replace(here);
-      });
       var op = document.createElement('a');
       op.href = l.url; op.target = '_blank'; op.rel = 'noopener'; op.title = 'Open in new tab';
       op.style.cssText = 'flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;width:26px;height:24px;border:1px solid rgb(228,224,222);border-radius:999px;cursor:pointer;color:rgb(13,13,13);';
       op.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
       op.addEventListener('click', function (e) { e.stopPropagation(); });
-      row.appendChild(a); row.appendChild(se); row.appendChild(cp); row.appendChild(op);
+      row.appendChild(a); row.appendChild(cp); row.appendChild(op);
       box.appendChild(row);
     });
     return box;
   }
 
-  function makeRow() {
-    var row = document.createElement('div');
-    row.setAttribute('data-usertest-row', '');
-    row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 4px 0;';
-    var label = document.createElement('span');
-    label.textContent = 'User test mode';
-    label.style.cssText = 'font-family:' + SANS + ';font-weight:600;font-size:13px;color:rgb(13,13,13);';
-    var sw = document.createElement('div');
-    sw.style.cssText = 'width:46px;height:28px;border-radius:999px;background:rgb(228,224,222);position:relative;cursor:pointer;transition:background 180ms ease;flex-shrink:0;';
-    var knob = document.createElement('div');
-    knob.style.cssText = 'position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform 180ms ease;';
-    sw.appendChild(knob);
-    function paint() {
-      sw.style.background = ON ? 'rgb(13,13,13)' : 'rgb(228,224,222)';
-      knob.style.transform = ON ? 'translateX(18px)' : 'translateX(0)';
-    }
-    sw.addEventListener('click', function (e) { e.stopPropagation(); ON = !ON; paint(); });
-    paint();
-    row.appendChild(label); row.appendChild(sw);
-    return row;
-  }
-
-  // The menu opens on the Test URLs list; the brand/version/language pills are
-  // collapsed behind a small toggle so they don't compete with it.
-  var FILTERS = /^(iGraal New|iGraal Legacy|Shoop New|Shoop Legacy|Noma New|Noma Legacy|English|Deutsch|Fran\u00e7ais)$/;
-  var showFilters = false;
-
-  function filterRows(menu) {
-    var out = [], seen = [];
-    var els = menu.querySelectorAll('div');
-    for (var i = 0; i < els.length; i++) {
-      var e = els[i];
-      if (e.children.length > 1 || !FILTERS.test((e.textContent || '').trim())) continue;
-      var grp = e.parentNode;
-      if (!grp || grp === menu || seen.indexOf(grp) > -1) continue;
-      seen.push(grp); out.push(grp);
-    }
-    return out;
-  }
-
-  function makeFilterToggle(menu) {
-    var t = document.createElement('div');
-    t.setAttribute('data-usertest-filters-toggle', '');
-    t.style.cssText = 'font-family:' + SANS + ';font-weight:600;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:rgba(13,13,13,.45);cursor:pointer;padding:2px 0 6px 0;';
-    function paint() {
-      t.textContent = (showFilters ? '\u2013' : '+') + ' Brand, version & language';
-      filterRows(menu).forEach(function (g) { g.style.display = showFilters ? '' : 'none'; });
-    }
-    t.addEventListener('click', function (e) { e.stopPropagation(); showFilters = !showFilters; paint(); });
-    paint();
-    return t;
-  }
-
+  // The menu mounts and unmounts with the hamburger, so the list is (re)filled
+  // into the template's anchor whenever it reappears.
   setInterval(function () {
-    var btn = findApply();
-    if (!btn || !btn.parentNode) return;
-    var p = btn.parentNode;
-    if (p.querySelector('[data-usertest-row]')) {
-      var rs = filterRows(p);
-      if (rs.length && !p.querySelector('[data-usertest-filters-toggle]')) rs[0].parentNode.insertBefore(makeFilterToggle(p), rs[0]);
-      else if (!showFilters) rs.forEach(function (g) { g.style.display = 'none'; });
-      return;
-    }
-    var rows = filterRows(p);
-    if (rows.length) rows[0].parentNode.insertBefore(makeFilterToggle(p), rows[0]);
-    p.insertBefore(makeRow(), btn);
-    if (ROUTES.length) { ensureLabelCss(); p.insertBefore(makeSection(), btn); }
+    var anchor = document.querySelector('[data-usertest-anchor]');
+    if (!anchor || anchor.querySelector('[data-usertest-urls]')) return;
+    if (!ROUTES.length) return;
+    ensureLabelCss();
+    anchor.appendChild(makeSection());
   }, 400);
-
-  document.addEventListener('click', function (e) {
-    if (!ON) return;
-    var t = e.target;
-    while (t && t !== document) {
-      if (t.nodeType === 1 && t.children.length === 0 && APPLY.test((t.textContent || '').trim())) {
-        location.href = START + '?back=' + encodeURIComponent(location.pathname + location.search);
-        return;
-      }
-      t = t.parentNode;
-    }
-  }, true);
 })();
 
 </script>
@@ -17057,43 +16948,7 @@ h6:not([class]) { font-family: var(--typography-label-font-family); font-weight:
 
 
         
-        <div style="display: flex; flex-direction: row; gap: 8px; align-items: center; flex-wrap: wrap;">
-          <sc-if value="{{ optONOn }}" hint-placeholder-val="{{ false }}">
-            <div sc-camel-on-click="{{ pickON }}" data-keepbrand style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; background: rgb(13,13,13); display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 13px; color: rgb(255,255,255); white-space: nowrap;"><span data-swatch style="width: 12px; height: 12px; border-radius: 50%; background: rgb(247,80,36); flex-shrink: 0; display: block;"></span>iGraal New</div>
-          </sc-if>
-          <sc-if value="{{ optONOff }}" hint-placeholder-val="{{ true }}">
-            <div sc-camel-on-click="{{ pickON }}" data-keepbrand style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; border: 1px solid rgb(228,224,222); background: transparent; display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; color: rgb(90,84,82); white-space: nowrap;" style-hover="border-color: rgb(13,13,13); color: rgb(13,13,13);"><span data-swatch style="width: 12px; height: 12px; border-radius: 50%; background: rgb(247,80,36); flex-shrink: 0; display: block;"></span>iGraal New</div>
-          </sc-if>
-          <sc-if value="{{ optOQOn }}" hint-placeholder-val="{{ true }}">
-            <div sc-camel-on-click="{{ pickOQ }}" data-keepbrand style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; background: rgb(13,13,13); display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 13px; color: rgb(255,255,255); white-space: nowrap;"><span data-swatch style="width: 12px; height: 12px; border-radius: 50%; background: rgb(247,80,36); flex-shrink: 0; display: block;"></span>iGraal Legacy</div>
-          </sc-if>
-          <sc-if value="{{ optOQOff }}" hint-placeholder-val="{{ false }}">
-            <div sc-camel-on-click="{{ pickOQ }}" data-keepbrand style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; border: 1px solid rgb(228,224,222); background: transparent; display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; color: rgb(90,84,82); white-space: nowrap;" style-hover="border-color: rgb(13,13,13); color: rgb(13,13,13);"><span data-swatch style="width: 12px; height: 12px; border-radius: 50%; background: rgb(247,80,36); flex-shrink: 0; display: block;"></span>iGraal Legacy</div>
-          </sc-if>
-          <sc-if value="{{ optSNOn }}" hint-placeholder-val="{{ false }}">
-            <div sc-camel-on-click="{{ pickSN }}" data-keepbrand style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; background: rgb(13,13,13); display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 13px; color: rgb(255,255,255); white-space: nowrap;"><span data-swatch style="width: 12px; height: 12px; border-radius: 50%; background: rgb(36,125,255); flex-shrink: 0; display: block;"></span>Shoop New</div>
-          </sc-if>
-          <sc-if value="{{ optSNOff }}" hint-placeholder-val="{{ true }}">
-            <div sc-camel-on-click="{{ pickSN }}" data-keepbrand style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; border: 1px solid rgb(228,224,222); background: transparent; display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; color: rgb(90,84,82); white-space: nowrap;" style-hover="border-color: rgb(13,13,13); color: rgb(13,13,13);"><span data-swatch style="width: 12px; height: 12px; border-radius: 50%; background: rgb(36,125,255); flex-shrink: 0; display: block;"></span>Shoop New</div>
-          </sc-if>
-          <sc-if value="{{ optSQOn }}" hint-placeholder-val="{{ false }}">
-            <div sc-camel-on-click="{{ pickSQ }}" data-keepbrand style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; background: rgb(13,13,13); display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 13px; color: rgb(255,255,255); white-space: nowrap;"><span data-swatch style="width: 12px; height: 12px; border-radius: 50%; background: rgb(36,125,255); flex-shrink: 0; display: block;"></span>Shoop Legacy</div>
-          </sc-if>
-          <sc-if value="{{ optSQOff }}" hint-placeholder-val="{{ true }}">
-            <div sc-camel-on-click="{{ pickSQ }}" data-keepbrand style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; border: 1px solid rgb(228,224,222); background: transparent; display: flex; flex-direction: row; gap: 8px; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; color: rgb(90,84,82); white-space: nowrap;" style-hover="border-color: rgb(13,13,13); color: rgb(13,13,13);"><span data-swatch style="width: 12px; height: 12px; border-radius: 50%; background: rgb(36,125,255); flex-shrink: 0; display: block;"></span>Shoop Legacy</div>
-          </sc-if>
-        </div>
-        <div style="display: flex; flex-direction: row; gap: 8px; align-items: center; flex-wrap: wrap; padding-top: 2px;">
-          <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
-            <sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}">
-              <div sc-camel-on-click="{{ l.pick }}" style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; background: rgb(13,13,13); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 13px; color: rgb(255,255,255); white-space: nowrap;">{{ l.label }}</div>
-            </sc-if>
-            <sc-if value="{{ l.off }}" hint-placeholder-val="{{ true }}">
-              <div sc-camel-on-click="{{ l.pick }}" style="box-sizing: border-box; height: 34px; padding: 0 14px; border-radius: 1015px; border: 1px solid rgb(228,224,222); background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 500; font-size: 13px; color: rgb(90,84,82); white-space: nowrap;" style-hover="border-color: rgb(13,13,13); color: rgb(13,13,13);">{{ l.label }}</div>
-            </sc-if>
-          </sc-for>
-        </div>
-        <div sc-camel-on-click="{{ applyMenu }}" style="height: 58px; border-radius: 1015px; background: rgb(247,80,36); display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: Inter, sans-serif; font-weight: 600; font-size: 16px; color: rgb(255,255,255);">Apply</div>
+        <div data-usertest-anchor="" style="display: flex; flex-direction: column; gap: 6px;"></div>
       </div>
     </sc-if>
 

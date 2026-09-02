@@ -17848,7 +17848,6 @@ class Component extends DCLogic {
   // from the design's 210px illustration offset: two-line copy (EN/DE) resolves
   // to the original gap, longer copy closes it instead of drifting.
   snugHowSteps() {
-    if (this.state.lang !== "fr") return;
     const how = this.scroll && this.scroll.querySelector("#sec-how");
     if (!how) return;
     Array.prototype.slice.call(how.querySelectorAll("div")).forEach(col => {

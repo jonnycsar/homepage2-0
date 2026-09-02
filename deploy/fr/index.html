@@ -17832,6 +17832,7 @@ class Component extends DCLogic {
     this.snugHowSteps();
     this.snugApp();
     this.euroAfter();
+    this.howArt();
   }
 
   // "rembours" is two characters longer than the German label, and the hero
@@ -17844,6 +17845,43 @@ class Component extends DCLogic {
     Array.prototype.slice.call(hero.querySelectorAll("span, div")).forEach(e => {
       if (e.children.length || !/\u20ac\s*rembours\s*$/.test(e.textContent || "")) return;
       if (e.style.fontSize !== "10.6px") e.style.fontSize = "10.6px";
+    });
+  }
+
+  // The German how-it-works illustrations are supplied per STEP, and the cards
+  // render in reverse (badge 3 first), so each image is keyed off the card's
+  // own step badge rather than its DOM position.
+  howArt() {
+    if (this.state.lang !== "de") return;
+    const how = this.scroll && this.scroll.querySelector("#sec-how");
+    if (!how) return;
+    // The illustrations are supplied per STEP and the cards render in reverse
+    // (badge 3 first), so each image is matched by its card's own step badge.
+    // The swap runs through a stylesheet keyed on a data attribute: setting
+    // src directly is undone the moment React re-renders the card, and the
+    // attribute is one React does not manage, so it survives.
+    let st = document.getElementById("how-de-art");
+    if (!st) {
+      st = document.createElement("style");
+      st.id = "how-de-art";
+      st.textContent = [1, 2, 3].map(n =>
+        'img[data-how-step="' + n + '"]{content:url("assets/how-de-step-' + n + '.png")}'
+      ).join("");
+      document.head.appendChild(st);
+    }
+    Array.prototype.slice.call(how.querySelectorAll("div")).forEach(col => {
+      const cs = getComputedStyle(col);
+      if (cs.display !== "flex" || cs.flexDirection !== "column" || col.children.length !== 2) return;
+      const card = col.parentElement;
+      let step = null;
+      Array.prototype.slice.call(card.children).forEach(c => {
+        if (c === col) return;
+        const s = (c.textContent || "").trim();
+        if (/^[123]$/.test(s)) step = s;
+      });
+      const img = col.children[1].querySelector("img");
+      if (!step || !img) return;
+      if (img.getAttribute("data-how-step") !== step) img.setAttribute("data-how-step", step);
     });
   }
 

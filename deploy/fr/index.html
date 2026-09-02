@@ -196,6 +196,9 @@
       // symbol and a decimal comma. The 3-digit guard keeps 41.158 intact.
       if (num) {
         out = out
+          // Symbol first ("\u20ac5") is the source order: move it after the amount
+          // before the spacing rule below, so both orders end up identical.
+          .replace(/\u20ac\s*(\d[\d.,]*)/g, '$1\u20ac')
           .replace(/(\d)\.(\d{1,2})(?!\d)/g, '$1,$2')
           .replace(/(\d)\s*\u20ac/g, '$1\u00a0\u20ac')
           .replace(/(\d)\s*%/g, '$1\u00a0%');
@@ -17828,6 +17831,7 @@ class Component extends DCLogic {
     this.snugHeroLabels();
     this.snugHowSteps();
     this.snugApp();
+    this.euroAfter();
   }
 
   // "rembours" is two characters longer than the German label, and the hero
@@ -17840,6 +17844,25 @@ class Component extends DCLogic {
     Array.prototype.slice.call(hero.querySelectorAll("span, div")).forEach(e => {
       if (e.children.length || !/\u20ac\s*rembours\s*$/.test(e.textContent || "")) return;
       if (e.style.fontSize !== "10.6px") e.style.fontSize = "10.6px";
+    });
+  }
+
+  // German (and French) put the \u20ac after the amount. The live counter is
+  // animated per digit, with the symbol as its own static leaf, so the text
+  // pass can't reach it: move that one node to the end of the row instead of
+  // reordering anything the animation drives.
+  euroAfter() {
+    const lang = this.state.lang;
+    if (lang !== "de" && lang !== "fr") return;
+    const live = this.scroll && this.scroll.querySelector("#sec-live");
+    if (!live) return;
+    Array.prototype.slice.call(live.querySelectorAll("span, div")).forEach(e => {
+      if (e.children.length || (e.textContent || "").trim() !== "\u20ac") return;
+      if (parseFloat(getComputedStyle(e).fontSize) < 40) return;
+      const row = e.parentElement;
+      if (!row || row.lastElementChild === e) return;
+      row.appendChild(e);
+      if (e.style.marginLeft !== "0.12em") e.style.marginLeft = "0.12em";
     });
   }
 

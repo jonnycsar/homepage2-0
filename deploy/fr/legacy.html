@@ -196,6 +196,9 @@
       // symbol and a decimal comma. The 3-digit guard keeps 41.158 intact.
       if (num) {
         out = out
+          // Symbol first ("\u20ac5") is the source order: move it after the amount
+          // before the spacing rule below, so both orders end up identical.
+          .replace(/\u20ac\s*(\d[\d.,]*)/g, '$1\u20ac')
           .replace(/(\d)\.(\d{1,2})(?!\d)/g, '$1,$2')
           .replace(/(\d)\s*\u20ac/g, '$1\u00a0\u20ac')
           .replace(/(\d)\s*%/g, '$1\u00a0%');

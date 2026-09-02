@@ -11489,7 +11489,7 @@ function HowItWorks1(_p = {}) {
     className: props.className,
     style: {
       width: 302,
-      height: 446,
+      minHeight: 446,
       position: "relative",
       ...props.style
     }
@@ -11499,16 +11499,41 @@ function HowItWorks1(_p = {}) {
       left: 0,
       top: 0,
       width: 302,
-      height: 431,
+      bottom: 15,
       borderRadius: 20,
       backgroundColor: "rgb(255,255,255)",
       boxShadow: "inset 0 0 0 1px rgb(232,232,232), 0px 7px 13px 0px rgba(0,0,0,0.05)"
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
-      position: "absolute",
-      left: 26,
-      top: 210,
+      position: "relative",
+      paddingTop: 106,
+      marginLeft: 15,
+      paddingBottom: 47,
+      boxSizing: "content-box",
+      width: 270,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 48
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: "relative",
+      width: 270,
+      minHeight: 56,
+      fontFamily: "\"New Spirit\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+      fontWeight: 500,
+      fontSize: 25,
+      textAlign: "center",
+      lineHeight: 1.1100000143051147,
+      letterSpacing: "-0.022em",
+      color: "rgb(22,14,11)"
+    }
+  }, props.text3 ?? "You activate and shop as usual"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative",
+      flexShrink: 0,
       width: 251,
       height: 189,
       overflow: "hidden",
@@ -11609,22 +11634,7 @@ function HowItWorks1(_p = {}) {
       borderRadius: 12,
       backgroundColor: "rgb(255,255,255)"
     }
-  })), /*#__PURE__*/React.createElement("span", {
-    style: {
-      position: "absolute",
-      left: 26,
-      top: 106,
-      width: 248,
-      height: 56,
-      fontFamily: "\"New Spirit\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
-      fontWeight: 500,
-      fontSize: 25,
-      textAlign: "center",
-      lineHeight: 1.1100000143051147,
-      letterSpacing: "-0.022em",
-      color: "rgb(22,14,11)"
-    }
-  }, props.text3 ?? "You activate and shop as usual"), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 125,
@@ -11668,7 +11678,7 @@ function HowItWorks2(_p = {}) {
     className: props.className,
     style: {
       width: 302,
-      height: 446,
+      minHeight: 446,
       position: "relative",
       ...props.style
     }
@@ -11678,16 +11688,41 @@ function HowItWorks2(_p = {}) {
       left: 0,
       top: 0,
       width: 302,
-      height: 431,
+      bottom: 15,
       borderRadius: 20,
       backgroundColor: "rgb(255,255,255)",
       boxShadow: "inset 0 0 0 1px rgb(232,232,232), 0px 7px 13px 0px rgba(0,0,0,0.05)"
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
-      position: "absolute",
-      left: 25,
-      top: 210,
+      position: "relative",
+      paddingTop: 99,
+      marginLeft: 29,
+      paddingBottom: 49,
+      boxSizing: "content-box",
+      width: 242,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 27
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: "relative",
+      width: 242,
+      minHeight: 84,
+      fontFamily: "\"New Spirit\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+      fontWeight: 500,
+      fontSize: 25,
+      textAlign: "center",
+      lineHeight: 1.1100000143051147,
+      letterSpacing: "-0.022em",
+      color: "rgb(22,14,11)"
+    }
+  }, props.text4 ?? "You get real money directly into your balance"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative",
+      flexShrink: 0,
       width: 251,
       height: 187,
       overflow: "hidden",
@@ -11895,22 +11930,7 @@ function HowItWorks2(_p = {}) {
       borderRadius: 10,
       backgroundColor: "rgb(227,227,227)"
     }
-  })), /*#__PURE__*/React.createElement("span", {
-    style: {
-      position: "absolute",
-      left: 40,
-      top: 99,
-      width: 220,
-      height: 84,
-      fontFamily: "\"New Spirit\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
-      fontWeight: 500,
-      fontSize: 25,
-      textAlign: "center",
-      lineHeight: 1.1100000143051147,
-      letterSpacing: "-0.022em",
-      color: "rgb(22,14,11)"
-    }
-  }, props.text4 ?? "You get real money directly into your balance"), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 125,
@@ -11954,7 +11974,7 @@ function HowItWorks3(_p = {}) {
     className: props.className,
     style: {
       width: 302,
-      height: 446,
+      minHeight: 446,
       position: "relative",
       ...props.style
     }
@@ -11964,16 +11984,41 @@ function HowItWorks3(_p = {}) {
       left: 0,
       top: 0,
       width: 302,
-      height: 431,
+      bottom: 15,
       borderRadius: 20,
       backgroundColor: "rgb(255,255,255)",
       boxShadow: "inset 0 0 0 1px rgb(232,232,232), 0px 7px 13px 0px rgba(0,0,0,0.05)"
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
-      position: "absolute",
-      left: 27,
-      top: 210,
+      position: "relative",
+      paddingTop: 111,
+      marginLeft: 25,
+      paddingBottom: 47,
+      boxSizing: "content-box",
+      width: 256,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 43
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      position: "relative",
+      width: 256,
+      minHeight: 56,
+      fontFamily: "\"New Spirit\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+      fontWeight: 500,
+      fontSize: 25,
+      textAlign: "center",
+      lineHeight: 1.1100000143051147,
+      letterSpacing: "-0.022em",
+      color: "rgb(22,14,11)"
+    }
+  }, props.text3 ?? "You withdraw to your bank account"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "relative",
+      flexShrink: 0,
       width: 251,
       height: 189,
       overflow: "hidden",
@@ -12047,22 +12092,7 @@ function HowItWorks3(_p = {}) {
       letterSpacing: "-0.022em",
       color: "rgb(22,14,11)"
     }
-  }, props.text2 ?? "€276")), /*#__PURE__*/React.createElement("span", {
-    style: {
-      position: "absolute",
-      left: 36,
-      top: 111,
-      width: 234,
-      height: 56,
-      fontFamily: "\"New Spirit\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
-      fontWeight: 500,
-      fontSize: 25,
-      textAlign: "center",
-      lineHeight: 1.1100000143051147,
-      letterSpacing: "-0.022em",
-      color: "rgb(22,14,11)"
-    }
-  }, props.text3 ?? "You withdraw to your bank account"), /*#__PURE__*/React.createElement("div", {
+  }, props.text2 ?? "€276"))), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       left: 125,

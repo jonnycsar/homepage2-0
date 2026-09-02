@@ -17463,14 +17463,14 @@ const I18N = {
     "€18 on morning coffee": "18 € pour le café du matin",
     "€214 on a flight to Porto": "214 € pour un vol vers Porto",
     "€76 on a winter coat": "76 € pour un manteau d’hiver",
-    "+€45 back": "+45 € rendus",
-    "+€13 back": "+13 € rendus",
-    "+€7 back": "+7 € rendus",
-    "+€5 back": "+5 € rendus",
-    "+€8 back": "+8 € rendus",
-    "+€2 back": "+2 € rendus",
-    "+€11 back": "+11 € rendus",
-    "+€4 back": "+4 € rendus",
+    "+€45 back": "+45 € rembours",
+    "+€13 back": "+13 € rembours",
+    "+€7 back": "+7 € rembours",
+    "+€5 back": "+5 € rembours",
+    "+€8 back": "+8 € rembours",
+    "+€2 back": "+2 € rembours",
+    "+€11 back": "+11 € rembours",
+    "+€4 back": "+4 € rembours",
     "Now": "À l’instant",
     "6s ago": "il y a 6s",
     "14s ago": "il y a 14s",
@@ -17824,6 +17824,88 @@ class Component extends DCLogic {
         hot.style.height = Math.round(a.height) + "px";
       }
     }
+
+    this.snugHeroLabels();
+    this.snugHowSteps();
+    this.snugApp();
+  }
+
+  // "rembours" is two characters longer than the German label, and the hero
+  // chips size to their text, so at the original size they crowd the card and
+  // push the merchant line onto a second row. One step down keeps them on one.
+  snugHeroLabels() {
+    if (this.state.lang !== "fr") return;
+    const hero = this.scroll && this.scroll.querySelector("#sec-hero");
+    if (!hero) return;
+    Array.prototype.slice.call(hero.querySelectorAll("span, div")).forEach(e => {
+      if (e.children.length || !/\u20ac\s*rembours\s*$/.test(e.textContent || "")) return;
+      if (e.style.fontSize !== "10.6px") e.style.fontSize = "10.6px";
+    });
+  }
+
+  // The how-it-works cards lay text and illustration out in one column, so a
+  // longer translation pushes the illustration down. Re-derive each card's gap
+  // from the design's 210px illustration offset: two-line copy (EN/DE) resolves
+  // to the original gap, longer copy closes it instead of drifting.
+  snugHowSteps() {
+    if (this.state.lang !== "fr") return;
+    const how = this.scroll && this.scroll.querySelector("#sec-how");
+    if (!how) return;
+    Array.prototype.slice.call(how.querySelectorAll("div")).forEach(col => {
+      const cs = getComputedStyle(col);
+      if (cs.display !== "flex" || cs.flexDirection !== "column" || col.children.length !== 2) return;
+      const head = col.children[0];
+      if (head.tagName !== "SPAN") return;
+      const pt = parseFloat(cs.paddingTop) || 0;
+      const th = head.offsetHeight; // layout height: unaffected by the card scale
+      const gap = Math.max(16, Math.round(210 - pt - th));
+      const px = gap + "px";
+      if (col.style.gap !== px) col.style.gap = px;
+    });
+  }
+
+  // The app section stacks copy above the phone artwork; the French headline is
+  // taller, so the rating row ran into it. Push the artwork below whatever the
+  // copy actually measures and grow the card to match, instead of clipping.
+  snugApp() {
+    if (this.state.lang !== "fr") return;
+    const sec = this.scroll && this.scroll.querySelector("#sec-app");
+    if (!sec) return;
+    const head = Array.prototype.slice.call(sec.querySelectorAll("span"))
+      .filter(e => Math.round(parseFloat(getComputedStyle(e).fontSize)) === 35)[0];
+    const col = head && head.parentElement;
+    const art = sec.querySelector(".fig-asset-5f9eb7777c03eca9");
+    if (!col || !art || !col.children.length) return;
+    if (col.style.gap !== "20px") col.style.gap = "20px";
+    // The phone stage is scaled, so rects are converted back to layout px.
+    const px = () => {
+      const sr = sec.getBoundingClientRect();
+      const scale = sec.offsetHeight ? sr.height / sec.offsetHeight : 0;
+      if (!scale) return null;
+      let copy = 0;
+      Array.prototype.slice.call(col.children).forEach(c => {
+        copy = Math.max(copy, (c.getBoundingClientRect().bottom - sr.top) / scale);
+      });
+      return { art: (art.getBoundingClientRect().top - sr.top) / scale, copy: copy };
+    };
+    // Baseline is captured with the offset removed, so every later pass derives
+    // the same shift from it instead of compounding on the previous one.
+    if (art.dataset.top0 === undefined) {
+      art.style.marginTop = "0px";
+      sec.style.height = "";
+      const m0 = px();
+      if (!m0 || !m0.art) return;
+      art.dataset.top0 = String(Math.round(m0.art));
+      sec.dataset.h0 = String(sec.offsetHeight);
+    }
+    const m = px();
+    if (!m || !m.copy) return;
+    const shift = Math.max(0, Math.round(m.copy + 24 - parseFloat(art.dataset.top0)));
+    const mt = shift + "px";
+    if (art.style.marginTop !== mt) art.style.marginTop = mt;
+    // Grow the card by the same amount, so the artwork keeps its original crop.
+    const h = (parseFloat(sec.dataset.h0) + shift) + "px";
+    if (sec.style.height !== h) sec.style.height = h;
   }
 
   // a sliver of the next section stays in view on load, so the page reads as scrollable

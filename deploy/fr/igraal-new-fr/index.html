@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Redirecting…</title>
+<style>html,body{margin:0;height:100%;background:#fff}</style>
+<script src="../testconfig.js"></script></head><body>
+<script>
+(function () {
+  // The route may be requested as /shoop-new-de/ or /shoop-new-de/index.html,
+  // so drop a trailing file name before reading the route segment.
+  var parts = location.pathname.split('/').filter(Boolean);
+  if (/\.html?$/i.test(parts[parts.length - 1] || '')) parts.pop();
+  var seg = parts.pop() || '';
+  var root = '/' + (parts.length ? parts.join('/') + '/' : '');
+  var r = (window.TEST_ROUTES || []).filter(function (x) { return x.path === seg; })[0];
+  if (!r) { location.replace(root); return; }
+  try {
+    localStorage.setItem('igraal-theme', r.theme);
+    localStorage.setItem('igraal-lang', r.lang);
+  } catch (e) {}
+  // The legacy routes are their own page; the 2.0 routes are the root page.
+  var here = root + (/legacy/.test(r.path) ? 'legacy.html' : '') + r.query;
+  try { sessionStorage.setItem('usertest-nospin', '1'); } catch (e) {}
+  if (new URLSearchParams(location.search).get('test') === 'true') {
+    location.replace(root + 'usertest-start.html?back=' + encodeURIComponent(here));
+    return;
+  }
+  try { sessionStorage.removeItem('usertest'); } catch (e) {}
+  location.replace(here);
+})();
+</script></body></html>

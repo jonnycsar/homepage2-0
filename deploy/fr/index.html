@@ -18,7 +18,12 @@
               { mode: 'base', name: 'Shoop Homepage 2.0' }] },
     { path: 'shoop-legacy-de',  theme: 'blue',   lang: 'de', query: '?v=sl', group: 5,
       links: [{ mode: 'base', name: 'Shoop Legacy' },
-              { mode: 'test', name: 'Shoop Legacy + ', bold: '15 seconds test' }] }
+              { mode: 'test', name: 'Shoop Legacy + ', bold: '15 seconds test' }] },
+    // Standalone comparison pages: their own page, not a config of the prototype.
+    { path: 'compare-igraal',   theme: 'orange', lang: 'fr', query: '',      group: 6,
+      links: [{ mode: 'base', name: 'iGraal Comparison Page 1 vs Page 2' }] },
+    { path: 'compare-shoop',    theme: 'blue',   lang: 'de', query: '',      group: 7,
+      links: [{ mode: 'base', name: 'Shoop Comparison Page 1 vs Page 2' }] }
   ];
   if (typeof module !== 'undefined' && module.exports) module.exports = ROUTES;
   else window.TEST_ROUTES = ROUTES;

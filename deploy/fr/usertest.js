@@ -16,21 +16,22 @@
       (document.head || document.documentElement).appendChild(sk);
     }
   } catch (e) {}
-  var copy = window.usertestCopy ? window.usertestCopy() : { t2: "Time's up!", b2: "That's all for this task. Please return to the survey to continue answering the questions." };
+  var copy = window.usertestCopy ? window.usertestCopy() : { t2: "Time’s up – please return to your scenario to continue…", b2: '' };
 
   function modal(title, body) {
     var wrap = document.createElement('div');
     wrap.setAttribute('data-usertest-modal', '');
-    wrap.style.cssText = 'position:fixed;inset:0;z-index:2147483000;background:#000;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;';
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:2147483000;background:#000;display:flex;align-items:center;justify-content:center;padding:clamp(12px,4vw,24px);box-sizing:border-box;';
     var card = document.createElement('div');
-    card.style.cssText = 'width:100%;max-width:320px;background:#fff;border-radius:24px;padding:36px 28px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;';
+    card.style.cssText = 'width:100%;max-width:min(320px,100%);background:#fff;border-radius:24px;padding:clamp(24px,7vw,36px) clamp(18px,5.5vw,28px);box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;';
     var h = document.createElement('div');
     h.textContent = title;
     h.style.cssText = 'font-family:' + SERIF + ';font-weight:500;font-size:26px;line-height:1.15;letter-spacing:-.022em;color:rgb(13,13,13);text-wrap:pretty;';
     var p = document.createElement('div');
     p.textContent = body;
     p.style.cssText = 'font-family:' + SANS + ';font-weight:500;font-size:14px;line-height:20px;color:rgb(60,54,52);text-wrap:pretty;';
-    card.appendChild(h); card.appendChild(p);
+    card.appendChild(h);
+    if (body) card.appendChild(p);
     wrap.appendChild(card);
     document.body.appendChild(wrap);
   }
@@ -47,7 +48,7 @@
       var hero = document.querySelector('[data-cover]');
       var ready = !ov && hero && hero.getBoundingClientRect().height > 200;
       if (!ready && waited < 25000) { waited += 120; return setTimeout(waitForHero, 120); }
-      setTimeout(function () { modal(copy.t2, copy.b2); }, 15000);
+      setTimeout(function () { modal(copy.t2, copy.b2); }, 20000);
     })();
   }
 

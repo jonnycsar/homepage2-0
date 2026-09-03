@@ -48,7 +48,7 @@
       var hero = document.querySelector('[data-cover]');
       var ready = !ov && hero && hero.getBoundingClientRect().height > 200;
       if (!ready && waited < 25000) { waited += 120; return setTimeout(waitForHero, 120); }
-      setTimeout(function () { modal(copy.t2, copy.b2); }, 20000);
+      setTimeout(function () { modal(copy.t2, copy.b2); }, 60000);
     })();
   }
 

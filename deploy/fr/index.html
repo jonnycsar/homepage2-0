@@ -146,12 +146,12 @@
     "Sign up now": "Inscris-toi maintenant",
     "million": "",
     ".000+ users": ".000 utilisateurs",
-    "€10": "10 M€"
+    "€300": "300 M€"
   };
   var DE = {
     "450": "+450",
     "Sign up now": "Jetzt registrieren",
-    "€10": "10 Mio. €",
+    "€300": "300 Mio. €",
     "million": "",
     "+120": "Weltweit +120",
     "Millionen\nweltweit": " Millionen",
@@ -15912,7 +15912,7 @@ h6:not([class]) { font-family: var(--typography-label-font-family); font-weight:
         </div>
 
         <div id="sec-brands" data-screen-label="05 Brand Directory" data-sec="" ref="{{ setBrands }}" style="position: relative; width: 362px; overflow: hidden; border-radius: 40px; flex-shrink: 0;">
-          <x-import component-from-global-scope="SectionsBrands" from="assets/b257572a-cbd8-4d5a-9874-9e5fce731113.js#/Components.bundle.js" text2="Whatever brand you’re looking for, we have it." hint-size="362px,690px"></x-import>
+          <x-import component-from-global-scope="SectionsBrands" from="assets/b257572a-cbd8-4d5a-9874-9e5fce731113.js#/Components.bundle.js" text2="Almost all brands you’re looking for, we have it" hint-size="362px,690px"></x-import>
           <div sc-camel-on-click="{{ openBrands }}" style="position: absolute; left: 0; right: 0; top: 248px; display: flex; justify-content: center;">
             <div style="height: 56px; box-sizing: border-box; border-radius: 1015px; background: rgb(22,14,11); padding: 0 34px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
               <span style="font-family: Inter, sans-serif; font-weight: 600; font-size: 16px; line-height: 20px; color: rgb(255,255,255); white-space: nowrap;">See all brands</span>
@@ -17272,10 +17272,10 @@ const I18N = {
     "You withdraw,\nall of it.": "Du zahlst es dir aus.\nAlles auf einmal.",
     "Save money on your next purchases": "Spare beim Einkaufen",
     "Join": "Schließe dich",
-    "120 million iGraal members": "120 Millionen iGraal Mitgliedern",
-    "earning cashback every day.": "an, die täglich Cashback verdienen.",
-    "Whatever brand you’re looking for, we have it.": "Welche Marke du auch suchst – wir haben sie.",
-    "Whatever brand you’re looking for, we have it.": "Welche Marke du auch suchst – wir haben sie.",
+    "iGraal members": "iGraal Mitgliedern",
+    "Noma members": "Noma Mitgliedern",
+    "earning cashback every day. 12 million members already rewarded.": "an, die täglich Cashback verdienen. 12 Millionen Mitglieder wurden bereits belohnt.",
+    "Almost all brands you’re looking for, we have it": "Fast alle Marken, die du suchst – wir haben sie",
     "Millions of euros paid to our members": "an unsere Mitglieder ausgezahlt",
     "+120 million worldwide": "+120 Millionen weltweit",
     "Smart Shoppers using iGraal to save money everyday": "smarte Shopper, die mit iGraal jeden Tag Geld sparen",
@@ -17491,9 +17491,10 @@ const I18N = {
     "You withdraw,\nall of it.": "Tu peux tout\nrécupérer.",
     "Save money on your next purchases": "Économisez sur vos achats",
     "Join": "Rejoignez",
-    "120 million iGraal members": "120 millions de membres iGraal",
-    "earning cashback every day.": "qui gagnent du cashback chaque jour.",
-    "Whatever brand you’re looking for, we have it.": "Quelle que soit la marque que tu cherche, nous l’avons.",
+    "iGraal members": "les membres iGraal",
+    "Noma members": "les membres Noma",
+    "earning cashback every day. 12 million members already rewarded.": "qui gagnent du cashback chaque jour. 12 millions de membres déjà récompensés.",
+    "Almost all brands you’re looking for, we have it": "Presque toutes les marques que vous cherchez, nous les avons",
     "Millions of euros paid to our members": "de cashback déjà reversés à nos membres",
     "+120 million worldwide": "+120 millions dans le monde",
     "Smart Shoppers using iGraal to save money everyday": "de membres utilisent iGraal pour faire des économies au quotidien",
@@ -18086,7 +18087,7 @@ class Component extends DCLogic {
         h.setAttribute("data-round", "");
         h.style.cssText = "display:flex;flex-direction:column;align-items:center;color:rgb(255,255,255)";
         const l1 = document.createElement("span");
-        l1.textContent = "\u20AC10";
+        l1.textContent = "\u20AC300";
         const l2 = document.createElement("span");
         l2.textContent = "million";
         [l1, l2].forEach(s2 => {
@@ -18960,7 +18961,6 @@ class Component extends DCLogic {
       box.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" style="display:block"><path d="M12 2.6l2.85 5.9 6.4.9-4.65 4.5 1.13 6.35L12 17.2l-5.73 3.05L7.4 13.9 2.75 9.4l6.4-.9L12 2.6z" fill="rgb(255,255,255)"></path></svg>';
       row.appendChild(box);
     }
-    anchor.parentElement.insertBefore(row, anchor);
 
     // the featured review from the reference, below the rating summary
     const wrap = document.createElement("div");
@@ -19644,16 +19644,19 @@ class Component extends DCLogic {
     if (title) title.classList.add("hero-title");
     if (sub) {
       sub.classList.add("hero-sub");
-      if (sub.dataset.copy !== "1") {
-        sub.dataset.copy = "1";
+      // The marker lives on a child, not on `sub`: a React re-render restores
+      // the bundle's own children while keeping `sub` itself, so a dataset latch
+      // here left the section's original copy on screen.
+      if (!sub.querySelector("[data-hero-copy]")) {
         sub.textContent = "";
         const a = document.createElement("span");
         a.textContent = "Join ";
         const b = document.createElement("span");
+        b.setAttribute("data-hero-copy", "");
         b.style.fontWeight = "700";
-        b.textContent = "120 million iGraal members";
+        b.textContent = "iGraal members";
         const c = document.createElement("span");
-        c.textContent = " earning cashback every day.";
+        c.textContent = " earning cashback every day. 12 million members already rewarded.";
         sub.appendChild(a); sub.appendChild(b); sub.appendChild(c);
       }
     }

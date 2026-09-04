@@ -88,7 +88,7 @@
     "Always free": "Toujours gratuit",
     "Buy with Noma": "Achète avec Noma",
     "Millions of users trust us": "Des millions d’utilisateurs nous font confiance",
-    "Get your cashback now and receive money back on every purchase!": "Active ton cashback dès maintenant et récupère de l’argent sur chaque achat !",
+    "Get your cashback now and receive money back on every purchase!": "Comment ça marche ?",
     "More than 1,000,000": "Plus de 1 000 000",
     "satisfied users": "utilisateurs satisfaits",
     "More than 10,000,000": "Plus de 10 000 000",
@@ -167,6 +167,45 @@
 
   function lang() { try { return localStorage.getItem('igraal-lang') || 'en'; } catch (e) { return 'en'; } }
 
+  // FR legacy replaces the highlights list with the 4-step "how it works"
+  // walkthrough. The rows are rebuilt in place, reusing the section's own
+  // circle/type styles; the heading comes from the FR map above, so it goes
+  // through the same anti-flicker path as the rest of the copy.
+  var HOW = [
+    ['user',   '1. Je m’inscris',           'Créez votre compte en quelques secondes.'],
+    ['coupon', '2. J’active mon cashback',  'Choisissez votre enseigne, activez le cashback.'],
+    ['cart',   '3. Je fais mes achats',     'Ici aucun changement dans vos habitudes.'],
+    ['euro',   '4. Premier cashback',       'Fini les achats au prix fort !']
+  ];
+  var ICON = {
+    user: '<circle cx="12" cy="8.4" r="3.4"/><path d="M5.4 20c0-3.2 2.96-5.2 6.6-5.2s6.6 2 6.6 5.2"/>',
+    coupon: '<rect x="3" y="6.6" width="18" height="10.8" rx="2.2"/><circle cx="12" cy="12" r="2.4"/><path d="M6.4 9.9v4.2M17.6 9.9v4.2"/>',
+    cart: '<path d="M3 4.5h2.3l2.5 9.9h9.6l2.1-7.2H6.6"/><circle cx="9.6" cy="18.6" r="1.5"/><circle cx="16.8" cy="18.6" r="1.5"/>',
+    euro: '<path d="M16.6 7.6a5.4 5.4 0 100 8.8"/><path d="M5.6 10.6h7.2M5.6 13.4h7.2"/>'
+  };
+  function howRow(step) {
+    return '<div style="display: flex; flex-direction: row; gap: 16px; align-items: center;">'
+      + '<div style="width: 43px; height: 43px; border-radius: 50%; background: rgb(254,91,20); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">'
+      + '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="rgb(255,255,255)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display: block;">'
+      + ICON[step[0]] + '</svg></div>'
+      + '<div style="display: flex; flex-direction: column; gap: 3px;">'
+      + '<span style="font-family: Inter, sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.25; color: rgb(13,13,13);">' + step[1] + '</span>'
+      + '<span style="font-family: Inter, sans-serif; font-weight: 400; font-size: 14.5px; line-height: 1.3; color: rgb(45,45,47);">' + step[2] + '</span>'
+      + '</div></div>';
+  }
+  function howItWorks(root) {
+    if (lang() !== 'fr' || !root || !root.querySelector) return;
+    var secs = root.querySelectorAll('[data-screen-label="SQ 02b Highlights"]');
+    for (var i = 0; i < secs.length; i++) {
+      var rows = secs[i].querySelector('div');
+      if (!rows || rows.getAttribute('data-how-fr')) continue;
+      rows.setAttribute('data-how-fr', '1');
+      rows.style.gap = '16px';
+      rows.innerHTML = HOW.map(howRow).join('');
+    }
+  }
+
+
   function fix(root) {
     var l = lang();
     if (l === 'en' || !root) return;
@@ -219,7 +258,7 @@
     for (var i = 0; i < recs.length; i++) {
       var r = recs[i];
       if (r.type === 'characterData') fix(r.target);
-      else for (var j = 0; j < r.addedNodes.length; j++) fix(r.addedNodes[j]);
+      else for (var j = 0; j < r.addedNodes.length; j++) { fix(r.addedNodes[j]); howItWorks(r.addedNodes[j]); }
     }
   });
 
@@ -230,7 +269,7 @@
       armed = true;
       obs.observe(phone, { childList: true, subtree: true, characterData: true });
     }
-    if (phone) fix(phone);
+    if (phone) { fix(phone); howItWorks(phone); }
 
     if (lang() !== 'fr') return;
     var pad = document.querySelector('.sq-pad');
@@ -17307,7 +17346,7 @@ const I18N = {
     "Always free": "Toujours gratuit",
     "Buy with Noma": "Achetez avec Noma",
     "Millions of users trust us": "Des millions d’utilisateurs nous font confiance",
-    "Get your cashback now and receive money back on every purchase!": "Activez votre cashback dès maintenant et récupérez de l’argent sur chaque achat !",
+    "Get your cashback now and receive money back on every purchase!": "Comment ça marche ?",
     "More than 1,000,000": "Plus de 1 000 000",
     "satisfied users": "utilisateurs satisfaits",
     "More than 10,000,000": "Plus de 10 000 000",

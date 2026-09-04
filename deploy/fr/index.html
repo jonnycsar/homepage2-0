@@ -15794,7 +15794,7 @@ h6:not([class]) { font-family: var(--typography-label-font-family); font-weight:
         </div>
 
         <div id="sec-save" data-screen-label="03 Category Explorer" data-sec="" style="position: relative; width: 362px; height: 785px; overflow: hidden; border-radius: 40px; background: rgb(255,244,242); flex-shrink: 0;">
-          <div class="row-scroll" style="position: absolute; left: 0; top: 27px; width: 362px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x;">
+          <div class="row-scroll" style="position: absolute; left: 0; top: 27px; width: 362px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x pan-y;">
             <div style="display: flex; flex-direction: row; width: max-content; padding: 0 20px;">
               <sc-for list="{{ cats }}" as="cat" hint-placeholder-count="4">
                 <sc-if value="{{ cat.on }}" hint-placeholder-val="{{ false }}">
@@ -15836,7 +15836,7 @@ h6:not([class]) { font-family: var(--typography-label-font-family); font-weight:
             <span style="align-self: stretch; font-family: 'New Spirit', Newsreader, serif; font-weight: 500; font-size: 27.113px; text-align: center; line-height: 1.22; letter-spacing: -0.022em; color: rgb(13,13,13); text-wrap: pretty;">{{ saveCopy }}</span>
           </div>
 
-          <div class="row-scroll" data-cards-row style="opacity: 0; transform: translateY(20px); transition: opacity 640ms cubic-bezier(.16,1,.3,1), transform 640ms cubic-bezier(.16,1,.3,1); position: absolute; left: 0; top: 450px; width: 362px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x;">
+          <div class="row-scroll" data-cards-row style="opacity: 0; transform: translateY(20px); transition: opacity 640ms cubic-bezier(.16,1,.3,1), transform 640ms cubic-bezier(.16,1,.3,1); position: absolute; left: 0; top: 450px; width: 362px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x pan-y;">
             <div style="display: flex; flex-direction: row; width: max-content; padding: 0 20px 8px 20px;">
               <sc-for list="{{ cards }}" as="card" hint-placeholder-count="3">
                 <div sc-camel-on-click="{{ card.open }}" style="margin-right: 13px; position: relative; width: 128px; height: 141px; border-radius: 20px; overflow: hidden; background: rgb(255,255,255); cursor: pointer; flex-shrink: 0;">
@@ -15863,7 +15863,7 @@ h6:not([class]) { font-family: var(--typography-label-font-family); font-weight:
             </div>
           </div>
 
-          <div class="row-scroll" data-cards-row style="opacity: 0; transform: translateY(20px); transition: opacity 640ms cubic-bezier(.16,1,.3,1) 90ms, transform 640ms cubic-bezier(.16,1,.3,1) 90ms; position: absolute; left: 0; top: 604px; width: 362px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x;">
+          <div class="row-scroll" data-cards-row style="opacity: 0; transform: translateY(20px); transition: opacity 640ms cubic-bezier(.16,1,.3,1) 90ms, transform 640ms cubic-bezier(.16,1,.3,1) 90ms; position: absolute; left: 0; top: 604px; width: 362px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; touch-action: pan-x pan-y;">
             <div style="display: flex; flex-direction: row; width: max-content; padding: 0 20px 8px 20px;">
               <sc-for list="{{ cards2 }}" as="card" hint-placeholder-count="3">
                 <div sc-camel-on-click="{{ card.open }}" style="margin-right: 13px; position: relative; width: 128px; height: 141px; border-radius: 20px; overflow: hidden; background: rgb(255,255,255); cursor: pointer; flex-shrink: 0;">
@@ -19370,12 +19370,15 @@ class Component extends DCLogic {
         if (!el) return;
         const txt = (el.dataset.final || el.textContent || "").trim();
         if (!txt) return;
-        const ms = this.rollNumber(el, txt, 100, true) || 1200;
-        // the merchant rows appear only once the figure has settled
+        // Reveal on intersection, synchronously: this page runs a rAF drift
+        // loop plus several intervals, and a timer here gets starved behind
+        // them (the delay measured anywhere from 0.3s to 2s). The rows keep
+        // their own 0ms/90ms transition delays, so the stagger is unchanged.
         if (en.target.id === "sec-save" && !this.cardsShown) {
           this.cardsShown = true;
-          setTimeout(() => this.revealCards(), ms + 120);
+          this.revealCards();
         }
+        this.rollNumber(el, txt, 100, true);
       });
     }, { root: this.scroll, threshold: 0.45 });
     this.rollIo.observe(save);

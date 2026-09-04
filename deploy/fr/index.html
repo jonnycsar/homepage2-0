@@ -151,8 +151,8 @@
   var DE = {
     "450": "+450",
     "Sign up now": "Jetzt registrieren",
-    "€300": "300 Mio. €",
-    "million": "",
+    "€300": "300",
+    "million": "Mio. €",
     "+120": "Weltweit +120",
     "Millionen\nweltweit": " Millionen",
     ".000+ users": ".000 User",
@@ -18156,6 +18156,17 @@ class Component extends DCLogic {
 
 
     const com = big("#sec-community", 62);
+    if (com) {
+      const tw = document.createTreeWalker(com, NodeFilter.SHOW_TEXT, null);
+      let tn;
+      while ((tn = tw.nextNode())) {
+        if (tn.nodeValue.indexOf("\u00a0") > -1) tn.nodeValue = tn.nodeValue.split("\u00a0").join(" ");
+      }
+      if (com.style.maxWidth !== "100%") {
+        com.style.maxWidth = "100%";
+        com.style.width = "auto";
+      }
+    }
     if (com && com.childElementCount === 0) {
       const txt = (com.textContent || "").trim();
       const m = txt.match(/^(\+?\s*120)([\s\S]*)$/);
